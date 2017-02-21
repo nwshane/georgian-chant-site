@@ -1,6 +1,6 @@
 const ChantListItem = props => (
   <li>
-    {props.name.ka}
+    {props.data.get('name').get('ka')}
   </li>
 )
 

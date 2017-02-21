@@ -1,6 +1,7 @@
 import ChantList from './ChantList'
+import { fromJS } from 'immutable'
 
-const chantsJson = [
+const chantsJson = fromJS([
   {
     id: 1,
     name: {
@@ -22,7 +23,7 @@ const chantsJson = [
       ka: 'ღმერთი უფალი'
     }
   }
-]
+])
 
 const ChantListContainer = () => (
   <ChantList chants={chantsJson} />

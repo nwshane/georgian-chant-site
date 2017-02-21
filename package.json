@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "immutable": "^3.8.1",
     "next": "^1.2.3"
   },
   "scripts": {
