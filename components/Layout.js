@@ -13,6 +13,7 @@ export default (props) => (
           margin: 0 auto;
           font-size: 1.6rem;
           font-family: 'Open Sans', sans-serif;
+          padding: 0 10px;
         }
       `}
     </style>
