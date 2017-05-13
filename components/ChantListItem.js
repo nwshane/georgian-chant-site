@@ -6,7 +6,9 @@ const ChantListItem = props => {
   return (
     <li>
       <Link as={`/chants/${slug}`} href={`/chants/show?slug=${slug}`}>
-        {props.data.get('name').get('ka')}
+        <a>
+          {props.data.get('name').get('ka')}
+        </a>
       </Link>
     </li>
   )
