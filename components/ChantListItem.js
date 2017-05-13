@@ -10,6 +10,11 @@ const ChantListItem = props => {
           {props.data.get('name').get('ka')}
         </a>
       </Link>
+      <style jsx>{`
+        a {
+          text-decoration: none;
+        }
+      `}</style>
     </li>
   )
 }
