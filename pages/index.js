@@ -3,8 +3,6 @@ import Link from 'next/link'
 
 export default () => (
   <Layout>
-    <Link href='/chants'>
-      View Chants!
-    </Link>
+    Welcome to GeorgianChant.org, a database of Georgian Orthodox chants and related resources.
   </Layout>
 )
