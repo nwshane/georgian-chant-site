@@ -4,6 +4,7 @@ import { fromJS } from 'immutable'
 const chantsJson = fromJS([
   {
     id: 1,
+    slug: 'shen-khar-venakhi',
     name: {
       ka: 'შენ ხარ ვენახი'
     },
@@ -13,12 +14,14 @@ const chantsJson = fromJS([
   },
   {
     id: 2,
+    slug: 'shobaman-shenman',
     name: {
       ka: 'შობამან შენმან'
     }
   },
   {
     id: 3,
+    slug: 'ghmerti-upali',
     name: {
       ka: 'ღმერთი უფალი'
     }
