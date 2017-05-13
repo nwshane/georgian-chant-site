@@ -1,5 +1,8 @@
+import Layout from '../../components/Layout'
 import ChantListContainer from '../../components/ChantListContainer'
 
 export default () => (
-  <ChantListContainer />
+  <Layout>
+    <ChantListContainer />
+  </Layout>
 )

@@ -1,9 +1,10 @@
+import Layout from '../components/Layout'
 import Link from 'next/link'
 
 export default () => (
-  <div>
+  <Layout>
     <Link href='/chants'>
       View Chants!
     </Link>
-  </div>
+  </Layout>
 )
