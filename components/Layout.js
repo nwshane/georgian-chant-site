@@ -12,6 +12,7 @@ export default (props) => (
           max-width: 900px;
           margin: 0 auto;
           font-size: 1.6rem;
+          font-family: 'Open Sans', sans-serif;
         }
       `}
     </style>

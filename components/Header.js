@@ -18,7 +18,12 @@ export default () => (
     </Link>
     <style jsx>{`
       a {
+        text-decoration: none;
         margin: 0 10px;
+      }
+      
+      a:hover {
+        color: black;
       }
     `}</style>
   </nav>
