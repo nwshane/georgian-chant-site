@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "node server.js",
-    "build": "next build && yarn translate",
+    "build": "next build && npm run translate",
     "start": "NODE_ENV=production node server.js",
     "translate": "node scripts/manageTranslations.js"
   },
