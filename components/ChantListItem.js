@@ -1,11 +1,13 @@
 import Link from 'next/link'
+import { injectIntl } from 'react-intl'
 
 const ChantListItem = props => {
+  const { locale } = props.intl
   const slug = props.data.get('slug')
 
   return (
     <li>
-      <Link as={`/chants/${slug}`} href={`/chants/show?slug=${slug}`}>
+      <Link as={`/${locale}/chants/${slug}`} href={`/chants/show?slug=${slug}&locale=${locale}`}>
         <a>
           {props.data.get('name').get('ka')}
         </a>
@@ -19,4 +21,4 @@ const ChantListItem = props => {
   )
 }
 
-export default ChantListItem
+export default injectIntl(ChantListItem)

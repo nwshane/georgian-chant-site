@@ -1,16 +1,27 @@
 import Link from 'next/link'
-export default () => (
+import { FormattedMessage, injectIntl } from 'react-intl'
+
+const Header = ({intl: { locale }}) => (
   <nav>
-    <Link href='/'>
+    <Link href={`/?locale=${locale}`} as={`/${locale}`}>
       <a>
-        Home
+        GeorgianChant.org
       </a>
     </Link>
-    <Link href='/chants'>
+    <Link href={`/chants?locale=${locale}`} as={`/${locale}/chants`}>
       <a>
-        Chants
+        <FormattedMessage
+          id='Header.chants'
+          defaultMessage='Chants'
+        />
       </a>
     </Link>
+    <a href='/en'>
+      English
+    </a>
+    <a href='/ka'>
+      ქართული
+    </a>
     <style jsx>{`
       nav {
         display: flex;
@@ -37,3 +48,5 @@ export default () => (
     `}</style>
   </nav>
 )
+
+export default injectIntl(Header)

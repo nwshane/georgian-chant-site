@@ -4,15 +4,21 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "babel-plugin-react-intl": "^2.3.1",
     "express": "^4.15.2",
     "immutable": "^3.8.1",
     "next": "^2.3.1",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-intl": "^2.3.0"
   },
   "scripts": {
     "dev": "node server.js",
-    "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "build": "next build && yarn translate",
+    "start": "NODE_ENV=production node server.js",
+    "translate": "node scripts/manageTranslations.js"
+  },
+  "devDependencies": {
+    "react-intl-translations-manager": "^5.0.0"
   }
 }

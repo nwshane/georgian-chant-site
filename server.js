@@ -1,25 +1,69 @@
 const express = require('express')
+const { Router } = express
 const next = require('next')
+const { readFileSync } = require('fs')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+// We need to expose React Intl's locale data on the request for the user's
+// locale. This function will also cache the scripts by lang in memory.
+const localeDataCache = new Map()
+const getLocaleDataScript = (locale) => {
+  const lang = locale.split('-')[0]
+  if (!localeDataCache.has(lang)) {
+    const localeDataFile = require.resolve(`react-intl/locale-data/${lang}`)
+    const localeDataScript = readFileSync(localeDataFile, 'utf8')
+    localeDataCache.set(lang, localeDataScript)
+  }
+  return localeDataCache.get(lang)
+}
+
+const getMessages = (locale) => {
+  if (locale === 'en') return {}
+  return require(`./lang/${locale}.json`)
+}
+
 app.prepare()
 .then(() => {
   const server = express()
+  const localeRouter = Router({mergeParams: true})
 
-  server.get('/chants/:slug', (req, res) => {
+  localeRouter.get('/chants/:slug', (req, res) => {
+    req.localeDataScript = getLocaleDataScript(req.params.locale)
     app.render(
       req,
       res,
       '/chants/show',
-      { slug: req.params.slug }
+      { locale: req.params.locale, messages: getMessages(req.params.locale), slug: req.params.slug }
     )
   })
 
+  localeRouter.get('/chants', (req, res) => {
+    req.localeDataScript = getLocaleDataScript(req.params.locale)
+    app.render(
+      req,
+      res,
+      '/chants',
+      { locale: req.params.locale, messages: getMessages(req.params.locale) }
+    )
+  })
+
+  localeRouter.get('/', (req, res) => {
+    req.localeDataScript = getLocaleDataScript(req.params.locale)
+    app.render(
+      req,
+      res,
+      '/',
+      { locale: req.params.locale, messages: getMessages(req.params.locale) }
+    )
+  })
+
+  server.use('/:locale(en|ka)', localeRouter)
+
   server.get('*', (req, res) => {
-    return handle(req, res)
+    handle(req, res)
   })
 
   server.listen(3001, (err) => {
