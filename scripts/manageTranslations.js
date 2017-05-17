@@ -4,4 +4,7 @@ manageTranslations({
   messagesDirectory: 'lang/.messages',
   translationsDirectory: 'lang/',
   languages: ['ka'],
+  jsonOptions: {
+    trailingNewline: true
+  }
 });
