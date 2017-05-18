@@ -55,6 +55,10 @@ app.prepare()
 
   server.use('/:locale(en|ka)', localeRouter)
 
+  server.get('/', (req, res) => {
+    res.redirect('/ka')
+  })
+
   server.get('*', (req, res) => {
     handle(req, res)
   })
