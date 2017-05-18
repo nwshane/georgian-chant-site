@@ -1,4 +1,4 @@
-export default () => (
+const GlobalStyle = () => (
   <style jsx global>
     {`
       @import url('https://fonts.googleapis.com/css?family=Open+Sans');
@@ -13,3 +13,5 @@ export default () => (
     `}
   </style>
 )
+
+export default GlobalStyle

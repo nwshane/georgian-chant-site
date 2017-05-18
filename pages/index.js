@@ -1,6 +1,6 @@
 import { defineMessages, FormattedMessage } from 'react-intl'
 
-import pageWithIntl from '../components/PageWithIntl'
+import PageWithIntl from '../components/PageWithIntl'
 import Layout from '../components/Layout'
 import Head from 'next/head'
 
@@ -11,7 +11,7 @@ const { description } = defineMessages({
   }
 })
 
-export default pageWithIntl(({intl}) => (
+const HomePage = ({intl}) => (
   <Layout>
     <Head>
       <meta name='description' content={intl.formatMessage(description)} />
@@ -19,4 +19,6 @@ export default pageWithIntl(({intl}) => (
 
     <FormattedMessage id='hello' defaultMessage='Hello Georgian Chanters!' />
   </Layout>
-))
+)
+
+export default PageWithIntl(HomePage)

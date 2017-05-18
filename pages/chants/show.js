@@ -2,7 +2,7 @@ import chantJson from '../../data/chants'
 import Layout from '../../components/Layout'
 import PageWithIntl from '../../components/PageWithIntl'
 
-export default PageWithIntl(props => {
+const ChantShowPage = props => {
   const chantData = chantJson.find(
     chant => chant.get('slug') === props.url.query.slug
   )
@@ -12,4 +12,6 @@ export default PageWithIntl(props => {
       <p>{chantData.getIn(['text', 'ka'])}</p>
     </Layout>
   )
-})
+}
+
+export default PageWithIntl(ChantShowPage)

@@ -1,7 +1,7 @@
 import Header from './Header'
 import GlobalStyle from './GlobalStyle'
 
-export default (props) => (
+const Layout = (props) => (
   <div>
     <GlobalStyle />
     <Header />
@@ -19,3 +19,5 @@ export default (props) => (
     </style>
   </div>
 )
+
+export default Layout
