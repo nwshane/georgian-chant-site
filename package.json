@@ -13,13 +13,14 @@
     "react-intl": "^2.3.0"
   },
   "scripts": {
-    "dev": "node server.js",
+    "dev": "nodemon --watch server.js server.js",
     "build": "next build && npm run translate",
     "start": "NODE_ENV=production node server.js",
     "translate": "node scripts/manageTranslations.js",
     "test": "standard --fix | snazzy"
   },
   "devDependencies": {
+    "nodemon": "^1.11.0",
     "react-intl-translations-manager": "^5.0.0",
     "snazzy": "^7.0.0",
     "standard": "^10.0.2"
