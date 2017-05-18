@@ -2,7 +2,6 @@ import { defineMessages, FormattedMessage } from 'react-intl'
 
 import pageWithIntl from '../components/PageWithIntl'
 import Layout from '../components/Layout'
-import Link from 'next/link'
 import Head from 'next/head'
 
 const { description } = defineMessages({

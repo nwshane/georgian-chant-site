@@ -1,4 +1,4 @@
-const manageTranslations = require('react-intl-translations-manager').default;
+const manageTranslations = require('react-intl-translations-manager').default
 
 manageTranslations({
   messagesDirectory: 'lang/.messages',
@@ -7,4 +7,4 @@ manageTranslations({
   jsonOptions: {
     trailingNewline: true
   }
-});
+})
