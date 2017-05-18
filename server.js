@@ -30,8 +30,12 @@ app.prepare()
   const server = express()
   const localeRouter = Router({mergeParams: true})
 
-  localeRouter.get('/chants/:slug', (req, res) => {
+  localeRouter.use((req, res, next) => {
     req.localeDataScript = getLocaleDataScript(req.params.locale)
+    next()
+  })
+
+  localeRouter.get('/chants/:slug', (req, res) => {
     app.render(
       req,
       res,
@@ -41,7 +45,6 @@ app.prepare()
   })
 
   localeRouter.get('/chants', (req, res) => {
-    req.localeDataScript = getLocaleDataScript(req.params.locale)
     app.render(
       req,
       res,
@@ -51,7 +54,6 @@ app.prepare()
   })
 
   localeRouter.get('/', (req, res) => {
-    req.localeDataScript = getLocaleDataScript(req.params.locale)
     app.render(
       req,
       res,
