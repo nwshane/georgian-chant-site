@@ -36,7 +36,7 @@ app.prepare()
     req.localeDataScript = getLocaleDataScript(locale)
     req.locale = locale
     req.messages = getMessages(locale)
-    
+
     next()
   })
 
@@ -49,22 +49,8 @@ app.prepare()
     )
   })
 
-  localeRouter.get('/chants', (req, res) => {
-    app.render(
-      req,
-      res,
-      '/chants',
-      {}
-    )
-  })
-
-  localeRouter.get('/', (req, res) => {
-    app.render(
-      req,
-      res,
-      '/',
-      {}
-    )
+  localeRouter.get('*', (req, res) => {
+    handle(req, res)
   })
 
   server.use('/:locale(en|ka)', localeRouter)
