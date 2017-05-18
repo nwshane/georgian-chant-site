@@ -4,9 +4,8 @@ const ChantList = props => {
   return (
     <ul>
       {props.chants.map(chantObject => (
-        <li>
+        <li key={chantObject.get('id')}>
           <ChantLink
-            key={chantObject.get('id')}
             data={chantObject}
           />
         </li>
