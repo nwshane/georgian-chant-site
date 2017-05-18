@@ -5,6 +5,7 @@
   "plugins": [
     ["react-intl", {
         "messagesDir": "./lang/.messages"
-    }]
+    }],
+    ["babel-plugin-root-import"]
   ]
 }

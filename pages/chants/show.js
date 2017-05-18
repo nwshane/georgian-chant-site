@@ -1,6 +1,6 @@
-import chantJson from '../../data/chants'
-import Layout from '../../components/Layout'
-import PageWithIntl from '../../components/PageWithIntl'
+import chantJson from '~/data/chants'
+import Layout from '~/components/Layout'
+import PageWithIntl from '~/components/PageWithIntl'
 
 const ChantShowPage = props => {
   const chantData = chantJson.find(

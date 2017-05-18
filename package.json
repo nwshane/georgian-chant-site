@@ -20,6 +20,7 @@
     "test": "standard --fix | snazzy"
   },
   "devDependencies": {
+    "babel-plugin-root-import": "^5.1.0",
     "nodemon": "^1.11.0",
     "react-intl-translations-manager": "^5.0.0",
     "snazzy": "^7.0.0",
