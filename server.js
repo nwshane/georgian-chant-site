@@ -31,7 +31,12 @@ app.prepare()
   const localeRouter = Router({mergeParams: true})
 
   localeRouter.use((req, res, next) => {
-    req.localeDataScript = getLocaleDataScript(req.params.locale)
+    const { locale } = req.params
+
+    req.localeDataScript = getLocaleDataScript(locale)
+    req.locale = locale
+    req.messages = getMessages(locale)
+    
     next()
   })
 
@@ -40,7 +45,7 @@ app.prepare()
       req,
       res,
       '/chants/show',
-      { locale: req.params.locale, messages: getMessages(req.params.locale), slug: req.params.slug }
+      { slug: req.params.slug }
     )
   })
 
@@ -49,7 +54,7 @@ app.prepare()
       req,
       res,
       '/chants',
-      { locale: req.params.locale, messages: getMessages(req.params.locale) }
+      {}
     )
   })
 
@@ -58,7 +63,7 @@ app.prepare()
       req,
       res,
       '/',
-      { locale: req.params.locale, messages: getMessages(req.params.locale) }
+      {}
     )
   })
 
