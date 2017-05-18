@@ -3,12 +3,12 @@ import { FormattedMessage, injectIntl } from 'react-intl'
 
 const Header = ({intl: { locale }}) => (
   <nav>
-    <Link href={`/?locale=${locale}`} as={`/${locale}`}>
+    <Link href={`/`} as={`/${locale}`}>
       <a>
         GeorgianChant.org
       </a>
     </Link>
-    <Link href={`/chants?locale=${locale}`} as={`/${locale}/chants`}>
+    <Link href={`/chants`} as={`/${locale}/chants`}>
       <a>
         <FormattedMessage
           id='Header.chants'
