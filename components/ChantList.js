@@ -1,14 +1,16 @@
-import ChantListItem from './ChantListItem'
+import ChantLink from './ChantLink'
 
 const ChantList = props => {
   return (
     <ul>
       {props.chants.map(chantObject => (
-        <ChantListItem
-          key={chantObject.get('id')}
-          data={chantObject}
-      />
-    ))}
+        <li>
+          <ChantLink
+            key={chantObject.get('id')}
+            data={chantObject}
+          />
+        </li>
+      ))}
     </ul>
   )
 }
