@@ -6,7 +6,7 @@ class ChantFetcher extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      chant: {}
+      chant: fromJS({})
     }
   }
 
