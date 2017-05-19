@@ -17,6 +17,14 @@ const Header = ({intl: { locale }}) => (
         />
       </a>
     </Link>
+    <Link href='/about' as={`/${locale}/about`}>
+      <a>
+        <FormattedMessage
+          id='Header.about'
+          defaultMessage='About'
+        />
+      </a>
+    </Link>
     {locale !== 'en' && <LocaleLink text='En' locale='en' />}
     {locale !== 'ka' && <LocaleLink text='ქა' locale='ka' />}
     <style jsx>{`

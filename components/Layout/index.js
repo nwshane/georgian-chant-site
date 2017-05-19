@@ -1,9 +1,11 @@
 import Header from './Header'
 import GlobalStyle from './GlobalStyle'
+import GlobalHead from './GlobalHead'
 
 const Layout = (props) => (
   <div>
     <GlobalStyle />
+    <GlobalHead />
     <Header />
     {props.children}
     <style jsx>
