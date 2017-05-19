@@ -36,6 +36,7 @@ app.prepare()
     req.localeDataScript = getLocaleDataScript(locale)
     req.locale = locale
     req.messages = getMessages(locale)
+    req.originalUrl = req.originalUrl
 
     next()
   })

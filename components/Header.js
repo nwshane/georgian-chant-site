@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FormattedMessage, injectIntl } from 'react-intl'
+import LocaleLink from './LocaleLink'
 
 const Header = ({intl: { locale }}) => (
   <nav>
@@ -16,12 +17,8 @@ const Header = ({intl: { locale }}) => (
         />
       </a>
     </Link>
-    <a href='/en'>
-      English
-    </a>
-    <a href='/ka'>
-      ქართული
-    </a>
+    <LocaleLink text='English' locale='en' />
+    <LocaleLink text='ქართული' locale='ka' />
     <style jsx>{`
       nav {
         display: flex;

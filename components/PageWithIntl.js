@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component, PropTypes } from 'react'
 import {IntlProvider, addLocaleData, injectIntl} from 'react-intl'
 
 // Register React Intl's locale data for the user's locale in the browser. This
@@ -13,7 +13,7 @@ if (typeof window !== 'undefined' && window.ReactIntlLocaleData) {
 export default (Page) => {
   const IntlPage = injectIntl(Page)
 
-  return class PageWithIntl extends Component {
+  class PageWithIntl extends Component {
     static async getInitialProps (context) {
       let props
       if (typeof Page.getInitialProps === 'function') {
@@ -25,12 +25,18 @@ export default (Page) => {
       const {req} = context
       const locale = req && req.locale ? req.locale : window.__NEXT_DATA__.props.locale
       const messages = req && req.messages ? req.messages : window.__NEXT_DATA__.props.messages
+      const { originalUrl } = req || {}
 
       // Always update the current time on page load/transition because the
       // <IntlProvider> will be a new instance even with pushState routing.
       const now = Date.now()
 
-      return {...props, locale, messages, now}
+      return {...props, originalUrl, locale, messages, now}
+    }
+
+    getChildContext () {
+      const { originalUrl } = this.props
+      return { originalUrl }
     }
 
     render () {
@@ -42,4 +48,10 @@ export default (Page) => {
       )
     }
   }
+
+  PageWithIntl.childContextTypes = {
+    originalUrl: PropTypes.string
+  }
+
+  return PageWithIntl
 }
