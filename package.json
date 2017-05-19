@@ -13,7 +13,7 @@
     "react-intl": "^2.3.0"
   },
   "scripts": {
-    "dev": "nodemon --watch server.js server.js",
+    "dev": "nodemon --watch server.js --watch lang/ server.js",
     "build": "next build && npm run translate",
     "start": "NODE_ENV=production node server.js",
     "translate": "node scripts/manageTranslations.js",
