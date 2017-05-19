@@ -12,12 +12,12 @@ const ChantList = props => {
       </h1>
       <ul>
         {props.chants.map(chantObject => (
-          <li key={chantObject.get('id')}>
+          <li key={chantObject.get('slug')}>
             <ChantLink
               data={chantObject}
             />
           </li>
-        ))}
+        )).toArray()}
       </ul>
     </div>
   )

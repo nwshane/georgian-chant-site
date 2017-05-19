@@ -1,17 +1,18 @@
-import chantJson from '~/data/chants'
 import Layout from '~/components/Layout/'
 import PageWithIntl from '~/components/PageWithIntl'
+import ChantFetcher from '~/components/ChantFetcher'
 
-const ChantShowPage = props => {
-  const chantData = chantJson.find(
-    chant => chant.get('slug') === props.url.query.slug
-  )
-  return (
-    <Layout>
-      <h1>{chantData.getIn(['name', 'ka'])}</h1>
-      <p>{chantData.getIn(['text', 'ka'])}</p>
-    </Layout>
-  )
-}
+const ChantShowPage = props => (
+  <Layout>
+    <ChantFetcher id={props.url.query.slug}>
+      {(chant) => (chant && (
+        <div>
+          <h1>{chant.getIn(['name', 'ka'])}</h1>
+          <p>{chant.getIn(['text', 'ka'])}</p>
+        </div>
+      ))}
+    </ChantFetcher>
+  </Layout>
+)
 
 export default PageWithIntl(ChantShowPage)
