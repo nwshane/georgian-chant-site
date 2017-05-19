@@ -1,5 +1,5 @@
 import chantJson from '~/data/chants'
-import Layout from '~/components/Layout'
+import Layout from '~/components/Layout/'
 import PageWithIntl from '~/components/PageWithIntl'
 
 const ChantShowPage = props => {
