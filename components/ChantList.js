@@ -1,16 +1,25 @@
+import { FormattedMessage } from 'react-intl'
 import ChantLink from './ChantLink'
 
 const ChantList = props => {
   return (
-    <ul>
-      {props.chants.map(chantObject => (
-        <li key={chantObject.get('id')}>
-          <ChantLink
-            data={chantObject}
-          />
-        </li>
-      ))}
-    </ul>
+    <div>
+      <h1>
+        <FormattedMessage
+          id='ChantList.title'
+          defaultMessage='All Chants'
+        />
+      </h1>
+      <ul>
+        {props.chants.map(chantObject => (
+          <li key={chantObject.get('id')}>
+            <ChantLink
+              data={chantObject}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
