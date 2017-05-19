@@ -17,8 +17,8 @@ const Header = ({intl: { locale }}) => (
         />
       </a>
     </Link>
-    <LocaleLink text='English' locale='en' />
-    <LocaleLink text='ქართული' locale='ka' />
+    {locale !== 'en' && <LocaleLink text='En' locale='en' />}
+    {locale !== 'ka' && <LocaleLink text='ქა' locale='ka' />}
     <style jsx>{`
       nav {
         display: flex;
