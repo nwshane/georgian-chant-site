@@ -1,6 +1,6 @@
 import firebase from 'firebase'
 
-const getFirebaseApp = () => (
+const getOrInitializeFirebaseApp = () => (
   firebase.apps.length === 0 ? firebase.initializeApp({
     apiKey: 'AIzaSyANmrGU6f8MiUGC_gxs4BeB8kRZQuMWuNc',
     authDomain: 'georgian-chant-site.firebaseapp.com',
@@ -11,7 +11,7 @@ const getFirebaseApp = () => (
   }) : firebase.apps[0]
 )
 
-let app = getFirebaseApp()
+let app = getOrInitializeFirebaseApp()
 
 export default app
 export const database = app.database()
