@@ -1,16 +1,17 @@
 // @flow
 import Link from 'next/link'
+import type { Chant } from '~/data/types'
 import { injectIntl } from 'react-intl'
 
-const ChantLink = props => {
-  const { locale } = props.intl
-  const slug = props.data.get('slug')
+const ChantLink = ({intl, chant}: {intl: *, chant: Chant})=> {
+  const { locale } = intl
+  const slug = chant.get('slug')
 
   return (
     <div>
       <Link as={`/${locale}/chants/${slug}`} href={`/chants/show?slug=${slug}&locale=${locale}`}>
         <a>
-          {props.data.get('name').get('ka')}
+          {chant.get('name').get('ka')}
         </a>
       </Link>
       <style jsx>{`
