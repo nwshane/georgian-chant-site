@@ -1,14 +1,19 @@
+// @flow
 import { Component } from 'react'
 import ChantList from './ChantList'
-// import chantsJson from '~/data/chants'
+import type { Chants } from '~/data/types'
 import { fromJS } from 'immutable'
 import { database } from '~/data/firebase'
 
 class ChantListContainer extends Component {
-  constructor (props) {
-    super(props)
+  state: {
+    chants: Chants
+  }
+
+  constructor () {
+    super()
     this.state = {
-      chants: fromJS([])
+      chants: fromJS({})
     }
   }
 

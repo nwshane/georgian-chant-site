@@ -1,3 +1,4 @@
+// @flow
 import Link from 'next/link'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import LocaleLink from './LocaleLink'

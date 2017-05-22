@@ -1,3 +1,4 @@
+// @flow
 const GlobalStyle = () => (
   <style jsx global>
     {`

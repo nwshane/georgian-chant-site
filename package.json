@@ -14,17 +14,25 @@
     "react-intl": "^2.3.0"
   },
   "scripts": {
-    "dev": "nodemon --watch server.js --watch lang/ server.js",
+    "dev": "nodemon --watch server.js --watch .babelrc --watch lang/ server.js",
     "build": "next build && npm run translate",
     "start": "NODE_ENV=production node server.js",
     "translate": "node scripts/manageTranslations.js",
     "test": "standard --fix | snazzy"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "babel-plugin-root-import": "^5.1.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "eslint-plugin-flowtype": "^2.33.0",
+    "flow-bin": "^0.46.0",
     "nodemon": "^1.11.0",
     "react-intl-translations-manager": "^5.0.0",
     "snazzy": "^7.0.0",
     "standard": "^10.0.2"
+  },
+  "standard": {
+    "plugins": [ "flowtype" ],
+    "parser": "babel-eslint"
   }
 }

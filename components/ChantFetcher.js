@@ -1,12 +1,26 @@
+// @flow
 import { Component } from 'react'
+import type { Children } from 'react'
+import type { Chant } from '~/data/types'
 import { fromJS } from 'immutable'
 import { database } from '~/data/firebase'
 
+type Props = {
+  id: string,
+  children?: Function
+}
+
 class ChantFetcher extends Component {
-  constructor (props) {
+  props: Props
+
+  state: {
+    chant: ?Chant
+  }
+
+  constructor (props : Props) {
     super(props)
     this.state = {
-      chant: fromJS({})
+      chant: null
     }
   }
 
@@ -17,15 +31,14 @@ class ChantFetcher extends Component {
     .child(this.props.id)
     .once('value', (snapshot) => {
       this.setState({
-        chant: snapshot.val()
+        chant: fromJS(snapshot.val())
       })
     })
   }
 
   render () {
-    return this.props.children(fromJS(
-      this.state.chant
-    ))
+    const { children } = this.props
+    return children && children(this.state.chant)
   }
 }
 export default ChantFetcher

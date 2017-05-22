@@ -1,3 +1,4 @@
+// @flow
 const manageTranslations = require('react-intl-translations-manager').default
 
 manageTranslations({

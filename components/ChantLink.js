@@ -1,3 +1,4 @@
+// @flow
 import Link from 'next/link'
 import { injectIntl } from 'react-intl'
 

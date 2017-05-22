@@ -1,3 +1,4 @@
+// @flow
 import Document, {Head, Main, NextScript} from 'next/document'
 
 // The document (which is SSR-only) needs to be customized to expose the locale

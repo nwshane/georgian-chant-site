@@ -1,3 +1,4 @@
+// @flow
 import Layout from '~/components/Layout/'
 import ChantListContainer from '~/components/ChantListContainer'
 import PageWithIntl from '~/components/PageWithIntl'

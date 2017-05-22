@@ -1,7 +1,9 @@
+// @flow
+import type { Map } from 'immutable'
 import { FormattedMessage } from 'react-intl'
 import ChantLink from './ChantLink'
 
-const ChantList = props => {
+const ChantList = (props : { chants: Map<string, *> }) => {
   return (
     <div>
       <h1>

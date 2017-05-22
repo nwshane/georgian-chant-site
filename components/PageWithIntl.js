@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from 'react'
 import {IntlProvider, addLocaleData, injectIntl} from 'react-intl'
 
@@ -10,7 +11,7 @@ if (typeof window !== 'undefined' && window.ReactIntlLocaleData) {
   })
 }
 
-export default (Page) => {
+export default (Page: React$Element<*> | Function) => {
   const IntlPage = injectIntl(Page)
 
   class PageWithIntl extends Component {

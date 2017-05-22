@@ -1,8 +1,10 @@
+// @flow
+import type { Children } from 'react'
 import Header from './Header'
 import GlobalStyle from './GlobalStyle'
 import GlobalHead from './GlobalHead'
 
-const Layout = (props) => (
+const Layout = (props : { children?: Children }) => (
   <div>
     <GlobalStyle />
     <GlobalHead />

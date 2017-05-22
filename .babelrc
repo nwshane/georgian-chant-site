@@ -6,6 +6,7 @@
     ["react-intl", {
         "messagesDir": "./lang/.messages"
     }],
-    ["babel-plugin-root-import"]
+    "transform-flow-strip-types",
+    "babel-plugin-root-import"
   ]
 }
