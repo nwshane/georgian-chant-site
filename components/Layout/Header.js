@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import LocaleLink from './LocaleLink'
+import LogoutButton from './LogoutButton'
 
 const Header = ({intl: { locale }}) => (
   <nav>
@@ -28,6 +29,7 @@ const Header = ({intl: { locale }}) => (
     </Link>
     {locale !== 'en' && <LocaleLink text='En' locale='en' />}
     {locale !== 'ka' && <LocaleLink text='ქა' locale='ka' />}
+    <LogoutButton />
     <style jsx>{`
       nav {
         display: flex;
