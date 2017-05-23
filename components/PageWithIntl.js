@@ -33,6 +33,10 @@ export default (Page: React$Element<*> | Function) => {
   class PageWithIntl extends Component {
     props: Props
 
+    static childContextTypes = {
+      originalUrl: PropTypes.string
+    }
+
     static async getInitialProps (context: ServerContext) {
       let props
       if (typeof Page.getInitialProps === 'function') {
@@ -66,10 +70,6 @@ export default (Page: React$Element<*> | Function) => {
         </IntlProvider>
       )
     }
-  }
-
-  PageWithIntl.childContextTypes = {
-    originalUrl: PropTypes.string
   }
 
   return PageWithIntl
