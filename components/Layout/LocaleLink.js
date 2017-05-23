@@ -1,6 +1,6 @@
 // @flow
 import Router from 'next/router'
-import { PropTypes } from 'react'
+import PropTypes from 'prop-types'
 
 const currentPath = (originalUrl?: string): string => {
   if (typeof window === 'object') {
