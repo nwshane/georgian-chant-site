@@ -7,12 +7,16 @@
     "babel-plugin-react-intl": "^2.3.1",
     "express": "^4.15.2",
     "firebase": "^4.0.0",
+    "formsy-material-ui": "^0.6.0",
+    "formsy-react": "^0.19.2",
     "immutable": "^3.8.1",
+    "material-ui": "^0.18.1",
     "next": "^2.3.1",
     "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-intl": "^2.3.0"
+    "react-intl": "^2.3.0",
+    "react-tap-event-plugin": "^2.0.1"
   },
   "scripts": {
     "dev": "nodemon --watch server.js --watch .babelrc --watch lang/ server.js",

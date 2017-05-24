@@ -25,6 +25,13 @@ const getMessages = (locale) => {
   return require(`./lang/${locale}.json`)
 }
 
+// Required by material ui library
+// See http://www.material-ui.com/#/get-started/server-rendering
+const setGlobalNavigatorUserAgent = (req) => {
+  global.navigator = global.navigator || {}
+  global.navigator = { userAgent: req.headers['user-agent'] || 'all' }
+}
+
 app.prepare()
 .then(() => {
   const server = express()
@@ -33,6 +40,7 @@ app.prepare()
   localeRouter.use((req, res, next) => {
     const { locale } = req.params
 
+    setGlobalNavigatorUserAgent(req)
     req.localeDataScript = getLocaleDataScript(locale)
     req.locale = locale
     req.messages = getMessages(locale)

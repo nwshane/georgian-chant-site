@@ -1,5 +1,11 @@
 import { Component } from 'react'
 import { auth } from '~/data/firebase'
+import { Form } from 'formsy-react'
+import { FormsyText } from 'formsy-material-ui/lib/'
+import RaisedButton from 'material-ui/RaisedButton'
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import '~/components/tapEvents'
 
 type Event = {
   target: {
@@ -9,49 +15,77 @@ type Event = {
 
 class LoginForm extends Component {
   state = {
-    email: '',
-    password: '',
-    error: ''
+    error: '',
+    canSubmit: false
   }
 
   constructor () {
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.enableButton = this.enableButton.bind(this)
+    this.disableButton = this.disableButton.bind(this)
+  }
+
+  enableButton () {
+    this.setState({ canSubmit: true })
+  }
+
+  disableButton () {
+    this.setState({ canSubmit: false })
   }
 
   handleSubmit (e) {
-    e.preventDefault()
+    console.log(e)
 
-    const { email, password } = this.state
-    auth.signInWithEmailAndPassword(email, password).catch((error) => {
-      this.setState({ error: error.message })
-    })
+    // const { email, password } = this.state
+    // auth.signInWithEmailAndPassword(email, password).catch((error) => {
+    //   this.setState({ error: error.message })
+    // })
   }
 
   render () {
     return (
-      <div>
-        <form>
-          <input
-            type='email'
-            id='email-input'
-            value={this.state.email}
-            onChange={(e: Event) => this.setState({email: e.target.value})}
-          />
-          <input
-            type='password'
-            id='password-input'
-            value={this.state.password}
-            onChange={(e: Event) => this.setState({password: e.target.value})}
-          />
-          <button type='submit' onClick={this.handleSubmit}>
-            Sign In
-          </button>
-        </form>
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
         <div>
-          {this.state.error}
+          <Form
+            onSubmit={this.handleSubmit}
+            onValid={this.enableButton}
+            onInvalid={this.disableButton}
+          >
+            <FormsyText
+              id='input-email'
+              value=''
+              name='email'
+              title='Email'
+              validations='isEmail'
+              validationError='This is not a valid email'
+              floatingLabelText='Email'
+              required
+            />
+            <FormsyText
+              id='input-password'
+              value=''
+              name='password'
+              title='Password'
+              type='password'
+              floatingLabelText='Password'
+              required
+            />
+            <RaisedButton type='submit' disabled={!this.state.canSubmit}>
+              Sign In
+            </RaisedButton>
+          </Form>
+          <div>
+            {this.state.error}
+          </div>
+          <style jsx>{`
+            div :global(form) {
+              display: flex;
+              flex-direction: column;
+            }
+          `}</style>
         </div>
-      </div>
+      </MuiThemeProvider>
     )
   }
 }
