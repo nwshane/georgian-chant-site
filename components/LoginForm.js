@@ -79,6 +79,7 @@ class LoginForm extends Component {
           div :global(form) {
             display: flex;
             flex-direction: column;
+            max-width: 256px;
           }
           `}
         </style>
