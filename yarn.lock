@@ -3325,6 +3325,10 @@ next:
     webpack-hot-middleware "2.18.0"
     write-file-webpack-plugin "4.0.2"
 
+next-connect-redux:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/next-connect-redux/-/next-connect-redux-0.1.5.tgz#7f02fef19863879f9c7c50c3ff9fa1a63c498b5a"
+
 node-fetch@^1.0.1:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.6.3.tgz#dc234edd6489982d58e8f0db4f695029abcd8c04"

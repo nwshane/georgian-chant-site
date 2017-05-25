@@ -2,8 +2,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {IntlProvider, addLocaleData, injectIntl} from 'react-intl'
-import { Provider } from 'react-redux'
-import store from '~/data/store'
 
 // Register React Intl's locale data for the user's locale in the browser. This
 // locale data was added to the page by `pages/_document.js`. This only happens
@@ -67,11 +65,9 @@ export default (Page: React$Element<*> | Function) => {
     render () {
       const {locale, messages, now, ...props} = this.props
       return (
-        <Provider store={store}>
-          <IntlProvider locale={locale} messages={messages} initialNow={now}>
-            <IntlPage {...props} />
-          </IntlProvider>
-        </Provider>
+        <IntlProvider locale={locale} messages={messages} initialNow={now}>
+          <IntlPage {...props} />
+        </IntlProvider>
       )
     }
   }

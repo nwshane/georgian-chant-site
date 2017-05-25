@@ -1,6 +1,6 @@
 // @flow
 import { FormattedMessage } from 'react-intl'
-import PageWithIntl from '~/components/PageWithIntl'
+import wrapPage from '~/components/wrappers/wrapPage'
 import Layout from '~/components/Layout/'
 
 const AboutPage = () => (
@@ -12,4 +12,4 @@ const AboutPage = () => (
   </Layout>
 )
 
-export default PageWithIntl(AboutPage)
+export default wrapPage(AboutPage)

@@ -1,7 +1,7 @@
 // @flow
 import type { Chant } from '~/data/types'
 import Layout from '~/components/Layout/'
-import PageWithIntl from '~/components/PageWithIntl'
+import wrapPage from '~/components/wrappers/wrapPage'
 import ChantFetcher from '~/components/ChantFetcher'
 
 type Props = {
@@ -27,4 +27,4 @@ const ChantShowPage = (props : Props) => (
   </Layout>
 )
 
-export default PageWithIntl(ChantShowPage)
+export default wrapPage(ChantShowPage)

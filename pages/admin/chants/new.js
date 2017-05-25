@@ -2,7 +2,7 @@
 import { Component } from 'react'
 import { database } from '~/data/firebase'
 import Layout from '~/components/Layout/'
-import PageWithIntl from '~/components/PageWithIntl'
+import wrapPage from '~/components/wrappers/wrapPage'
 
 class NewChantPage extends Component {
   state = {
@@ -52,4 +52,4 @@ class NewChantPage extends Component {
   }
 }
 
-export default PageWithIntl(NewChantPage)
+export default wrapPage(NewChantPage)

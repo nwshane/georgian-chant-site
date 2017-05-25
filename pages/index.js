@@ -1,7 +1,7 @@
 // @flow
 import { FormattedMessage } from 'react-intl'
 
-import PageWithIntl from '~/components/PageWithIntl'
+import wrapPage from '~/components/wrappers/wrapPage'
 import Layout from '~/components/Layout/'
 
 const HomePage = ({intl}) => (
@@ -10,4 +10,4 @@ const HomePage = ({intl}) => (
   </Layout>
 )
 
-export default PageWithIntl(HomePage)
+export default wrapPage(HomePage)

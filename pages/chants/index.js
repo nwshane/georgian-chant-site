@@ -1,7 +1,7 @@
 // @flow
 import Layout from '~/components/Layout/'
 import ChantListContainer from '~/components/ChantListContainer'
-import PageWithIntl from '~/components/PageWithIntl'
+import wrapPage from '~/components/wrappers/wrapPage'
 
 const ChantIndexPage = () => (
   <Layout>
@@ -9,4 +9,4 @@ const ChantIndexPage = () => (
   </Layout>
 )
 
-export default PageWithIntl(ChantIndexPage)
+export default wrapPage(ChantIndexPage)
