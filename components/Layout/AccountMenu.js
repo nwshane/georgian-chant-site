@@ -2,6 +2,7 @@
 import { Component } from 'react'
 import AccountMenuPresentation from './AccountMenuPresentation'
 import { auth } from '~/data/firebase'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { setCurrentUser } from '~/data/ducks/currentUser'
 import type { Dispatch, State, User } from '~/data/types'
@@ -30,8 +31,9 @@ const mapStateToProps = (state: State) => ({
   currentUser: state.currentUser
 })
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setCurrentUser: (currentUser: User) => dispatch(setCurrentUser(currentUser))
-})
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
+  {setCurrentUser},
+  dispatch
+)
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountMenu)
