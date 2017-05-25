@@ -1,3 +1,4 @@
+// @flow
 import { Component } from 'react'
 import { database } from '~/data/firebase'
 import Layout from '~/components/Layout/'
@@ -13,7 +14,8 @@ class NewChantPage extends Component {
 
   constructor () {
     super()
-    this.handleCreate = this.handleCreate.bind(this)
+    const self: any = this
+    self.handleCreate = this.handleCreate.bind(this)
   }
 
   handleCreate (e) {

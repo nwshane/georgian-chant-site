@@ -1,3 +1,4 @@
+// @flow
 import { Component } from 'react'
 import { auth } from '~/data/firebase'
 import { Form } from 'formsy-react'
@@ -18,9 +19,10 @@ class LoginForm extends Component {
 
   constructor () {
     super()
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.enableButton = this.enableButton.bind(this)
-    this.disableButton = this.disableButton.bind(this)
+    const self: any = this
+    self.handleSubmit = this.handleSubmit.bind(this)
+    self.enableButton = this.enableButton.bind(this)
+    self.disableButton = this.disableButton.bind(this)
   }
 
   enableButton () {
@@ -31,8 +33,10 @@ class LoginForm extends Component {
     this.setState({ canSubmit: false })
   }
 
-  handleSubmit ({email, password}) {
-    auth.signInWithEmailAndPassword(email, password).catch((error) => {
+  handleSubmit ({email, password}: {email: string, password: string}) {
+    auth
+    .signInWithEmailAndPassword(email, password)
+    .catch((error: {message: string}) => {
       this.setState({ error: error.message })
     })
   }
