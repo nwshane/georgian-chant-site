@@ -1,26 +1,30 @@
 import { Component } from 'react'
 import AccountMenuPresentation from './AccountMenuPresentation'
 import { auth } from '~/data/firebase'
+import { connect } from 'react-redux'
+import { setCurrentUser } from '~/data/ducks/currentUser'
 
 class AccountMenu extends Component {
-  state = {
-    userSignedIn: false
-  }
-
   componentDidMount () {
     auth.onAuthStateChanged((currentUser) => {
-      this.setState({
-        userSignedIn: currentUser != null
-      })
+      this.props.setCurrentUser(currentUser)
     })
   }
 
   render () {
-    if (!this.state.userSignedIn) return null
+    if (!this.props.currentUser) return null
     return (
       <AccountMenuPresentation />
     )
   }
 }
 
-export default AccountMenu
+const mapStateToProps = (state) => ({
+  currentUser: state.currentUser
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: currentUser => dispatch(setCurrentUser(currentUser))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccountMenu)
