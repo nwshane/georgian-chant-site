@@ -1,3 +1,4 @@
+// @flow
 import { combineReducers } from 'redux'
 import currentUser from './ducks/currentUser'
 
