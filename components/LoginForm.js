@@ -31,13 +31,10 @@ class LoginForm extends Component {
     this.setState({ canSubmit: false })
   }
 
-  handleSubmit (e) {
-    console.log(e)
-
-    // const { email, password } = this.state
-    // auth.signInWithEmailAndPassword(email, password).catch((error) => {
-    //   this.setState({ error: error.message })
-    // })
+  handleSubmit ({email, password}) {
+    auth.signInWithEmailAndPassword(email, password).catch((error) => {
+      this.setState({ error: error.message })
+    })
   }
 
   render () {

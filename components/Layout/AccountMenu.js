@@ -1,7 +1,8 @@
 import { Component } from 'react'
+import AccountMenuPresentation from './AccountMenuPresentation'
 import { auth } from '~/data/firebase'
 
-class LogoutButton extends Component {
+class AccountMenu extends Component {
   state = {
     userSignedIn: false
   }
@@ -17,11 +18,9 @@ class LogoutButton extends Component {
   render () {
     if (!this.state.userSignedIn) return null
     return (
-      <button type='button' onClick={() => auth.signOut()}>
-        Sign Out
-      </button>
+      <AccountMenuPresentation />
     )
   }
 }
 
-export default LogoutButton
+export default AccountMenu
