@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const { readFileSync } = require('fs')
+const app = require('./app')
 const handle = require('./handle')
 
 // We need to expose React Intl's locale data on the request for the user's
