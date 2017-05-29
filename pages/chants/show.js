@@ -14,8 +14,8 @@ type Props = {
 
 const maybeRenderChant = (chant : ?Chant) : ?React$Element<*> => (chant && (
   <div>
-    <h1>{chant.getIn(['name', 'ka'])}</h1>
-    <p>{chant.getIn(['text', 'ka'])}</p>
+    <h1>{chant.name.ka}</h1>
+    <p>{chant.text.ka}</p>
   </div>
 ))
 

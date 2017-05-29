@@ -1,13 +1,22 @@
 // @flow
-import type { Map } from 'immutable'
 
-export type Chant = Map<string, *>
-export type Chants = Map<string, Chant>
+export type Chant = {
+  +slug: string,
+  +name: {
+    +ka: string
+  },
+  +text: {
+    +ka: string
+  }
+}
+
+export type Chants = {}
 
 export type User = ?{}
 
 export type Dispatch = Function
 
 export type State = {
-  +currentUser: User
+  +currentUser: User,
+  +chants: Chants
 }

@@ -2,6 +2,7 @@
 import type { Chant, Chants } from '~/data/types'
 import { FormattedMessage } from 'react-intl'
 import ChantLink from './ChantLink'
+import map from 'lodash.map'
 
 const ChantList = ({chants} : { chants: Chants }) => (
   <div>
@@ -12,13 +13,13 @@ const ChantList = ({chants} : { chants: Chants }) => (
       />
     </h1>
     <ul>
-      {chants.map((chantObject: Chant): React$Element<*> => (
-        <li key={chantObject.get('slug')}>
+      {map(chants, (chant: Chant): React$Element<*> => (
+        <li key={chant.slug}>
           <ChantLink
-            chant={chantObject}
+            chant={chant}
           />
         </li>
-      )).toArray()}
+      ))}
     </ul>
   </div>
 )

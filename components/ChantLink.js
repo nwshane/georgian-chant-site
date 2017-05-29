@@ -5,13 +5,13 @@ import { injectIntl } from 'react-intl'
 
 const ChantLink = ({intl, chant}: {intl: *, chant: Chant})=> {
   const { locale } = intl
-  const slug = chant.get('slug')
+  const slug = chant.slug
 
   return (
     <div>
       <Link as={`/${locale}/chants/${slug}`} href={`/chants/show?slug=${slug}&locale=${locale}`}>
         <a>
-          {chant.get('name').get('ka')}
+          {chant.name.ka}
         </a>
       </Link>
       <style jsx>{`

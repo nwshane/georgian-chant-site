@@ -2,7 +2,6 @@
 import { Component } from 'react'
 import type { Children } from 'react'
 import type { Chant } from '~/data/types'
-import { fromJS } from 'immutable'
 import { database } from '~/data/firebase'
 
 type Props = {
@@ -31,7 +30,7 @@ class ChantFetcher extends Component {
     .child(this.props.id)
     .once('value', (snapshot) => {
       this.setState({
-        chant: fromJS(snapshot.val())
+        chant: snapshot.val()
       })
     })
   }
