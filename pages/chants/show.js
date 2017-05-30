@@ -1,30 +1,59 @@
 // @flow
-import type { Chant } from '~/data/types'
+import { Component } from 'react'
+import type { Chant, State } from '~/data/types'
 import Layout from '~/components/Layout/'
-import wrapPage from '~/components/wrappers/wrapPage'
-import ChantFetcher from '~/components/ChantFetcher'
+import pageWithIntl from '~/components/wrappers/pageWithIntl'
+import connectPage from '~/components/wrappers/connectPage'
+import { addChant, getChantBySlug } from '~/data/ducks/chants'
+import { database } from '~/data/firebase'
 
-type Props = {
-  url: {
-    query: {
-      slug: string
-    }
+type InitialPropsContext = {
+  query: {
+    slug: string
+  },
+  store: {
+    dispatch: Function,
+    getState: Function
   }
 }
 
-const maybeRenderChant = (chant : ?Chant) : ?React$Element<*> => (chant && (
-  <div>
-    <h1>{chant.name.ka}</h1>
-    <p>{chant.text.ka}</p>
-  </div>
-))
+type Props = {
+  slug: string,
+  chant: ?Chant
+}
 
-const ChantShowPage = (props : Props) => (
-  <Layout>
-    <ChantFetcher id={props.url.query.slug}>
-      {maybeRenderChant}
-    </ChantFetcher>
-  </Layout>
-)
+class ChantShowPage extends Component {
+  props: Props
 
-export default wrapPage(ChantShowPage)
+  static async getInitialProps ({query: {slug}, store}: InitialPropsContext) {
+    await database
+    .ref()
+    .child('chants')
+    .orderByChild('slug')
+    .equalTo(slug)
+    .once('value', (snapshot) => {
+      snapshot.forEach((chant) => {
+        store.dispatch(addChant({
+          chant: chant.val(),
+          key: chant.getKey()
+        }))
+      })
+    })
+
+    return { slug, chant: getChantBySlug(store.getState(), slug) }
+  }
+
+  render () {
+    const { chant } = this.props
+    return (
+      <Layout>
+        {chant && <div>
+          <h1>{chant.name && chant.name.ka}</h1>
+          <p>{chant.text && chant.text.ka}</p>
+        </div>}
+      </Layout>
+    )
+  }
+}
+
+export default connectPage()(pageWithIntl(ChantShowPage))

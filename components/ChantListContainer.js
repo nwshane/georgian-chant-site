@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import ChantList from './ChantList'
 import type { Chants, State } from '~/data/types'
-import { setChants } from '~/data/ducks/chants'
+import { getChants, setChants } from '~/data/ducks/chants'
 import { database } from '~/data/firebase'
 
 class ChantListContainer extends Component {
@@ -28,7 +28,7 @@ class ChantListContainer extends Component {
 }
 
 const mapStateToProps = (state: State) => ({
-  chants: state.chants
+  chants: getChants(state)
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(
