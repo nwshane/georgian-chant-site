@@ -2,8 +2,7 @@
 import { Component } from 'react'
 import type { Chant, State } from '~/data/types'
 import Layout from '~/components/Layout/'
-import pageWithIntl from '~/components/wrappers/pageWithIntl'
-import connectPage from '~/components/wrappers/connectPage'
+import wrapPage from '~/components/wrappers/wrapPage'
 import { addChant, getChantBySlug } from '~/data/ducks/chants'
 import { database } from '~/data/firebase'
 
@@ -56,4 +55,4 @@ class ChantShowPage extends Component {
   }
 }
 
-export default connectPage()(pageWithIntl(ChantShowPage))
+export default wrapPage(ChantShowPage)
