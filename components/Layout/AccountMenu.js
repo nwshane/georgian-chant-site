@@ -1,22 +1,13 @@
 // @flow
 import { Component } from 'react'
 import AccountMenuPresentation from './AccountMenuPresentation'
-import { auth } from '~/data/firebase'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { setCurrentUser } from '~/data/ducks/currentUser'
-import type { Dispatch, State, User } from '~/data/types'
+import type { State, User } from '~/data/types'
+import { getCurrentUser } from '~/data/ducks/currentUser'
 
 class AccountMenu extends Component {
   props: {
-    setCurrentUser: Function,
     currentUser: User
-  }
-
-  componentDidMount () {
-    auth.onAuthStateChanged((currentUser: User) => {
-      this.props.setCurrentUser(currentUser)
-    })
   }
 
   render () {
@@ -28,12 +19,7 @@ class AccountMenu extends Component {
 }
 
 const mapStateToProps = (state: State) => ({
-  currentUser: state.currentUser
+  currentUser: getCurrentUser(state)
 })
 
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
-  {setCurrentUser},
-  dispatch
-)
-
-export default connect(mapStateToProps, mapDispatchToProps)(AccountMenu)
+export default connect(mapStateToProps)(AccountMenu)

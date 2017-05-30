@@ -4,6 +4,7 @@ import Header from './Header'
 import GlobalStyle from './GlobalStyle'
 import GlobalHead from './GlobalHead'
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import AuthChangeSubscriber from './AuthChangeSubscriber'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import '~/components/tapEvents'
 
@@ -12,6 +13,7 @@ const Layout = (props : { children?: Children }) => (
     <div>
       <GlobalStyle />
       <GlobalHead />
+      <AuthChangeSubscriber />
       <Header />
       {props.children}
       <style jsx>{`

@@ -1,5 +1,5 @@
 // @flow
-import type { User } from '~/data/types'
+import type { State, User } from '~/data/types'
 const SET_CURRENT_USER = 'SET_CURRENT_USER'
 
 type CurrentUserAction = {
@@ -13,6 +13,8 @@ export const setCurrentUser = (currentUser: User): CurrentUserAction => ({
   type: SET_CURRENT_USER,
   currentUser
 })
+
+export const getCurrentUser = (state: State): User => (state.currentUser)
 
 export default (state: User = null, action: Action) => {
   switch (action.type) {
