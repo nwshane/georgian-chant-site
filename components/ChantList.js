@@ -13,8 +13,8 @@ const ChantList = ({chants} : { chants: Chants }) => (
       />
     </h1>
     <ul>
-      {map(chants, (chant: Chant): React$Element<*> => (
-        <li key={chant.slug}>
+      {map(chants, (chant: Chant, key: string): React$Element<*> => (
+        <li key={key}>
           <ChantLink
             chant={chant}
           />
