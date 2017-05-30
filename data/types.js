@@ -18,5 +18,6 @@ export type Dispatch = Function
 
 export type State = {
   +currentUser: User,
-  +chants: Chants
+  +chants: Chants,
+  +appMessage: string
 }

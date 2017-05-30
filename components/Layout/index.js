@@ -6,6 +6,7 @@ import GlobalHead from './GlobalHead'
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AuthChangeSubscriber from './AuthChangeSubscriber'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppMessageDisplay from './AppMessageDisplay'
 import '~/components/tapEvents'
 
 const Layout = (props : { children?: Children }) => (
@@ -15,6 +16,7 @@ const Layout = (props : { children?: Children }) => (
       <GlobalHead />
       <AuthChangeSubscriber />
       <Header />
+      <AppMessageDisplay />
       {props.children}
       <style jsx>{`
       div {
