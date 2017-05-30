@@ -1,32 +1,32 @@
 // @flow
-import Link from 'next/link'
+import LocalizedLink from '~/components/LocalizedLink'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import LocaleLink from './LocaleLink'
 import AccountMenu from './AccountMenu'
 
 const Header = ({intl: { locale }}) => (
   <nav>
-    <Link href={`/`} as={`/${locale}`}>
+    <LocalizedLink href='/'>
       <a>
         GeorgianChant.org
       </a>
-    </Link>
-    <Link href={`/chants`} as={`/${locale}/chants`}>
+    </LocalizedLink>
+    <LocalizedLink href='/chants'>
       <a>
         <FormattedMessage
           id='Header.chants'
           defaultMessage='Chants'
         />
       </a>
-    </Link>
-    <Link href='/about' as={`/${locale}/about`}>
+    </LocalizedLink>
+    <LocalizedLink href='/about'>
       <a>
         <FormattedMessage
           id='Header.about'
           defaultMessage='About'
         />
       </a>
-    </Link>
+    </LocalizedLink>
     <AccountMenu />
     {locale !== 'en' && <LocaleLink text='En' locale='en' />}
     {locale !== 'ka' && <LocaleLink text='ქა' locale='ka' />}

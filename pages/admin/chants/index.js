@@ -2,12 +2,13 @@
 import { Component } from 'react'
 import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
+import LocalizedLink from '~/components/LocalizedLink'
+import AdminChantsTable from '~/components/Admin/ChantsTable'
 import fetchChants from '~/data/thunks/fetchChants'
-import ChantListContainer from '~/components/ChantListContainer'
 
 type InitialPropsContext = {store: {dispatch: Function}}
 
-class ChantIndexPage extends Component {
+class AdminChantsIndexPage extends Component {
   static async getInitialProps ({store: {dispatch}}: InitialPropsContext) {
     await dispatch(fetchChants())
   }
@@ -15,10 +16,15 @@ class ChantIndexPage extends Component {
   render () {
     return (
       <Layout>
-        <ChantListContainer />
+        <LocalizedLink href='/admin'>
+          <a>
+            Return to Admin Panel
+          </a>
+        </LocalizedLink>
+        <AdminChantsTable />
       </Layout>
     )
   }
 }
 
-export default wrapPage(ChantIndexPage)
+export default wrapPage(AdminChantsIndexPage)
