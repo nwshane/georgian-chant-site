@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
 import AccountCircle from 'material-ui/svg-icons/action/account-circle'
 
-const AccountMenuPresentation = ({intl: {locale}, handleSignout}) => (
+const AccountMenuPresentation = ({handleSignout}) => (
   <IconMenu
     iconButtonElement={<IconButton><AccountCircle /></IconButton>}
     anchorOrigin={{horizontal: 'left', vertical: 'top'}}

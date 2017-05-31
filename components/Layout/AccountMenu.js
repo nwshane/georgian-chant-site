@@ -1,17 +1,26 @@
 // @flow
 import { Component } from 'react'
-import AccountMenuPresentation from './AccountMenuPresentation'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { defineMessages, injectIntl } from 'react-intl'
 import type { State, User } from '~/data/types'
 import { getCurrentUser } from '~/data/ducks/currentUser'
 import { setAppMessage } from '~/data/ducks/appMessage'
 import { auth } from '~/data/firebase'
+import AccountMenuPresentation from './AccountMenuPresentation'
+
+const { loggedOutMessage } = defineMessages({
+  loggedOutMessage: {
+    id: 'appMessage.loggedOut',
+    defaultMessage: 'Successfully Logged Out'
+  }
+})
 
 class AccountMenu extends Component {
   props: {
     currentUser: User,
-    setAppMessage: Function
+    setAppMessage: Function,
+    intl: any
   }
 
   constructor(props) {
@@ -23,8 +32,9 @@ class AccountMenu extends Component {
   }
 
   handleSignout () {
+    const { intl, setAppMessage } = this.props
     auth.signOut()
-    this.props.setAppMessage('Successfully Logged Out')
+    setAppMessage(intl.formatMessage(loggedOutMessage))
   }
 
   render () {
@@ -44,4 +54,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
   dispatch
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountMenu)
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(AccountMenu))

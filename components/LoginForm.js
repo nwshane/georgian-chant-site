@@ -2,11 +2,21 @@
 import { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { defineMessages, injectIntl } from 'react-intl'
+import type { IntlShape } from 'react-intl'
 import { auth } from '~/data/firebase'
 import { setAppMessage } from '~/data/ducks/appMessage'
 import LoginFormPresentation from './LoginFormPresentation'
 
+const { loggedInMessage } = defineMessages({
+  loggedInMessage: {
+    id: 'appMessage.loggedIn',
+    defaultMessage: 'Welcome, {email}!'
+  }
+})
+
 type Props = {
+  intl: any,
   setAppMessage: Function
 }
 
@@ -38,13 +48,14 @@ class LoginForm extends Component {
   }
 
   handleSubmit ({email, password}: {email: string, password: string}) {
+    const { intl, setAppMessage } = this.props
     auth
     .signInWithEmailAndPassword(email, password)
     .then((data) => {
-      this.props.setAppMessage(`Welcome, ${data.email}!`)
+      setAppMessage(intl.formatMessage(loggedInMessage, { email: data.email }))
     })
     .catch((error: {message: string}) => {
-      this.props.setAppMessage(error.message)
+      setAppMessage(error.message)
     })
   }
 
@@ -65,4 +76,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
   dispatch
 )
 
-export default connect(null, mapDispatchToProps)(LoginForm)
+export default injectIntl(connect(null, mapDispatchToProps)(LoginForm))
