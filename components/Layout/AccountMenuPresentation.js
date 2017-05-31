@@ -4,10 +4,9 @@ import LocalizedLink from '~/components/LocalizedLink'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
-import { auth } from '~/data/firebase'
 import AccountCircle from 'material-ui/svg-icons/action/account-circle'
 
-const AccountMenuPresentation = ({intl: {locale}}) => (
+const AccountMenuPresentation = ({intl: {locale}, handleSignout}) => (
   <IconMenu
     iconButtonElement={<IconButton><AccountCircle /></IconButton>}
     anchorOrigin={{horizontal: 'left', vertical: 'top'}}
@@ -20,7 +19,7 @@ const AccountMenuPresentation = ({intl: {locale}}) => (
         <MenuItem primaryText="Admin Panel" />
       </a>
     </LocalizedLink>
-    <MenuItem primaryText='Sign Out' onTouchTap={() => auth.signOut()} />
+    <MenuItem primaryText='Sign Out' onTouchTap={handleSignout} />
     <style jsx>{`
       a {
         text-decoration: none;

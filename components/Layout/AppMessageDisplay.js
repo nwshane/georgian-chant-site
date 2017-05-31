@@ -17,7 +17,8 @@ const Presentation = (props: Props) => (
 )
 
 const mapStateToProps = (state: State) => ({
-  message: getAppMessage(state)
+  message: getAppMessage(state),
+  key: getAppMessage(state)
 })
 
 export default connect(mapStateToProps)(Presentation)

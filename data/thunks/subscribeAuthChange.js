@@ -7,10 +7,5 @@ import { setAppMessage } from '~/data/ducks/appMessage'
 export default () => (dispatch: Dispatch) => {
   return auth.onAuthStateChanged((currentUser: User) => {
     dispatch(setCurrentUser(currentUser))
-    if (currentUser) {
-      dispatch(setAppMessage('Successfully Logged In'))
-    } else {
-      dispatch(setAppMessage('Successfully Logged Out'))
-    }
   })
 }

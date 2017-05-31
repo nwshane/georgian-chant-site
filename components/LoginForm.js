@@ -1,9 +1,16 @@
 // @flow
 import { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import { auth } from '~/data/firebase'
+import { setAppMessage } from '~/data/ducks/appMessage'
 import { Form } from 'formsy-react'
 import { FormsyText } from 'formsy-material-ui/lib/'
 import RaisedButton from 'material-ui/RaisedButton'
+
+type Props = {
+  setAppMessage: Function
+}
 
 type Event = {
   target: {
@@ -17,8 +24,8 @@ class LoginForm extends Component {
     canSubmit: false
   }
 
-  constructor () {
-    super()
+  constructor (props: Props) {
+    super(props)
     const self: any = this
     self.handleSubmit = this.handleSubmit.bind(this)
     self.enableButton = this.enableButton.bind(this)
@@ -36,6 +43,9 @@ class LoginForm extends Component {
   handleSubmit ({email, password}: {email: string, password: string}) {
     auth
     .signInWithEmailAndPassword(email, password)
+    .then((data) => {
+      this.props.setAppMessage(`Welcome, ${data.email}!`)
+    })
     .catch((error: {message: string}) => {
       this.setState({ error: error.message })
     })
@@ -88,4 +98,9 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+const mapDispatchToProps = (dispatch) => bindActionCreators(
+  {setAppMessage},
+  dispatch
+)
+
+export default connect(null, mapDispatchToProps)(LoginForm)
