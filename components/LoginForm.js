@@ -4,9 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { auth } from '~/data/firebase'
 import { setAppMessage } from '~/data/ducks/appMessage'
-import { Form } from 'formsy-react'
-import { FormsyText } from 'formsy-material-ui/lib/'
-import RaisedButton from 'material-ui/RaisedButton'
+import LoginFormPresentation from './LoginFormPresentation'
 
 type Props = {
   setAppMessage: Function
@@ -20,7 +18,6 @@ type Event = {
 
 class LoginForm extends Component {
   state = {
-    error: '',
     canSubmit: false
   }
 
@@ -47,53 +44,18 @@ class LoginForm extends Component {
       this.props.setAppMessage(`Welcome, ${data.email}!`)
     })
     .catch((error: {message: string}) => {
-      this.setState({ error: error.message })
+      this.props.setAppMessage(error.message)
     })
   }
 
   render () {
     return (
-      <div>
-        <Form
-          onSubmit={this.handleSubmit}
-          onValid={this.enableButton}
-          onInvalid={this.disableButton}
-        >
-          <FormsyText
-            id='input-email'
-            value=''
-            name='email'
-            title='Email'
-            validations='isEmail'
-            validationError='This is not a valid email'
-            floatingLabelText='Email'
-            required
-          />
-          <FormsyText
-            id='input-password'
-            value=''
-            name='password'
-            title='Password'
-            type='password'
-            floatingLabelText='Password'
-            required
-          />
-          <RaisedButton type='submit' disabled={!this.state.canSubmit}>
-            Sign In
-          </RaisedButton>
-        </Form>
-        <div>
-          {this.state.error}
-        </div>
-        <style jsx>{`
-          div :global(form) {
-            display: flex;
-            flex-direction: column;
-            max-width: 256px;
-          }
-          `}
-        </style>
-      </div>
+      <LoginFormPresentation
+        canSubmit={this.state.canSubmit}
+        enableButton={this.enableButton}
+        disableButton={this.disableButton}
+        handleSubmit={this.handleSubmit}
+      />
     )
   }
 }
