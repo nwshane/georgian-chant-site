@@ -12,9 +12,17 @@ const currentPath = (originalUrl?: string): string => {
   }
 }
 
-const newPath = ({locale}, {originalUrl}) => (
-  currentPath(originalUrl).replace(/^\/(\w\w)?/, `/${locale}`)
-)
+const localePathRegex = /^\/(en|ka)?/
+
+const newPath = ({locale}, {originalUrl}) => {
+  const path = currentPath(originalUrl)
+
+  if (path.search(localePathRegex)) {
+    return currentPath(originalUrl).replace(localePathRegex, `/${locale}`)
+  } else {
+    return `/${locale}`
+  }
+}
 
 type Props = {
   text: string,
