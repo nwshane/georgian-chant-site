@@ -1,5 +1,6 @@
 // @flow
 import { Component } from 'react'
+import Error from '~/pages/_error'
 import type { Chant, State } from '~/data/types'
 import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
@@ -44,6 +45,9 @@ class ChantShowPage extends Component {
 
   render () {
     const { chant } = this.props
+
+    if (!chant) return <Error statusCode={404} />
+
     return (
       <Layout>
         {chant && <div>
