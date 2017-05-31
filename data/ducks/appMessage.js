@@ -7,10 +7,18 @@ type Action = {
   message: string
 }
 
-export const setAppMessage = (message: string) => ({
+const _setAppMessage = (message: string) => ({
   type: SET_APP_MESSAGE,
   message
 })
+
+export const setAppMessage = (message: string) => (dispatch: Function) => {
+  dispatch(_setAppMessage(message))
+
+  setTimeout(() => {
+    dispatch(_setAppMessage(''))
+  }, 4100)
+}
 
 export const getAppMessage = (state: State): string => (state.appMessage)
 
