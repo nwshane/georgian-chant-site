@@ -3,6 +3,7 @@ const localeRouter = require('./server/localeRouter')
 const app = require('./server/app')
 const handle = require('./server/handle')
 const setGlobalNavigatorUserAgent = require('./server/setGlobalNavigatorUserAgent')
+const localizeRequest = require('./server/localizeRequest')
 
 app.prepare()
 .then(() => {
@@ -20,6 +21,7 @@ app.prepare()
   })
 
   server.get('*', (req, res) => {
+    localizeRequest(req)
     handle(req, res)
   })
 
