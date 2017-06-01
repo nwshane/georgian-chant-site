@@ -2,6 +2,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {IntlProvider, addLocaleData, injectIntl} from 'react-intl'
+import requiresLogin from '~/helpers/requiresLogin'
+import redirectToLogin from '~/helpers/redirectToLogin'
+import type { ServerContext } from '~/data/types'
 
 // Register React Intl's locale data for the user's locale in the browser. This
 // locale data was added to the page by `pages/_document.js`. This only happens
@@ -12,12 +15,6 @@ if (typeof window !== 'undefined' && window.ReactIntlLocaleData) {
   })
 }
 
-type ServerContext = {
-  req: {
-    locale: string, originalUrl: string
-  }
-}
-
 type Props = {
   originalUrl: ?string,
   locale: string,
@@ -26,6 +23,10 @@ type Props = {
   },
   now: number
 }
+
+const getLocale = (req) => (
+  req && req.locale ? req.locale : window.__NEXT_DATA__.props.locale
+)
 
 export default (Page: React$Element<*> | Function) => {
   const IntlPage = injectIntl(Page)
@@ -46,7 +47,7 @@ export default (Page: React$Element<*> | Function) => {
       // Get the `locale` and `messages` from the request object on the server.
       // In the browser, use the same values that the server serialized.
       const {req} = context
-      const locale = req && req.locale ? req.locale : window.__NEXT_DATA__.props.locale
+      const locale = getLocale(req)
       const messages = req && req.messages ? req.messages : window.__NEXT_DATA__.props.messages
       const { originalUrl } = req || {}
 
@@ -54,7 +55,18 @@ export default (Page: React$Element<*> | Function) => {
       // <IntlProvider> will be a new instance even with pushState routing.
       const now = Date.now()
 
-      return {...props, originalUrl, locale, messages, now}
+      if (requiresLogin(context)) {
+        redirectToLogin(context)
+        return
+      }
+
+      return {
+        ...props,
+        originalUrl,
+        locale,
+        messages,
+        now
+      }
     }
 
     getChildContext () {

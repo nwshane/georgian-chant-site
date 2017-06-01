@@ -21,3 +21,19 @@ export type State = {
   +chants: Chants,
   +appMessage: string
 }
+
+// this is the object passed into Next JS Page's getInitialProps method
+export type ServerContext = {
+  req: {
+    locale: string,
+    originalUrl: string
+  },
+  res: {
+    writeHead: Function
+  },
+  pathname: string,
+  store: {
+    getState: Function,
+    dispatch: Function
+  }
+}
