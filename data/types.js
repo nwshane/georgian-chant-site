@@ -29,7 +29,7 @@ export type ServerContext = {
     originalUrl: string
   },
   res: {
-    writeHead: Function
+    redirect: Function
   },
   pathname: string,
   store: {

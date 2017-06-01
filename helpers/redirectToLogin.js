@@ -16,7 +16,7 @@ export default ({req, res, store}: ServerContext) => {
   store.dispatch(setAppMessage('Please login to access the admin page'))
 
   if (req) {
-    res.writeHead(302, { Location: getLoginPathname(req) })
+    res.redirect(getLoginPathname(req))
   } else {
     Router.push('/login', getLoginPathname(req))
   }
