@@ -2,6 +2,7 @@
 import { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import Router from 'next/router'
 import { defineMessages, injectIntl } from 'react-intl'
 import type { IntlShape } from 'react-intl'
 import { auth } from '~/data/firebase'
@@ -52,6 +53,7 @@ class LoginForm extends Component {
     auth
     .signInWithEmailAndPassword(email, password)
     .then((data) => {
+      Router.push('/admin', `/${intl.locale}/admin`)
       setAppMessage(intl.formatMessage(loggedInMessage, { email: data.email }))
     })
     .catch((error: {message: string}) => {
