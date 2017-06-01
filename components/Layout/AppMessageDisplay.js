@@ -1,11 +1,13 @@
 // @flow
 import Snackbar from 'material-ui/Snackbar'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import type { State } from '~/data/types'
-import { getAppMessage } from '~/data/ducks/appMessage'
+import { clearAppMessage, getAppMessage } from '~/data/ducks/appMessage'
 
 type Props = {
-  message: string
+  message: string,
+  clearAppMessage: Function
 }
 
 const Presentation = (props: Props) => (
@@ -13,6 +15,7 @@ const Presentation = (props: Props) => (
     open={!!props.message}
     message={props.message}
     autoHideDuration={4000}
+    onRequestClose={props.clearAppMessage}
   />
 )
 
@@ -21,4 +24,9 @@ const mapStateToProps = (state: State) => ({
   key: getAppMessage(state)
 })
 
-export default connect(mapStateToProps)(Presentation)
+const mapDispatchToProps = (dispatch) => bindActionCreators(
+  {clearAppMessage},
+  dispatch
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Presentation)
