@@ -25,7 +25,7 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
-    "dev": "nodemon --watch server.js --watch server/ --watch .babelrc --watch lang/ server.js",
+    "dev": "nodemon --watch server.js --watch server/ --watch .babelrc --watch lang/ --watch node_modules/ server.js",
     "build": "next build && npm run translate",
     "start": "NODE_ENV=production node server.js",
     "translate": "node scripts/manageTranslations.js",
