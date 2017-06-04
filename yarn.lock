@@ -2874,6 +2874,10 @@ latest-version@^1.0.0:
   dependencies:
     package-json "^1.0.0"
 
+latinize-georgian:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/latinize-georgian/-/latinize-georgian-0.1.0.tgz#405eb5b22afe2872788b9eb717d8e6ae5b930d94"
+
 lazy-cache@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/lazy-cache/-/lazy-cache-1.0.4.tgz#a1d78fc3a50474cb80845d3b3b6e1da49a446e8e"
