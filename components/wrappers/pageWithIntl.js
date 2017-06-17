@@ -5,6 +5,8 @@ import {IntlProvider, addLocaleData, injectIntl} from 'react-intl'
 import requiresLogin from '~/helpers/requiresLogin'
 import redirectToLogin from '~/helpers/redirectToLogin'
 import type { ServerContext } from '~/data/types'
+import { setCurrentUser } from '~/data/ducks/currentUser'
+
 
 // Register React Intl's locale data for the user's locale in the browser. This
 // locale data was added to the page by `pages/_document.js`. This only happens
@@ -46,7 +48,7 @@ export default (Page: React$Element<*> | Function) => {
 
       // Get the `locale` and `messages` from the request object on the server.
       // In the browser, use the same values that the server serialized.
-      const {req} = context
+      const { req, store } = context
       const locale = getLocale(req)
       const messages = req && req.messages ? req.messages : window.__NEXT_DATA__.props.messages
       const { originalUrl } = req || {}
@@ -54,6 +56,10 @@ export default (Page: React$Element<*> | Function) => {
       // Always update the current time on page load/transition because the
       // <IntlProvider> will be a new instance even with pushState routing.
       const now = Date.now()
+
+      if (req && req.currentUserServerData) {
+        store.dispatch(setCurrentUser(req.currentUserServerData))
+      }
 
       if (requiresLogin(context)) {
         redirectToLogin(context)

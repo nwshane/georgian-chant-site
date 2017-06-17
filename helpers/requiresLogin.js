@@ -9,10 +9,14 @@ const isAdminPage = ({pathname}) => (
   /^\/admin/.test(pathname)
 )
 
-const loggedIn = ({store}: ServerContext) => (
-  !!store.getState().currentUser
+const loggedIn = (currentUser) => (!!currentUser)
+
+// for now, any user will have admin access. this will change in the
+// future if we add different kinds of users
+const userHasAdminAccess = (currentUser) => (
+  loggedIn(currentUser)
 )
 
 export default (context: ServerContext) => (
-  isAdminPage(context) && !loggedIn(context)
+  isAdminPage(context) && !userHasAdminAccess(context.store.getState().currentUser)
 )

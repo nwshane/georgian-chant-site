@@ -48,17 +48,18 @@ class LoginForm extends Component {
     this.setState({ canSubmit: false })
   }
 
-  handleSubmit ({email, password}: {email: string, password: string}) {
+  async handleSubmit ({email, password}: {email: string, password: string}) {
     const { intl, setAppMessage } = this.props
-    auth
-    .signInWithEmailAndPassword(email, password)
-    .then((data) => {
+
+    try {
+      const data = await auth.signInWithEmailAndPassword(email, password)
+
       Router.push('/admin', `/${intl.locale}/admin`)
+
       setAppMessage(intl.formatMessage(loggedInMessage, { email: data.email }))
-    })
-    .catch((error: {message: string}) => {
+    } catch (error) {
       setAppMessage(error.message)
-    })
+    }
   }
 
   render () {

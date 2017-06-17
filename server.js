@@ -4,6 +4,10 @@ const app = require('./server/app')
 const handle = require('./server/handle')
 const setGlobalNavigatorUserAgent = require('./server/setGlobalNavigatorUserAgent')
 const localizeRequest = require('./server/localizeRequest')
+const cookieParser = require('cookie-parser')
+const authenticationRouter = require('./server/authenticationRouter')
+const { authWithIdTokenRoute } = authenticationRouter
+const allowParsingPostBody = require('./server/allowParsingPostBody.js')
 
 app.prepare()
 .then(() => {
@@ -14,11 +18,16 @@ app.prepare()
     next()
   })
 
-  server.use('/:locale(en|ka)', localeRouter)
+  allowParsingPostBody(server)
+  server.use(cookieParser())
+  server.use('*', authenticationRouter)
+  server.post('/authWithIdToken', authWithIdTokenRoute)
 
   server.get('/', (req, res) => {
     res.redirect('/ka')
   })
+
+  server.use('/:locale(en|ka)', localeRouter)
 
   server.get('*', (req, res) => {
     localizeRequest(req)

@@ -1,3 +1,7 @@
 .next
 node_modules
 lang/.messages
+
+# firebase service account key - provides access to firebase
+# from server
+georgian-chant-site-firebase-adminsdk-*.json

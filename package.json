@@ -5,9 +5,13 @@
   "license": "MIT",
   "repository": "https://github.com/nwshane/georgian-chant-site",
   "dependencies": {
+    "axios": "^0.16.2",
     "babel-plugin-react-intl": "^2.3.1",
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.2",
     "firebase": "^4.0.0",
+    "firebase-admin": "^5.0.0",
     "formsy-material-ui": "^0.6.0",
     "formsy-react": "^0.19.2",
     "latinize-georgian": "^0.2.2",

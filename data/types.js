@@ -26,7 +26,8 @@ export type State = {
 export type ServerContext = {
   req: {
     locale: string,
-    originalUrl: string
+    originalUrl: string,
+    currentUserServerData: any
   },
   res: {
     redirect: Function
