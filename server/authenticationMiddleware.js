@@ -8,12 +8,16 @@ firebaseAdmin.initializeApp({
   databaseURL: 'https://georgian-chant-site.firebaseio.com'
 })
 
+async function decodeToken (firebaseIdToken) {
+  return firebaseAdmin.auth().verifyIdToken(firebaseIdToken)
+}
+
 async function authenticationMiddleware (req, res, next) {
   const { firebaseIdToken } = req.cookies
 
   if (firebaseIdToken) {
     try {
-      const decodedToken = await firebaseAdmin.auth().verifyIdToken(firebaseIdToken)
+      const decodedToken = await decodeToken(firebaseIdToken)
       const userData = await firebaseAdmin.auth().getUser(decodedToken.uid)
       req.currentUserServerData = userData
     } catch (error) {
@@ -26,9 +30,25 @@ async function authenticationMiddleware (req, res, next) {
   next()
 }
 
-authenticationMiddleware.authWithIdTokenRoute = ({body: { idToken }}, res) => {
-  res.cookie(FIREBASE_ID_TOKEN_COOKIE, idToken)
-  res.send()
+authenticationMiddleware.authWithIdTokenRoute = async function ({body: { idToken }}, res) {
+  try {
+    await decodeToken(idToken)
+    res.cookie(FIREBASE_ID_TOKEN_COOKIE, idToken)
+    res.send()
+  } catch (error) {
+    if (error.code === 'auth/argument-error') {
+      res.status(400)
+      res.send(
+        'error',
+        {
+          error: new Error('Could not decode token')
+        }
+      )
+    } else {
+      res.status(500)
+      res.send()
+    }
+  }
 }
 
 module.exports = authenticationMiddleware
