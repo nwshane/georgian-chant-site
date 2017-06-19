@@ -1,4 +1,5 @@
 // @flow
+import type { Element } from 'react'
 import type { Chant, Chants } from '~/data/types'
 import { FormattedMessage } from 'react-intl'
 import ChantLink from './ChantLink'
@@ -13,7 +14,7 @@ const ChantList = ({chants} : { chants: Chants }) => (
       />
     </h1>
     <ul>
-      {map(chants, (chant: Chant, key: string): React$Element<*> => (
+      {map(chants, (chant: Chant, key: string): Element<*> => (
         <li key={key}>
           <ChantLink
             chant={chant}

@@ -23,7 +23,7 @@ class AccountMenu extends Component {
     intl: any
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     // necessary to stop flow from complaining

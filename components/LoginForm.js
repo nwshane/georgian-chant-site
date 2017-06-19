@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Router from 'next/router'
 import { defineMessages, injectIntl } from 'react-intl'
-import type { IntlShape } from 'react-intl'
 import { auth } from '~/data/firebase'
 import { setAppMessage } from '~/data/ducks/appMessage'
 import LoginFormPresentation from './LoginFormPresentation'
@@ -19,12 +18,6 @@ const { loggedInMessage } = defineMessages({
 type Props = {
   intl: any,
   setAppMessage: Function
-}
-
-type Event = {
-  target: {
-    value: string
-  }
 }
 
 class LoginForm extends Component {

@@ -10,7 +10,7 @@ const getTransliteratedName = (chant, locale) => (
   : latinizeGeorgian(chant.name.ka)
 )
 
-const ChantLink = ({intl, chant}: {intl: *, chant: Chant})=> {
+const ChantLink = ({intl, chant}: {intl: *, chant: Chant}) => {
   const { locale } = intl
   const slug = chant.slug
 

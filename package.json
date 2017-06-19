@@ -50,6 +50,9 @@
     "standard": "^10.0.2"
   },
   "standard": {
+    "ignore": [
+      "flow-typed"
+    ],
     "plugins": [
       "flowtype"
     ],

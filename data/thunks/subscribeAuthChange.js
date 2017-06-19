@@ -2,7 +2,6 @@
 import { auth } from '~/data/firebase'
 import { setCurrentUser } from '~/data/ducks/currentUser'
 import type { Dispatch, User } from '~/data/types'
-import { setAppMessage } from '~/data/ducks/appMessage'
 import getTokenCookieFromServer from '~/helpers/getTokenCookieFromServer'
 
 export default () => (dispatch: Dispatch, getState: Function) => {

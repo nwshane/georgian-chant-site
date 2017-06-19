@@ -3,9 +3,9 @@ import type { Children } from 'react'
 import Header from './Header'
 import GlobalStyle from './GlobalStyle'
 import GlobalHead from './GlobalHead'
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import AuthChangeSubscriber from './AuthChangeSubscriber'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppMessageDisplay from './AppMessageDisplay'
 import '~/components/tapEvents'
 

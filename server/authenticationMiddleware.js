@@ -9,7 +9,7 @@ firebaseAdmin.initializeApp({
 
 const FIREBASE_ID_TOKEN_COOKIE = 'firebaseIdToken'
 
-async function authenticationMiddleware(req, res, next) {
+async function authenticationMiddleware (req, res, next) {
   const { firebaseIdToken } = req.cookies
 
   if (firebaseIdToken) {
@@ -17,7 +17,7 @@ async function authenticationMiddleware(req, res, next) {
       const decodedToken = await firebaseAdmin.auth().verifyIdToken(firebaseIdToken)
       const userData = await firebaseAdmin.auth().getUser(decodedToken.uid)
       req.currentUserServerData = userData
-    } catch(error) {
+    } catch (error) {
       if (error.code === 'auth/argument-error') {
         res.clearCookie(FIREBASE_ID_TOKEN_COOKIE)
       }

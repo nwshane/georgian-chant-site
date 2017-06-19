@@ -16,7 +16,7 @@ const AccountMenuPresentation = ({handleSignout}) => (
       href='/admin'
     >
       <a>
-        <MenuItem primaryText="Admin Panel" />
+        <MenuItem primaryText='Admin Panel' />
       </a>
     </LocalizedLink>
     <MenuItem primaryText='Sign Out' onTouchTap={handleSignout} />

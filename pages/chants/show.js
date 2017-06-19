@@ -1,7 +1,7 @@
 // @flow
 import { Component } from 'react'
 import Error from '~/components/Error'
-import type { Chant, State } from '~/data/types'
+import type { Chant } from '~/data/types'
 import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
 import { addChant, getChantBySlug } from '~/data/ducks/chants'

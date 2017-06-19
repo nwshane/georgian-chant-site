@@ -1,12 +1,12 @@
 // @flow
 import React, { Component } from 'react'
+import type { Element } from 'react'
 import PropTypes from 'prop-types'
 import {IntlProvider, addLocaleData, injectIntl} from 'react-intl'
 import requiresLogin from '~/helpers/requiresLogin'
 import redirectToLogin from '~/helpers/redirectToLogin'
 import type { ServerContext } from '~/data/types'
 import { setCurrentUser } from '~/data/ducks/currentUser'
-
 
 // Register React Intl's locale data for the user's locale in the browser. This
 // locale data was added to the page by `pages/_document.js`. This only happens
@@ -30,7 +30,7 @@ const getLocale = (req) => (
   req && req.locale ? req.locale : window.__NEXT_DATA__.props.locale
 )
 
-export default (Page: React$Element<*> | Function) => {
+export default (Page: Element<*> | Function) => {
   const IntlPage = injectIntl(Page)
 
   class PageWithIntl extends Component {
