@@ -17,7 +17,7 @@ const localePathRegex = /^\/(en|ka)?/
 const newPath = ({locale}, {originalUrl}) => {
   const path = currentPath(originalUrl)
 
-  if (path.search(localePathRegex)) {
+  if (localePathRegex.test(path)) {
     return currentPath(originalUrl).replace(localePathRegex, `/${locale}`)
   } else {
     return `/${locale}`
