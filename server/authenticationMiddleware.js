@@ -32,8 +32,8 @@ async function authenticationMiddleware (req, res, next) {
 
 authenticationMiddleware.authWithIdTokenRoute = async function ({body: { idToken }}, res) {
   try {
-    await decodeToken(idToken)
-    res.cookie(FIREBASE_ID_TOKEN_COOKIE, idToken)
+    const decodedToken = await decodeToken(idToken)
+    res.cookie(FIREBASE_ID_TOKEN_COOKIE, idToken, { expires: new Date(decodedToken.exp * 1000) })
     res.send()
   } catch (error) {
     if (error.code === 'auth/argument-error') {
