@@ -42,11 +42,6 @@ export default (Page: Element<*> | Function) => {
     }
 
     static async getInitialProps (context: ServerContext) {
-      let props
-      if (typeof Page.getInitialProps === 'function') {
-        props = await Page.getInitialProps(context)
-      }
-
       // Get the `locale` and `messages` from the request object on the server.
       // In the browser, use the same values that the server serialized.
       const { req, store } = context
@@ -66,6 +61,11 @@ export default (Page: Element<*> | Function) => {
         redirectToLocalizedUrl('/login', context)
         store.dispatch(setAppMessage('Please login to access the admin page'))
         return
+      }
+
+      let props
+      if (typeof Page.getInitialProps === 'function') {
+        props = await Page.getInitialProps(context)
       }
 
       return {

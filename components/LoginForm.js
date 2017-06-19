@@ -56,7 +56,7 @@ class LoginForm extends Component {
       if (error.code === 'auth/network-request-failed') {
         setAppMessage('Network request failed - is your internet working?')
       } else {
-        setAppMessage("Could not log in - please try again later")
+        setAppMessage('Could not log in - please try again later')
       }
     }
   }

@@ -10,7 +10,7 @@ type Props = {
   clearAppMessage: Function
 }
 
-const Presentation = (props: Props) => (
+const AppMessageDisplayPresentation = (props: Props) => (
   <Snackbar
     open={!!props.message}
     message={props.message}
@@ -29,4 +29,6 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
   dispatch
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(Presentation)
+const AppMessageDisplay = connect(mapStateToProps, mapDispatchToProps)(AppMessageDisplayPresentation)
+
+export default AppMessageDisplay
