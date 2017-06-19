@@ -4,7 +4,7 @@ import axios from 'axios'
 
 export default async function getTokenCookieFromServer () {
   const idToken = await auth.currentUser.getIdToken(true)
-  await axios.post('/authWithIdToken', {
+  return axios.post('/authWithIdToken', {
     idToken
   })
 }
