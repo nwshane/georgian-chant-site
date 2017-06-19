@@ -3,11 +3,14 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { defineMessages, injectIntl } from 'react-intl'
+import Router from 'next/router'
 import type { State, User } from '~/data/types'
 import { getCurrentUser } from '~/data/ducks/currentUser'
 import { setAppMessage } from '~/data/ducks/appMessage'
 import { auth } from '~/data/firebase'
 import AccountMenuPresentation from './AccountMenuPresentation'
+import isAdminPage from '~/helpers/isAdminPage'
+import redirectToLocalizedUrl from '~/helpers/redirectToLocalizedUrl'
 
 const { loggedOutMessage } = defineMessages({
   loggedOutMessage: {
@@ -34,6 +37,7 @@ class AccountMenu extends Component {
   handleSignout () {
     const { intl, setAppMessage } = this.props
     auth.signOut()
+    if (isAdminPage(Router.pathname)) redirectToLocalizedUrl('/')
     setAppMessage(intl.formatMessage(loggedOutMessage))
   }
 

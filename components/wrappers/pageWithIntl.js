@@ -4,9 +4,10 @@ import type { Element } from 'react'
 import PropTypes from 'prop-types'
 import {IntlProvider, addLocaleData, injectIntl} from 'react-intl'
 import requiresLogin from '~/helpers/requiresLogin'
-import redirectToLogin from '~/helpers/redirectToLogin'
+import redirectToLocalizedUrl from '~/helpers/redirectToLocalizedUrl'
 import type { ServerContext } from '~/data/types'
 import { setCurrentUser } from '~/data/ducks/currentUser'
+import {setAppMessage} from '~/data/ducks/appMessage'
 
 // Register React Intl's locale data for the user's locale in the browser. This
 // locale data was added to the page by `pages/_document.js`. This only happens
@@ -62,7 +63,8 @@ export default (Page: Element<*> | Function) => {
       }
 
       if (requiresLogin(context)) {
-        redirectToLogin(context)
+        redirectToLocalizedUrl('/login', context)
+        store.dispatch(setAppMessage('Please login to access the admin page'))
         return
       }
 

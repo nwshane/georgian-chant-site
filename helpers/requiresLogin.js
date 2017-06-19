@@ -1,13 +1,7 @@
 // @flow
 
 import type { ServerContext } from '~/data/types'
-
-// Seems like the easiest method of universally checking
-// whether the page is an admin page is to look for '/admin'
-// at the beginning of the pathname
-const isAdminPage = ({pathname}) => (
-  /^\/admin/.test(pathname)
-)
+import isAdminPage from './isAdminPage'
 
 const loggedIn = (currentUser) => (!!currentUser)
 
@@ -18,5 +12,5 @@ const userHasAdminAccess = (currentUser) => (
 )
 
 export default (context: ServerContext) => (
-  isAdminPage(context) && !userHasAdminAccess(context.store.getState().currentUser)
+  isAdminPage(context.pathname) && !userHasAdminAccess(context.store.getState().currentUser)
 )
