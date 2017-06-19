@@ -5,8 +5,8 @@ const handle = require('./server/handle')
 const setGlobalNavigatorUserAgent = require('./server/setGlobalNavigatorUserAgent')
 const localizeRequest = require('./server/localizeRequest')
 const cookieParser = require('cookie-parser')
-const authenticationRouter = require('./server/authenticationRouter')
-const { authWithIdTokenRoute } = authenticationRouter
+const authenticationMiddleware = require('./server/authenticationMiddleware')
+const { authWithIdTokenRoute } = authenticationMiddleware
 const allowParsingPostBody = require('./server/allowParsingPostBody.js')
 
 app.prepare()
@@ -20,7 +20,7 @@ app.prepare()
 
   allowParsingPostBody(server)
   server.use(cookieParser())
-  server.use('*', authenticationRouter)
+  server.use('*', authenticationMiddleware)
   server.post('/authWithIdToken', authWithIdTokenRoute)
 
   server.get('/', (req, res) => {

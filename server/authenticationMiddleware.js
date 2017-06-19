@@ -9,14 +9,14 @@ firebaseAdmin.initializeApp({
 
 const FIREBASE_ID_TOKEN_COOKIE = 'firebaseIdToken'
 
-async function authenticationRouter(req, res, next) {
+async function authenticationMiddleware(req, res, next) {
   const { firebaseIdToken } = req.cookies
 
   if (firebaseIdToken) {
     try {
       const decodedToken = await firebaseAdmin.auth().verifyIdToken(firebaseIdToken)
-      const { email, uid } = decodedToken
-      req.currentUserServerData = { email, uid }
+      const userData = await firebaseAdmin.auth().getUser(decodedToken.uid)
+      req.currentUserServerData = userData
     } catch(error) {
       if (error.code === 'auth/argument-error') {
         res.clearCookie(FIREBASE_ID_TOKEN_COOKIE)
@@ -27,9 +27,9 @@ async function authenticationRouter(req, res, next) {
   next()
 }
 
-authenticationRouter.authWithIdTokenRoute = ({body: { idToken }}, res) => {
+authenticationMiddleware.authWithIdTokenRoute = ({body: { idToken }}, res) => {
   res.cookie(FIREBASE_ID_TOKEN_COOKIE, idToken)
   res.send()
 }
 
-module.exports = authenticationRouter
+module.exports = authenticationMiddleware
