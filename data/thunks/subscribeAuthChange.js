@@ -6,7 +6,14 @@ import getTokenCookieFromServer from '~/helpers/getTokenCookieFromServer'
 import { eraseCookie, readCookie } from '~/helpers/cookieHelpers'
 import { FIREBASE_ID_TOKEN_COOKIE } from '~/universal/constants'
 
+let subscribed = false
+
+// Only subscribe once, even if this function is called multiple
+// times on the client
 export default () => (dispatch: Dispatch, getState: Function) => {
+  if (subscribed) return
+  subscribed = true
+
   return auth.onAuthStateChanged((currentUser: User) => {
     dispatch(setCurrentUser(currentUser))
 
