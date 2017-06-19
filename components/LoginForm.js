@@ -51,7 +51,13 @@ class LoginForm extends Component {
 
       setAppMessage(intl.formatMessage(loggedInMessage, { email: data.email }))
     } catch (error) {
-      setAppMessage(error.message)
+      console.log(error)
+
+      if (error.code === 'auth/network-request-failed') {
+        setAppMessage('Network request failed - is your internet working?')
+      } else {
+        setAppMessage("Could not log in - please try again later")
+      }
     }
   }
 
