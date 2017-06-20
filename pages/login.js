@@ -13,7 +13,7 @@ class LoginPage extends Component {
     const { store } = context
     if (getCurrentUser(store.getState())) {
       store.dispatch(setAppMessage("You're already logged in!"))
-      redirectToLocalizedUrl('/', context)
+      redirectToLocalizedUrl({ pathname: '/' }, null, context)
     }
   }
 

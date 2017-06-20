@@ -18,6 +18,15 @@ localeRouter.get('/chants/:slug', (req, res) => {
   )
 })
 
+localeRouter.get('/admin/chants/:slug/edit', (req, res) => {
+  app.render(
+    req,
+    res,
+    '/admin/chants/edit',
+    { slug: req.params.slug }
+  )
+})
+
 localeRouter.get('*', (req, res) => {
   handle(req, res)
 })

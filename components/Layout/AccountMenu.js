@@ -37,7 +37,7 @@ class AccountMenu extends Component {
   handleSignout () {
     const { intl, setAppMessage } = this.props
     auth.signOut()
-    if (isAdminPage(Router.pathname)) redirectToLocalizedUrl('/')
+    if (isAdminPage(Router.pathname)) redirectToLocalizedUrl({ pathname: '/' })
     setAppMessage(intl.formatMessage(loggedOutMessage))
   }
 

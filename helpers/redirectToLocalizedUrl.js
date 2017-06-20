@@ -11,14 +11,20 @@ const getLocalizedPathname = (pathname, req) => (
   `/${getLocale(req)}${pathname}`
 )
 
-// Takes a pathname, and an optional ServerContext (typically
-// provided by a Page's getInitialProps static method).
+// Takes an href URL obj, an optional AS obj, and an optional ServerContext
+// (typically provided by a Page's getInitialProps static method).
 // If you want to use it universally, you must provide a server
 // context.
-export default (pathname: string, {req, res, store}: ServerContext = {}) => {
+type Url = {
+  pathname: string
+}
+
+export default (href: Url, as: ?Url, {req, res}: ServerContext = {}) => {
+  let asUrl = as || href
   if (req) {
-    res.redirect(getLocalizedPathname(pathname, req))
+    res.redirect(getLocalizedPathname(asUrl.pathname, req))
   } else {
-    Router.push(pathname, getLocalizedPathname(pathname, req))
+    // $FlowFixMe : Router.push flow type is wrong - can take an object, not just a string
+    Router.push(href, getLocalizedPathname(asUrl.pathname, req))
   }
 }
