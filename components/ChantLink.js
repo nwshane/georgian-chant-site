@@ -1,5 +1,5 @@
 // @flow
-import Link from 'next/link'
+import LocalizedLink from '~/components/LocalizedLink'
 import type { Chant } from '~/data/types'
 import { injectIntl } from 'react-intl'
 import latinizeGeorgian from 'latinize-georgian'
@@ -16,11 +16,11 @@ const ChantLink = ({intl, chant}: {intl: *, chant: Chant}) => {
 
   return (
     <div>
-      <Link as={`/${locale}/chants/${slug}`} href={`/chants/show?slug=${slug}&locale=${locale}`}>
+      <LocalizedLink as={`/chants/${slug}`} href={`/chants/show?slug=${slug}`}>
         <a>
           {getTransliteratedName(chant, locale)}
         </a>
-      </Link>
+      </LocalizedLink>
       <style jsx>{`
         a {
           text-decoration: none;

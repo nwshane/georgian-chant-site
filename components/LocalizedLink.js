@@ -7,13 +7,14 @@ type Props = {
     locale: string
   },
   children?: any,
-  href: string
+  href: string,
+  as?: string
 }
 
-const LocalizedLink = ({intl: {locale}, children, href, ...props}: Props) => (
+const LocalizedLink = ({intl: {locale}, children, href, as, ...props}: Props) => (
   <Link
     href={href}
-    as={`/${locale}${href}`}
+    as={`/${locale}${as || href}`}
     {...props}
   >
     {children}
