@@ -13,14 +13,24 @@ class AdminChantsIndexPage extends Component {
     await dispatch(fetchChants())
   }
 
+  // TODO: Localize
   render () {
     return (
       <Layout>
-        <LocalizedLink href='/admin'>
-          <a>
-            Return to Admin Panel
-          </a>
-        </LocalizedLink>
+        <p>
+          <LocalizedLink href='/admin'>
+            <a>
+              Return to Admin Panel
+            </a>
+          </LocalizedLink>
+        </p>
+        <p>
+          <LocalizedLink href='/admin/chants/new'>
+            <a>
+              Add New Chant
+            </a>
+          </LocalizedLink>
+        </p>
         <AdminChantsTable />
       </Layout>
     )
