@@ -4,25 +4,19 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import NewChantFormPresentation from './NewChantFormPresentation'
 import submitNewChant from '~/data/thunks/submitNewChant'
+import localizeObject from '~/helpers/localizeObject'
 
 // TODO: Localize
 class NewChantForm extends Component {
-  state = {
-    name: {
-      ka: ''
-    }
-  }
-
   constructor () {
     super()
     const self: any = this
     self.handleSubmit = this.handleSubmit.bind(this)
-    self.updateState = this.updateState.bind(this)
   }
 
-  handleSubmit (e) {
-    e.preventDefault()
-    this.props.submitNewChant(this.state)
+  handleSubmit (formValues) {
+    const localizedValues = localizeObject(formValues)
+    this.props.submitNewChant(localizedValues)
   }
 
   updateState (values) {
@@ -32,7 +26,6 @@ class NewChantForm extends Component {
   render () {
     return (
       <NewChantFormPresentation
-        updateState={this.updateState}
         handleSubmit={this.handleSubmit}
       />
     )
