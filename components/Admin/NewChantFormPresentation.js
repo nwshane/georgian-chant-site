@@ -1,5 +1,5 @@
 // @flow
-import { Form } from 'formsy-react'
+import Form from '~/components/presentation/Form'
 import { FormsyText } from 'formsy-material-ui/lib/'
 import RaisedButton from 'material-ui/RaisedButton'
 
@@ -17,7 +17,15 @@ const NewChantFormPresentation = (props: Props) => (
       value=''
       name='name_ka'
       title='Name'
-      floatingLabelText='Name'
+      floatingLabelText='Chant Name'
+      required
+    />
+    <FormsyText
+      id='input-text'
+      value=''
+      name='text_ka'
+      title='Text'
+      floatingLabelText='Chant Text'
       required
     />
     <RaisedButton type='submit'>

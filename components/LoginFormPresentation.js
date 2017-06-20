@@ -1,5 +1,5 @@
 // @flow
-import { Form } from 'formsy-react'
+import Form from '~/components/presentation/Form'
 import { FormsyText } from 'formsy-material-ui/lib/'
 import RaisedButton from 'material-ui/RaisedButton'
 
@@ -40,13 +40,6 @@ const LoginFormPresentation = (props: Props) => (
         Sign In
       </RaisedButton>
     </Form>
-    <style jsx>{`
-      div :global(form) {
-        display: flex;
-        flex-direction: column;
-        max-width: 256px;
-      }
-    `}</style>
   </div>
 )
 export default LoginFormPresentation
