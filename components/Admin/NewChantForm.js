@@ -1,5 +1,7 @@
+// @flow
 import { Component } from 'react'
 import { database } from '~/data/firebase'
+import NewChantFormPresentation from './NewChantFormPresentation'
 
 // TODO: Localize
 class NewChantForm extends Component {
@@ -13,10 +15,10 @@ class NewChantForm extends Component {
   constructor () {
     super()
     const self: any = this
-    self.handleCreate = this.handleCreate.bind(this)
+    self.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleCreate (e) {
+  handleSubmit (e) {
     e.preventDefault()
 
     database
@@ -32,17 +34,10 @@ class NewChantForm extends Component {
 
   render () {
     return (
-      <form>
-        <p>
-          Slug:
-          <input type='text' onChange={(e) => this.setState({slug: e.target.value})} />
-        </p>
-        <p>
-          Georgian Name:
-          <input type='text' onChange={(e) => this.setState({name: {ka: e.target.value}})} />
-        </p>
-        <button onClick={this.handleCreate}>Submit</button>
-      </form>
+      <NewChantFormPresentation
+        updateState={this.setState}
+        handleSubmit={this.handleSubmit}
+      />
     )
   }
 }
