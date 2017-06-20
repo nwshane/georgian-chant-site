@@ -33,10 +33,12 @@
     "dev": "nodemon server.js",
     "debug": "node --inspect server.js",
     "build": "next build && npm run translate",
+    "lint": "standard --fix | snazzy",
     "precommit": "lint-staged",
     "start": "NODE_ENV=production node server.js",
     "translate": "node scripts/manageTranslations.js",
-    "test": "standard --fix | snazzy"
+    "test": "jest",
+    "testwatch": "jest --watch"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
@@ -45,6 +47,7 @@
     "eslint-plugin-flowtype": "^2.33.0",
     "flow-bin": "^0.46.0",
     "husky": "^0.13.4",
+    "jest": "^20.0.4",
     "lint-staged": "^4.0.0",
     "nodemon": "^1.11.0",
     "react-intl-translations-manager": "^5.0.0",
@@ -53,7 +56,10 @@
     "standard": "^10.0.2"
   },
   "lint-staged": {
-    "*.js": ["npm run test"]
+    "*.js": [
+      "npm run lint",
+      "npm run test"
+    ]
   },
   "standard": {
     "ignore": [

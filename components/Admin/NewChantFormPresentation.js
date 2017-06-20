@@ -8,10 +8,6 @@ type Props = {
 const NewChantFormPresentation = (props: Props) => (
   <form>
     <p>
-      Slug:
-      <input type='text' onChange={(e) => props.updateState({slug: e.target.value})} />
-    </p>
-    <p>
       Georgian Name:
       <input type='text' onChange={(e) => props.updateState({name: {ka: e.target.value}})} />
     </p>

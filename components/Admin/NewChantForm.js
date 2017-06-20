@@ -10,8 +10,7 @@ class NewChantForm extends Component {
   state = {
     name: {
       ka: ''
-    },
-    slug: ''
+    }
   }
 
   constructor () {
