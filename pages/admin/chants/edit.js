@@ -1,15 +1,30 @@
 // @flow
 import { Component } from 'react'
+import Error from '~/components/Error'
 import Layout from '~/components/Layout/'
 import LocalizedLink from '~/components/LocalizedLink'
 import wrapPage from '~/components/wrappers/wrapPage'
+import ChantShowPageContent from '~/components/ChantShowPageContent'
+import type { Chant } from '~/data/types'
+import { getChantBySlug } from '~/data/ducks/chants'
+import fetchChantBySlug from '~/data/thunks/fetchChantBySlug'
 
+// TODO: Localize
 class EditChantPage extends Component {
-  static async getInitialProps ({query: {slug}}) {
-    return { slug }
+  props: {
+    chant: Chant
+  }
+
+  static async getInitialProps ({store, query: {slug}}) {
+    await store.dispatch(fetchChantBySlug(slug))
+    return { chant: getChantBySlug(store.getState(), slug) }
   }
 
   render () {
+    const { chant } = this.props
+
+    if (!chant) return <Error statusCode={404} />
+
     return (
       <Layout>
         <p>
@@ -19,9 +34,10 @@ class EditChantPage extends Component {
             </a>
           </LocalizedLink>
         </p>
-        <p>
-          chant slug: {this.props.slug}
-        </p>
+        <div>
+          <h2>Preview</h2>
+          <ChantShowPageContent chant={chant} />
+        </div>
       </Layout>
     )
   }

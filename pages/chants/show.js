@@ -4,8 +4,9 @@ import Error from '~/components/Error'
 import type { Chant } from '~/data/types'
 import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
-import { addChant, getChantBySlug } from '~/data/ducks/chants'
-import { database } from '~/data/firebase'
+import { getChantBySlug } from '~/data/ducks/chants'
+import fetchChantBySlug from '~/data/thunks/fetchChantBySlug'
+import ChantShowPageContent from '~/components/ChantShowPageContent'
 
 type InitialPropsContext = {
   query: {
@@ -18,7 +19,6 @@ type InitialPropsContext = {
 }
 
 type Props = {
-  slug: string,
   chant: ?Chant
 }
 
@@ -26,21 +26,8 @@ class ChantShowPage extends Component {
   props: Props
 
   static async getInitialProps ({query: {slug}, store}: InitialPropsContext) {
-    await database
-    .ref()
-    .child('chants')
-    .orderByChild('slug')
-    .equalTo(slug)
-    .once('value', (snapshot) => {
-      snapshot.forEach((chant) => {
-        store.dispatch(addChant({
-          chant: chant.val(),
-          key: chant.getKey()
-        }))
-      })
-    })
-
-    return { slug, chant: getChantBySlug(store.getState(), slug) }
+    await store.dispatch(fetchChantBySlug(slug))
+    return { chant: getChantBySlug(store.getState(), slug) }
   }
 
   render () {
@@ -50,10 +37,7 @@ class ChantShowPage extends Component {
 
     return (
       <Layout>
-        {chant && <div>
-          <h1>{chant.name && chant.name.ka}</h1>
-          <p>{chant.text && chant.text.ka}</p>
-        </div>}
+        {chant && <ChantShowPageContent chant={chant} />}
       </Layout>
     )
   }
