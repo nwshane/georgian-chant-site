@@ -1,7 +1,9 @@
 // @flow
 import { Component } from 'react'
-import { database } from '~/data/firebase'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import NewChantFormPresentation from './NewChantFormPresentation'
+import submitNewChant from '~/data/thunks/submitNewChant'
 
 // TODO: Localize
 class NewChantForm extends Component {
@@ -16,30 +18,31 @@ class NewChantForm extends Component {
     super()
     const self: any = this
     self.handleSubmit = this.handleSubmit.bind(this)
+    self.updateState = this.updateState.bind(this)
   }
 
   handleSubmit (e) {
     e.preventDefault()
+    this.props.submitNewChant(this.state)
+  }
 
-    database
-    .ref()
-    .child('chants')
-    .push({
-      name: {
-        ka: this.state.name.ka
-      },
-      slug: this.state.slug
-    })
+  updateState (values) {
+    this.setState(values)
   }
 
   render () {
     return (
       <NewChantFormPresentation
-        updateState={this.setState}
+        updateState={this.updateState}
         handleSubmit={this.handleSubmit}
       />
     )
   }
 }
 
-export default NewChantForm
+const mapDispatchToProps = (dispatch) => bindActionCreators(
+  {submitNewChant},
+  dispatch
+)
+
+export default connect(null, mapDispatchToProps)(NewChantForm)
