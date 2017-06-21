@@ -22,6 +22,7 @@ const ChantTextInput = ({locale, intl, ...props}: Props) => (
     id={`input-text-${locale}`}
     name={`text_${locale}`}
     title='Text'
+    multiLine
     floatingLabelText={getLocalizedLabelText({
       ...props,
       locale,

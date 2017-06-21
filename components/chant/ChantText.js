@@ -1,6 +1,7 @@
 // @flow
 import { injectIntl } from 'react-intl'
 import type { Chant } from '~/data/types'
+import nl2br from 'react-nl2br'
 
 import { getTranslatedText, getTransliteratedText } from '~/data/getters'
 
@@ -16,12 +17,12 @@ const ChantText = ({chant, intl: { locale }}: Props) => (
   <section>
     <div>
       <h3>Text</h3>
-      {getTransliteratedText(chant, locale)}
+      {nl2br(getTransliteratedText(chant, locale))}
     </div>
     {locale !== 'ka' && (
       <div>
         <h3>English Translation</h3>
-        {getTranslatedText(chant, locale)}
+        {nl2br(getTranslatedText(chant, locale))}
       </div>
     )}
     <style jsx>{`
