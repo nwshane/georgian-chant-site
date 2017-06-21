@@ -13,20 +13,34 @@ const NewChantFormPresentation = (props: Props) => (
     onSubmit={props.handleSubmit}
   >
     <FormsyText
-      id='input-name'
+      id='input-name-georgian'
       value=''
       name='name_ka'
       title='Name'
-      floatingLabelText='Chant Name'
+      floatingLabelText='Chant Name - Georgian'
       required
     />
     <FormsyText
-      id='input-text'
+      id='input-text-georgian'
       value=''
       name='text_ka'
       title='Text'
-      floatingLabelText='Chant Text'
+      floatingLabelText='Chant Text - Georgian'
       required
+    />
+    <FormsyText
+      id='input-name-english'
+      value=''
+      name='name_en'
+      title='Name'
+      floatingLabelText='Chant Name - English Translation'
+    />
+    <FormsyText
+      id='input-text-english'
+      value=''
+      name='text_en'
+      title='Text'
+      floatingLabelText='Chant Text - English Translation'
     />
     <RaisedButton type='submit'>
       Create New Chant
