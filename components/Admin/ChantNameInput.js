@@ -1,6 +1,7 @@
 // @flow
 import { defineMessages, injectIntl } from 'react-intl'
 import { FormsyText } from 'formsy-material-ui/lib/'
+import getLocalizedLabelText from '~/helpers/getLocalizedLabelText'
 
 type Props = {
   locale: string,
@@ -15,28 +16,13 @@ const { label } = defineMessages({
   }
 })
 
-const fullLanguageNames = defineMessages({
-  en: {
-    id: 'languages.full.en',
-    defaultMessage: 'English'
-  },
-  ka: {
-    id: 'languages.full.ka',
-    defaultMessage: 'Georgian'
-  }
-})
-
-const getFloatingLabelText = ({intl, locale, required}) => (
-  `${required ? '*' : ''}${intl.formatMessage(label)} - ${intl.formatMessage(fullLanguageNames[locale])}`
-)
-
 const ChantNameInput = (props: Props) => (
   <FormsyText
     id={`input-name-${props.locale}`}
     value=''
     name={`name_${props.locale}`}
     title='Name'
-    floatingLabelText={getFloatingLabelText(props)}
+    floatingLabelText={getLocalizedLabelText({...props, label: props.intl.formatMessage(label)})}
     {...props}
   />
 )
