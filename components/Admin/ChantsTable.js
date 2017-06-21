@@ -12,13 +12,14 @@ const AdminChantsTable = ({chants}: {chants: Chants}) => (
   <Table>
     <TableHeader
       displaySelectAll={false}
+      adjustForCheckbox={false}
     >
       <TableRow>
         <TableRowColumn>
           Name
         </TableRowColumn>
         <TableRowColumn>
-          Edit
+          Actions
         </TableRowColumn>
       </TableRow>
     </TableHeader>
@@ -36,7 +37,7 @@ const AdminChantsTable = ({chants}: {chants: Chants}) => (
               href={`/admin/chants/edit?slug=${chant.slug}`}
             >
               <a>
-                Edit Link
+                Edit Chant
               </a>
             </LocalizedLink>
           </TableRowColumn>
