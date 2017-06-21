@@ -2,6 +2,7 @@
 import Form from '~/components/presentation/Form'
 import { FormsyText } from 'formsy-material-ui/lib/'
 import RaisedButton from 'material-ui/RaisedButton'
+import ChantNameInput from './ChantNameInput'
 
 type Props = {
   handleSubmit: Function
@@ -12,29 +13,16 @@ const NewChantFormPresentation = (props: Props) => (
   <Form
     onSubmit={props.handleSubmit}
   >
-    <FormsyText
-      id='input-name-georgian'
-      value=''
-      name='name_ka'
-      title='Name'
-      floatingLabelText='Chant Name - Georgian'
-      required
-    />
+    <ChantNameInput locale='ka' required />
     <FormsyText
       id='input-text-georgian'
       value=''
       name='text_ka'
       title='Text'
-      floatingLabelText='Chant Text - Georgian'
+      floatingLabelText='*Chant Text - Georgian'
       required
     />
-    <FormsyText
-      id='input-name-english'
-      value=''
-      name='name_en'
-      title='Name'
-      floatingLabelText='Chant Name - English Translation'
-    />
+    <ChantNameInput locale='en' />
     <FormsyText
       id='input-text-english'
       value=''

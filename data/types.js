@@ -3,10 +3,12 @@
 export type Chant = {
   +slug: string,
   +name: {
-    +ka: string
+    +ka: string,
+    +en: string
   },
   +text: {
-    +ka: string
+    +ka: string,
+    +en: string
   }
 }
 
