@@ -1,3 +1,4 @@
+// @flow
 import { defineMessages } from 'react-intl'
 
 const fullLanguageNames = defineMessages({
@@ -11,6 +12,13 @@ const fullLanguageNames = defineMessages({
   }
 })
 
-export default ({intl, label, locale, required}) => (
+type LabelElements = {
+  intl: any,
+  label: string,
+  locale: string,
+  required: boolean
+}
+
+export default ({intl, label, locale, required}: LabelElements) => (
   `${required ? '*' : ''}${label} - ${intl.formatMessage(fullLanguageNames[locale])}`
 )

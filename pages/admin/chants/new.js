@@ -2,7 +2,7 @@
 import Layout from '~/components/Layout/'
 import LocalizedLink from '~/components/LocalizedLink'
 import wrapPage from '~/components/wrappers/wrapPage'
-import NewChantForm from '~/components/Admin/NewChantForm'
+import ChantForm from '~/components/Admin/ChantForm'
 
 // TODO: Localize
 const NewChantPage = () => (
@@ -15,7 +15,7 @@ const NewChantPage = () => (
         </a>
       </LocalizedLink>
     </p>
-    <NewChantForm />
+    <ChantForm />
   </Layout>
 )
 

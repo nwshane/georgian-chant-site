@@ -1,10 +1,14 @@
 {
   "AboutPage.description": "GeorgianChant.org არის ადგილი ინტერნეტში, სადაც სადაც შეგიძლიათ გაიგოთ ყველაფერი ქართული გალობის შესახებ.",
   "ChantList.title": "ყველა საგალობელი",
+  "ChantNameInput.label": "Chant Name",
+  "ChantTextInput.label": "Chant Text",
   "Header.about": "შესახებ",
   "Header.chants": "საგალობლები",
   "appMessage.loggedIn": "Welcome, {email}!",
   "appMessage.loggedOut": "Successfully Logged Out",
   "description": "GeorgianChant.org არის ადგილი ინტერნეტში, სადაც სადაც შეგიძლიათ გაიგოთ ყველაფერი ქართული გალობის შესახებ.",
-  "hello": "გამარჯობა მგალობლებო!"
+  "hello": "გამარჯობა მგალობლებო!",
+  "languages.full.en": "English",
+  "languages.full.ka": "Georgian"
 }

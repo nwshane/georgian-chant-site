@@ -1,6 +1,6 @@
 // @flow
 import { database } from '~/data/firebase'
-import { addChant } from '~/data/ducks/chants'
+import { setChant } from '~/data/ducks/chants'
 import type { Dispatch } from '~/data/types'
 
 export default (slug: string) => (dispatch: Dispatch) => (
@@ -11,7 +11,7 @@ export default (slug: string) => (dispatch: Dispatch) => (
   .equalTo(slug)
   .once('value', (snapshot) => {
     snapshot.forEach((chant) => {
-      dispatch(addChant({
+      dispatch(setChant({
         chant: chant.val(),
         key: chant.getKey()
       }))

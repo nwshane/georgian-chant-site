@@ -3,7 +3,7 @@ import type { Chant, Chants, State } from '~/data/types'
 import find from 'lodash.find'
 
 const SET_CHANTS = 'SET_CHANTS'
-const ADD_CHANT = 'ADD_CHANT'
+const SET_CHANT = 'SET_CHANT'
 
 type SetChantsAction = {
   type: 'SET_CHANTS',
@@ -17,8 +17,8 @@ export const setChants = (chants: Chants) => ({
   chants
 })
 
-export const addChant = ({chant, key}: {chant: Chant, key: string}) => ({
-  type: ADD_CHANT,
+export const setChant = ({chant, key}: {chant: Chant, key: string}) => ({
+  type: SET_CHANT,
   chant,
   key
 })
@@ -33,7 +33,7 @@ export default (state: Chants = {}, action: Action) => {
   switch (action.type) {
     case SET_CHANTS:
       return action.chants
-    case ADD_CHANT:
+    case SET_CHANT:
       const clone = {...state}
       clone[action.key] = action.chant
       return clone

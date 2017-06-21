@@ -2,12 +2,19 @@
 import { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import NewChantFormPresentation from './NewChantFormPresentation'
+import type { Chant } from '~/data/types'
+import ChantFormPresentation from './ChantFormPresentation'
 import submitNewChant from '~/data/thunks/submitNewChant'
+import updateChant from '~/data/thunks/updateChant'
 import localizeObject from '~/helpers/localizeObject'
 
 // TODO: Localize
-class NewChantForm extends Component {
+class ChantForm extends Component {
+  props: {
+    chant: Chant,
+    updateChant: Function,
+    submitNewChant: Function
+  }
   constructor () {
     super()
     const self: any = this
@@ -16,7 +23,11 @@ class NewChantForm extends Component {
 
   handleSubmit (formValues) {
     const localizedValues = localizeObject(formValues)
-    this.props.submitNewChant(localizedValues)
+    if (this.props.chant) {
+      this.props.updateChant(this.props.chant.slug, localizedValues)
+    } else {
+      this.props.submitNewChant(localizedValues)
+    }
   }
 
   updateState (values) {
@@ -25,16 +36,17 @@ class NewChantForm extends Component {
 
   render () {
     return (
-      <NewChantFormPresentation
+      <ChantFormPresentation
         handleSubmit={this.handleSubmit}
+        chant={this.props.chant}
       />
     )
   }
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(
-  {submitNewChant},
+  {submitNewChant, updateChant},
   dispatch
 )
 
-export default connect(null, mapDispatchToProps)(NewChantForm)
+export default connect(null, mapDispatchToProps)(ChantForm)

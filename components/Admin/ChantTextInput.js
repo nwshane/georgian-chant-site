@@ -6,41 +6,30 @@ import getLocalizedLabelText from '~/helpers/getLocalizedLabelText'
 type Props = {
   locale: string,
   required?: boolean,
-  intl: any
+  intl: any,
+  value: string
 }
 
 const { label } = defineMessages({
   label: {
-    id: 'ChantNameInput',
+    id: 'ChantTextInput.label',
     defaultMessage: 'Chant Text'
   }
 })
 
-const ChantTextInput = (props: Props) => (
+const ChantTextInput = ({locale, intl, ...props}: Props) => (
   <FormsyText
-    id={`input-text-${props.locale}`}
-    value=''
-    name={`text_${props.locale}`}
+    id={`input-text-${locale}`}
+    name={`text_${locale}`}
     title='Text'
-    floatingLabelText={getLocalizedLabelText({...props, label: props.intl.formatMessage(label)})}
+    floatingLabelText={getLocalizedLabelText({
+      ...props,
+      locale,
+      intl,
+      label: intl.formatMessage(label)
+    })}
     {...props}
   />
 )
 
 export default injectIntl(ChantTextInput)
-
-    // <FormsyText
-    //   id='input-text-georgian'
-    //   value=''
-    //   name='text_ka'
-    //   title='Text'
-    //   floatingLabelText='*Chant Text - Georgian'
-    //   required
-    // />
-    // <FormsyText
-    //   id='input-text-english'
-    //   value=''
-    //   name='text_en'
-    //   title='Text'
-    //   floatingLabelText='Chant Text - English Translation'
-    // />

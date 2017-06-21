@@ -1,15 +1,14 @@
 // @flow
 
+export type LocalizedObject = {
+  +ka: string,
+  [string]: string
+}
+
 export type Chant = {
   +slug: string,
-  +name: {
-    +ka: string,
-    +en: string
-  },
-  +text: {
-    +ka: string,
-    +en: string
-  }
+  +name: LocalizedObject,
+  +text: LocalizedObject
 }
 
 export type Chants = {}

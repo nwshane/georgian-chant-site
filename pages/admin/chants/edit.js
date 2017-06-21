@@ -8,6 +8,7 @@ import ChantShowPageContent from '~/components/ChantShowPageContent'
 import type { Chant } from '~/data/types'
 import { getChantBySlug } from '~/data/ducks/chants'
 import fetchChantBySlug from '~/data/thunks/fetchChantBySlug'
+import ChantForm from '~/components/Admin/ChantForm'
 
 // TODO: Localize
 class EditChantPage extends Component {
@@ -34,6 +35,7 @@ class EditChantPage extends Component {
             </a>
           </LocalizedLink>
         </p>
+        <ChantForm chant={chant} />
         <div>
           <h2>Preview</h2>
           <ChantShowPageContent chant={chant} />
