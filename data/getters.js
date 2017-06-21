@@ -23,3 +23,9 @@ type Textable = {
 export const getTranslatedText = (textable?: Textable, locale: string): string => (
   (textable && textable.text && textable.text[locale]) || ''
 )
+
+export const getTransliteratedText = (textable: Textable, locale: string): string => (
+  locale === 'ka'
+  ? textable.text.ka
+  : latinizeGeorgian(textable.text.ka)
+)
