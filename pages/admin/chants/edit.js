@@ -4,7 +4,6 @@ import Error from '~/components/Error'
 import Layout from '~/components/Layout/'
 import LocalizedLink from '~/components/LocalizedLink'
 import wrapPage from '~/components/wrappers/wrapPage'
-import ChantShowPageContent from '~/components/ChantShowPageContent'
 import type { Chant } from '~/data/types'
 import { getChantBySlug } from '~/data/ducks/chants'
 import fetchChantBySlug from '~/data/thunks/fetchChantBySlug'
@@ -36,10 +35,6 @@ class EditChantPage extends Component {
           </LocalizedLink>
         </p>
         <ChantForm chant={chant} />
-        <div>
-          <h2>Preview</h2>
-          <ChantShowPageContent chant={chant} />
-        </div>
       </Layout>
     )
   }
