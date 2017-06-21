@@ -1,4 +1,5 @@
 // @flow
+import latinizeGeorgian from 'latinize-georgian'
 import type { LocalizedObject } from '~/data/types'
 
 type Nameable = {
@@ -7,6 +8,12 @@ type Nameable = {
 
 export const getTranslatedName = (nameable?: Nameable, locale: string): string => (
   (nameable && nameable.name && nameable.name[locale]) || ''
+)
+
+export const getTransliteratedName = (nameable: Nameable, locale: string): string => (
+  locale === 'ka'
+  ? nameable.name.ka
+  : latinizeGeorgian(nameable.name.ka)
 )
 
 type Textable = {

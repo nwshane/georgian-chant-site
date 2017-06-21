@@ -2,13 +2,7 @@
 import LocalizedLink from '~/components/LocalizedLink'
 import type { Chant } from '~/data/types'
 import { injectIntl } from 'react-intl'
-import latinizeGeorgian from 'latinize-georgian'
-
-const getTransliteratedName = (chant, locale) => (
-  locale === 'ka'
-  ? chant.name.ka
-  : latinizeGeorgian(chant.name.ka)
-)
+import { getTransliteratedName } from '~/data/getters'
 
 const ChantLink = ({intl, chant}: {intl: *, chant: Chant}) => {
   const { locale } = intl

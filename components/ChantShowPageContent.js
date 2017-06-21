@@ -1,5 +1,6 @@
 // @flow
 import type { Chant } from '~/data/types'
+import ChantHeading from '~/components/chant/ChantHeading'
 
 type Props = {
   chant: Chant
@@ -7,8 +8,7 @@ type Props = {
 
 const ChantShowPageContent = ({chant}: Props) => (
   <div>
-    <h1>{chant.name && chant.name.ka}</h1>
-    <h2>{chant.name && chant.name.en}</h2>
+    <ChantHeading chant={chant} />
     <p>{chant.text && chant.text.ka}</p>
     <p>{chant.text && chant.text.en}</p>
   </div>
