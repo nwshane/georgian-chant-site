@@ -24,7 +24,6 @@ export default (href: Url, as: ?Url, {req, res}: ServerContext = {}) => {
   if (req) {
     res.redirect(getLocalizedPathname(asUrl.pathname, req))
   } else {
-    // $FlowFixMe : Router.push flow type is wrong - can take an object, not just a string
     Router.push(href, getLocalizedPathname(asUrl.pathname, req))
   }
 }

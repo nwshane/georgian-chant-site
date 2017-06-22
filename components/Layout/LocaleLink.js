@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 const currentPath = (originalUrl?: string): string => {
   if (typeof window === 'object') {
-    // $FlowFixMe: Router does not include asPath in flow-type; suppressing until I can use withRouter HOC and bypass use of Router altogether
     return Router.asPath
   } else if (originalUrl) {
     return originalUrl
