@@ -14,7 +14,7 @@ export default (chantValues: Chant) => async function (dispatch: Dispatch) {
   }
 
   try {
-    await database.ref().child('chants').push(newChantValues)
+    await database.ref().child('chants').child(newChantValues.slug).set(newChantValues)
     dispatch(setAppMessage('Chant added successfully', 'success'))
     redirectToLocalizedUrl(
       {

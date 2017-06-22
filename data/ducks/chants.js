@@ -1,6 +1,5 @@
 // @flow
 import type { Chant, Chants, State } from '~/data/types'
-import find from 'lodash.find'
 
 const SET_CHANTS = 'SET_CHANTS'
 const SET_CHANT = 'SET_CHANT'
@@ -26,7 +25,7 @@ export const setChant = ({chant, key}: {chant: Chant, key: string}) => ({
 export const getChants = (state: State): Chants => state.chants
 
 export const getChantBySlug = (state: State, slug: string): Chant => (
-  find(getChants(state), (chant) => chant && chant.slug === slug)
+  getChants(state)[slug]
 )
 
 export default (state: Chants = {}, action: Action) => {

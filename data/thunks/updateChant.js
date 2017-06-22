@@ -12,21 +12,19 @@ export default (oldSlug: string, chantValues: Chant) => async function (dispatch
     slug: convertNameToSlug(chantValues.name.ka)
   }
 
+  const { slug } = newChantValues
+
   try {
     await database
     .ref()
     .child('chants')
-    .orderByChild('slug')
-    .equalTo(oldSlug)
-    .once('value', (snapshot) => {
-      snapshot.forEach((chantSnapshot) => {
-        chantSnapshot.ref.update(newChantValues)
-        dispatch(setChant({
-          chant: newChantValues,
-          key: chantSnapshot.getKey()
-        }))
-      })
-    })
+    .child(slug)
+    .update(newChantValues)
+
+    dispatch(setChant({
+      chant: newChantValues,
+      key: slug
+    }))
 
     dispatch(setAppMessage('Chant updated successfully', 'success'))
     redirectToLocalizedUrl(

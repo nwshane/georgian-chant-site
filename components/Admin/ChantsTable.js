@@ -26,15 +26,15 @@ const AdminChantsTable = ({chants}: {chants: Chants}) => (
     <TableBody
       displayRowCheckbox={false}
     >
-      {map(chants, (chant, key) => (
-        <TableRow key={key}>
+      {map(chants, (chant, slug) => (
+        <TableRow key={slug}>
           <TableRowColumn>
             <ChantLink chant={chant} />
           </TableRowColumn>
           <TableRowColumn>
             <LocalizedLink
-              as={`/admin/chants/${chant.slug}/edit`}
-              href={`/admin/chants/edit?slug=${chant.slug}`}
+              as={`/admin/chants/${slug}/edit`}
+              href={`/admin/chants/edit?slug=${slug}`}
             >
               <a>
                 Edit Chant
