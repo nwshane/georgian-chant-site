@@ -1,5 +1,5 @@
 import latinizeGeorgian from 'latinize-georgian'
 
 export default (str) => (
-  latinizeGeorgian(str).toLowerCase().replace(/\s/g, '-')
+  encodeURI(latinizeGeorgian(str).toLowerCase().replace(/\s/g, '-'))
 )
