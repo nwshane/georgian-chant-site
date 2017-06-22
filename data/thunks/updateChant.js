@@ -28,7 +28,7 @@ export default (oldSlug: string, chantValues: Chant) => async function (dispatch
       })
     })
 
-    dispatch(setAppMessage('Chant updated successfully'))
+    dispatch(setAppMessage('Chant updated successfully', 'success'))
     redirectToLocalizedUrl(
       {
         pathname: '/chants/show',
@@ -37,6 +37,6 @@ export default (oldSlug: string, chantValues: Chant) => async function (dispatch
       { pathname: `/chants/${newChantValues.slug}` }
     )
   } catch (e) {
-    dispatch(setAppMessage('Chant could not be updated'))
+    dispatch(setAppMessage('Chant could not be updated', 'error'))
   }
 }

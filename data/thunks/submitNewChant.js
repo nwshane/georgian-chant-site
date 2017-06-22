@@ -15,7 +15,7 @@ export default (chantValues: Chant) => async function (dispatch: Dispatch) {
 
   try {
     await database.ref().child('chants').push(newChantValues)
-    dispatch(setAppMessage('Chant added successfully'))
+    dispatch(setAppMessage('Chant added successfully', 'success'))
     redirectToLocalizedUrl(
       {
         pathname: '/admin/chants/edit',
@@ -24,6 +24,6 @@ export default (chantValues: Chant) => async function (dispatch: Dispatch) {
       { pathname: `/admin/chants/${newChantValues.slug}/edit` }
   )
   } catch (e) {
-    dispatch(setAppMessage('Chant could not be added'))
+    dispatch(setAppMessage('Chant could not be added', 'error'))
   }
 }
