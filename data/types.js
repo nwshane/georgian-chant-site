@@ -15,12 +15,19 @@ export type Chants = {}
 
 export type User = ?{}
 
+export type AppMessageCategory = 'neutral' | 'success' | 'error'
+
+export type AppMessage = {
+  text: string,
+  category: AppMessageCategory
+}
+
 export type Dispatch = Function
 
 export type State = {
   +currentUser: User,
   +chants: Chants,
-  +appMessage: string
+  +appMessage: AppMessage
 }
 
 // this is the object passed into Next JS Page's getInitialProps method
