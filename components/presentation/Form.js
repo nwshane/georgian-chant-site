@@ -15,7 +15,6 @@ const GCForm = (props: Props) => (
       div :global(form) {
         display: flex;
         flex-direction: column;
-        max-width: 256px;
       }
     `}</style>
   </div>
