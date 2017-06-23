@@ -16,12 +16,6 @@ export const mergeChants = (chants: Chants) => ({
   chants
 })
 
-export const setChant = ({chant, key}: {chant: Chant, key: string}) => ({
-  type: SET_CHANT,
-  chant,
-  key
-})
-
 export const getChants = (state: State): Chants => state.chants
 
 export const getChantBySlug = (state: State, slug: string): Chant => (

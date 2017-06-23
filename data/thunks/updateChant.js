@@ -3,7 +3,7 @@ import { database } from '~/data/firebase'
 import convertNameToSlug from '~/helpers/convertNameToSlug'
 import { setAppMessage } from '~/data/ducks/appMessage'
 import type { Chant, Dispatch } from '~/data/types'
-import { setChant } from '~/data/ducks/chants'
+import fetchChantBySlug from './fetchChantBySlug'
 import redirectToLocalizedUrl from '~/helpers/redirectToLocalizedUrl'
 
 export default (oldSlug: string, chantValues: Chant) => async function (dispatch: Dispatch) {
@@ -30,10 +30,7 @@ export default (oldSlug: string, chantValues: Chant) => async function (dispatch
       oldChant.remove()
     }
 
-    dispatch(setChant({
-      chant: newChantValues,
-      key: slug
-    }))
+    await fetchChantBySlug(slug)
 
     dispatch(setAppMessage('Chant updated successfully', 'success'))
     redirectToLocalizedUrl(
