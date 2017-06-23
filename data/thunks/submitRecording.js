@@ -34,9 +34,14 @@ export default ({ chantSlug, recordingFile }: RecordingData) => async function (
 
     const { downloadURL: url } = await uploadRecordingFile(key, recordingFile)
 
-    await newRecordingRef.update({
-      url
-    })
+    await newRecordingRef.update({ url })
+    await database
+    .ref()
+    .child('chants')
+    .child(chantSlug)
+    .child('recordings')
+    .child(key)
+    .set(true)
 
     dispatch(setAppMessage('Finished saving the recording', 'success'))
   } catch (e) {
