@@ -13,17 +13,26 @@ export default (chantValues: Chant) => async function (dispatch: Dispatch) {
     slug: convertNameToSlug(chantValues.name.ka)
   }
 
+  const { slug } = newChantValues
+  const chantRef = database.ref().child('chants').child(slug)
+
   try {
-    await database.ref().child('chants').child(newChantValues.slug).set(newChantValues)
+    const chantSnapshot = await chantRef.once('value')
+    if (chantSnapshot.exists()) {
+      throw new Error('Chant with this name already exists; please choose a different name.')
+    }
+
+    await chantRef.set(newChantValues)
     dispatch(setAppMessage('Chant added successfully', 'success'))
     redirectToLocalizedUrl(
       {
         pathname: '/admin/chants/edit',
-        query: { slug: newChantValues.slug }
+        query: { slug: slug }
       },
-      { pathname: `/admin/chants/${newChantValues.slug}/edit` }
+      { pathname: `/admin/chants/${slug}/edit` }
   )
   } catch (e) {
-    dispatch(setAppMessage('Chant could not be added', 'error'))
+    const message = e.message || 'Chant could not be added'
+    dispatch(setAppMessage(message, 'error'))
   }
 }

@@ -21,6 +21,15 @@ export default (oldSlug: string, chantValues: Chant) => async function (dispatch
     .child(slug)
     .update(newChantValues)
 
+    if (oldSlug !== slug) {
+      const oldChant = await database
+      .ref()
+      .child('chants')
+      .child(oldSlug)
+
+      oldChant.remove()
+    }
+
     dispatch(setChant({
       chant: newChantValues,
       key: slug

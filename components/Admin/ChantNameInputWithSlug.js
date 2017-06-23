@@ -36,6 +36,7 @@ class ChantNameInputWithSlug extends Component {
         <ChantNameInput
           onChange={this.handleNameChange}
           value={this.state.name}
+          disabled={!!this.props.chant}
           locale='ka'
           required
         />
