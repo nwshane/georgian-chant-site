@@ -16,5 +16,4 @@ let app = getOrInitializeFirebaseApp()
 
 export default app
 export const database = app.database()
-export const storage = app.storage()
 export const auth = app.auth()

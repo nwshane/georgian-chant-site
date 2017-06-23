@@ -1,6 +1,7 @@
 // @flow
 import { setAppMessage } from '~/data/ducks/appMessage'
-import { database, storage } from '~/data/firebase'
+import { database } from '~/data/firebase'
+import storage from '~/data/firebaseStorage'
 
 const uploadRecordingFile = (key, recordingFile) => {
   const uploadTask = storage
