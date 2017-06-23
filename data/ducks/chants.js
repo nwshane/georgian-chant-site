@@ -1,18 +1,18 @@
 // @flow
 import type { Chant, Chants, State } from '~/data/types'
 
-const SET_CHANTS = 'SET_CHANTS'
+const MERGE_CHANTS = 'MERGE_CHANTS'
 const SET_CHANT = 'SET_CHANT'
 
-type SetChantsAction = {
-  type: 'SET_CHANTS',
+type MergeChantsAction = {
+  type: 'MERGE_CHANTS',
   chants: Chants
 }
 
-type Action = SetChantsAction
+type Action = MergeChantsAction
 
-export const setChants = (chants: Chants) => ({
-  type: SET_CHANTS,
+export const mergeChants = (chants: Chants) => ({
+  type: MERGE_CHANTS,
   chants
 })
 
@@ -30,8 +30,12 @@ export const getChantBySlug = (state: State, slug: string): Chant => (
 
 export default (state: Chants = {}, action: Action) => {
   switch (action.type) {
-    case SET_CHANTS:
-      return action.chants
+    case MERGE_CHANTS:
+      return Object.assign(
+        {},
+        state,
+        action.chants
+      )
     case SET_CHANT:
       const clone = {...state}
       clone[action.key] = action.chant
