@@ -8,7 +8,8 @@ export type LocalizedObject = {
 export type Chant = {
   +slug: string,
   +name: LocalizedObject,
-  +text: LocalizedObject
+  +text: LocalizedObject,
+  +recordings: {[string]: boolean} | Array<string>
 }
 
 export type Chants = {}

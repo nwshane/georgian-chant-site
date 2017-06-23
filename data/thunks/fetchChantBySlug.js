@@ -2,6 +2,7 @@
 import { database } from '~/data/firebase'
 import { mergeChants } from '~/data/ducks/chants'
 import type { Dispatch } from '~/data/types'
+import normalizeChants from '~/data/normalizeChants'
 
 export default (slug: string) => (dispatch: Dispatch) => (
   database
@@ -12,6 +13,6 @@ export default (slug: string) => (dispatch: Dispatch) => (
     const chants = {}
     chants[slug] = chant.val()
 
-    dispatch(mergeChants(chants))
+    dispatch(mergeChants(normalizeChants(chants)))
   })
 )
