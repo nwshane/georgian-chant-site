@@ -2,10 +2,16 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import type { Chant } from '~/data/types'
 import submitRecording from '~/data/thunks/submitRecording'
 import RecordingFormPresentation from './RecordingFormPresentation'
 
 class RecordingForm extends Component {
+  props: {
+    chant: Chant,
+    submitRecording: Function
+  }
+
   state: {
     recordingFile: ?{}
   }
@@ -25,7 +31,10 @@ class RecordingForm extends Component {
   }
 
   handleSubmit () {
-    this.props.submitRecording(this.state.recordingFile)
+    const { chant: { slug: chantSlug } } = this.props
+    const { recordingFile } = this.state
+
+    this.props.submitRecording({ chantSlug, recordingFile })
   }
 
   render () {
