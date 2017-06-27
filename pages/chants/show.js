@@ -6,6 +6,7 @@ import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
 import { getChantBySlug } from '~/data/ducks/chants'
 import fetchChantBySlug from '~/data/thunks/fetchChantBySlug'
+import fetchRecordings from '~/data/thunks/fetchRecordings'
 import ChantShowPageContent from '~/components/ChantShowPageContent'
 
 type InitialPropsContext = {
@@ -27,6 +28,7 @@ class ChantShowPage extends Component {
 
   static async getInitialProps ({query: {slug}, store}: InitialPropsContext) {
     await store.dispatch(fetchChantBySlug(slug))
+    await store.dispatch(fetchRecordings())
     return { chant: getChantBySlug(store.getState(), slug) }
   }
 
