@@ -1,11 +1,17 @@
 // @flow
 import type { Chants, Chant } from '~/data/types'
 
+const flattenObjectIntoKeysArray = (recordings) => (
+  recordings && !Array.isArray(recordings)
+  ? Object.keys(recordings)
+  : recordings
+)
+
 const normalizeChant = (chant: Chant): Chant => (
-  {
+  chant ? {
     ...chant,
-    recordings: Object.keys(chant.recordings)
-  }
+    recordings: flattenObjectIntoKeysArray(chant.recordings)
+  } : chant
 )
 
 export default (chants: Chants): Chants => (
