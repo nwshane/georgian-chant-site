@@ -17,7 +17,9 @@ const ChantRecordings = ({recordings}: Props) => (
       <div>
         {map(recordings, (recording, key) => (
           <div key={key}>
-            {JSON.stringify(recording)}
+            <audio controls src={recording.url}>
+              Your browser does not support the <code>audio</code> element.
+            </audio>
           </div>
         ))}
       </div>
