@@ -2,7 +2,7 @@
 import type { Chant, Chants, State } from '~/data/types'
 
 const MERGE_CHANTS = 'MERGE_CHANTS'
-const SET_CHANT = 'SET_CHANT'
+const SET_CHANTS = 'SET_CHANTS'
 
 type MergeChantsAction = {
   type: 'MERGE_CHANTS',
@@ -13,6 +13,11 @@ type Action = MergeChantsAction
 
 export const mergeChants = (chants: Chants) => ({
   type: MERGE_CHANTS,
+  chants
+})
+
+export const setChants = (chants: Chants) => ({
+  type: SET_CHANTS,
   chants
 })
 
@@ -34,10 +39,8 @@ export default (state: Chants = {}, action: Action) => {
         state,
         action.chants
       )
-    case SET_CHANT:
-      const clone = {...state}
-      clone[action.key] = action.chant
-      return clone
+    case SET_CHANTS:
+      return action.chants
     default:
       return state
   }

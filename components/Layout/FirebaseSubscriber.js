@@ -2,11 +2,11 @@
 import { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import subscribeAuthChange from '~/data/thunks/subscribeAuthChange'
+import subscribeToFirebase from '~/data/thunks/subscribeToFirebase'
 
-class AuthChangeSubscriber extends Component {
+class FirebaseSubscriber extends Component {
   componentDidMount () {
-    this.props.subscribeAuthChange()
+    this.props.subscribeToFirebase()
   }
 
   render () {
@@ -15,8 +15,8 @@ class AuthChangeSubscriber extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(
-  {subscribeAuthChange},
+  {subscribeToFirebase},
   dispatch
 )
 
-export default connect(null, mapDispatchToProps)(AuthChangeSubscriber)
+export default connect(null, mapDispatchToProps)(FirebaseSubscriber)

@@ -4,7 +4,7 @@ import Header from './Header'
 import GlobalStyle from './GlobalStyle'
 import GlobalHead from './GlobalHead'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import AuthChangeSubscriber from './AuthChangeSubscriber'
+import FirebaseSubscriber from './FirebaseSubscriber'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppMessageDisplay from './AppMessageDisplay'
 import '~/components/tapEvents'
@@ -14,7 +14,7 @@ const Layout = (props : { children?: Children }) => (
     <div>
       <GlobalStyle />
       <GlobalHead />
-      <AuthChangeSubscriber />
+      <FirebaseSubscriber />
       <Header />
       <AppMessageDisplay />
       <main>
