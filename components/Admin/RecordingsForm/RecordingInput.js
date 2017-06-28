@@ -3,14 +3,15 @@ import RaisedButton from 'material-ui/RaisedButton'
 import FileInput from 'react-file-input'
 
 type Props = {
-  handleChangeFile: Function
+  handleChangeFile: Function,
+  label: string
 }
 
 // TODO: localize
-const RecordingInput = ({handleChangeFile}: Props) => (
+const RecordingInput = ({label, handleChangeFile}: Props) => (
   <RaisedButton
     containerElement='label'
-    label='Choose Recording'
+    label={label}
   >
     <span>
       <FileInput

@@ -54,6 +54,7 @@ class RecordingForm extends Component {
         handleSubmit={this.handleSubmit}
         handleChangeFile={this.handleChangeFile}
         visible={this.state.visible}
+        recordingFile={this.state.recordingFile}
         showForm={this.showForm}
       />
     )
