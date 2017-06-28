@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton'
 import type { Recording } from '~/data/types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import deleteRecording from '~/data/thunks/deleteRecording'
+import deleteRecording from '~/data/thunks/recordings/delete'
 
 type Props = {
   deleteRecording: Function,

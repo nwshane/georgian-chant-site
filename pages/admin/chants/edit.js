@@ -6,10 +6,10 @@ import LocalizedLink from '~/components/LocalizedLink'
 import wrapPage from '~/components/wrappers/wrapPage'
 import type { Chant } from '~/data/types'
 import { getChantBySlug } from '~/data/ducks/chants'
-import fetchChantBySlug from '~/data/thunks/fetchChantBySlug'
+import fetchChantBySlug from '~/data/thunks/chants/fetchBySlug'
 import ChantForm from '~/components/Admin/ChantForm'
 import RecordingsForm from '~/components/Admin/RecordingsForm/'
-import fetchRecordings from '~/data/thunks/fetchRecordings'
+import fetchRecordings from '~/data/thunks/recordings/fetchAll'
 
 // TODO: Localize
 class EditChantPage extends Component {

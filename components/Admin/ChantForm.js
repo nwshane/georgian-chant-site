@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import type { Chant } from '~/data/types'
 import ChantFormPresentation from './ChantFormPresentation'
-import submitNewChant from '~/data/thunks/submitNewChant'
-import updateChant from '~/data/thunks/updateChant'
+import submitNewChant from '~/data/thunks/chants/create'
+import updateChant from '~/data/thunks/chants/update'
 import localizeObject from '~/helpers/localizeObject'
 
 // TODO: Localize

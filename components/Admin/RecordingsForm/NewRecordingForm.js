@@ -3,7 +3,7 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import type { Chant } from '~/data/types'
-import submitRecording from '~/data/thunks/submitRecording'
+import submitRecording from '~/data/thunks/recordings/create'
 import RecordingFormPresentation from './RecordingFormPresentation'
 
 class RecordingForm extends Component {

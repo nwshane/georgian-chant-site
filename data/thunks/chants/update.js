@@ -3,7 +3,7 @@ import { database } from '~/data/firebase'
 import convertNameToSlug from '~/helpers/convertNameToSlug'
 import { setAppMessage } from '~/data/ducks/appMessage'
 import type { Chant, Dispatch } from '~/data/types'
-import fetchChantBySlug from './fetchChantBySlug'
+import fetchChantBySlug from './fetchBySlug'
 import redirectToLocalizedUrl from '~/helpers/redirectToLocalizedUrl'
 
 export default (oldSlug: string, chantValues: Chant) => async function (dispatch: Dispatch) {

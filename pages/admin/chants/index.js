@@ -4,7 +4,7 @@ import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
 import LocalizedLink from '~/components/LocalizedLink'
 import AdminChantsTable from '~/components/Admin/ChantsTable'
-import fetchChants from '~/data/thunks/fetchChants'
+import fetchChants from '~/data/thunks/chants/fetchAll'
 
 type InitialPropsContext = {store: {dispatch: Function}}
 
