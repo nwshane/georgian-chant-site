@@ -36,8 +36,8 @@ class RecordingsPage extends Component {
           <TableBody
             displayRowCheckbox={false}
           >
-            {map(recordings, (recording) => (
-              <TableRow>
+            {map(recordings, (recording, key) => (
+              <TableRow {...{key}}>
                 <TableRowColumn>
                   {recording.chantSlug}
                 </TableRowColumn>
