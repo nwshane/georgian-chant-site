@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl'
 import LocaleLink from './LocaleLink'
 import AccountMenu from './AccountMenu'
 
+// TODO: localize
 const Header = ({intl: { locale }}) => (
   <nav>
     <LocalizedLink href='/'>
@@ -17,6 +18,11 @@ const Header = ({intl: { locale }}) => (
           id='Header.chants'
           defaultMessage='Chants'
         />
+      </a>
+    </LocalizedLink>
+    <LocalizedLink href='/recordings'>
+      <a>
+        Recordings
       </a>
     </LocalizedLink>
     <LocalizedLink href='/about'>
