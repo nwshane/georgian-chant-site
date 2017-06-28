@@ -8,7 +8,8 @@ import deleteRecording from '~/data/thunks/deleteRecording'
 
 type Props = {
   deleteRecording: Function,
-  recording: Recording
+  recording: Recording,
+  recordingId: string
 }
 
 class DeleteRecordingButton extends Component {
@@ -21,8 +22,8 @@ class DeleteRecordingButton extends Component {
   }
 
   handleClick () {
-    const { recording, deleteRecording } = this.props
-    deleteRecording(recording)
+    const { recording, recordingId, deleteRecording } = this.props
+    deleteRecording(recording, recordingId)
   }
 
   render () {

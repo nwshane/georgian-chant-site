@@ -34,7 +34,10 @@ const EditRecordingForms = ({recordings}: Props) => (
             <audio controls src={recording.url} />
           </TableRowColumn>
           <TableRowColumn>
-            <DeleteRecordingButton recording={recording} />
+            <DeleteRecordingButton
+              recording={recording}
+              recordingId={key}
+            />
           </TableRowColumn>
         </TableRow>
       ))}
