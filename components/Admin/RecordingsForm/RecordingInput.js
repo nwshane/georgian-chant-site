@@ -8,10 +8,11 @@ type Props = {
 }
 
 // TODO: localize
-const RecordingInput = ({label, handleChangeFile}: Props) => (
+const RecordingInput = ({label, handleChangeFile, ...props}: Props) => (
   <RaisedButton
     containerElement='label'
     label={label}
+    {...props}
   >
     <span>
       <FileInput

@@ -1,5 +1,5 @@
 // @flow
-import Form from '~/components/presentation/Form'
+import { Form } from 'formsy-react'
 import type { Chant } from '~/data/types'
 import RaisedButton from 'material-ui/RaisedButton'
 import ChantNameInputWithSlug from './ChantNameInputWithSlug'
@@ -16,6 +16,10 @@ type Props = {
 const ChantFormPresentation = ({chant, handleSubmit}: Props) => (
   <Form
     onSubmit={handleSubmit}
+    style={{
+      display: 'flex',
+      flexDirection: 'column'
+    }}
   >
     <ChantNameInputWithSlug chant={chant} />
     <ChantTextInput value={getTranslatedText(chant, 'ka')} locale='ka' required />

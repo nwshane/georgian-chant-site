@@ -1,5 +1,5 @@
 // @flow
-import Form from '~/components/presentation/Form'
+import { Form } from 'formsy-react'
 import { FormsyText } from 'formsy-material-ui/lib/'
 import RaisedButton from 'material-ui/RaisedButton'
 
@@ -16,6 +16,10 @@ const LoginFormPresentation = (props: Props) => (
       onSubmit={props.handleSubmit}
       onValid={props.enableButton}
       onInvalid={props.disableButton}
+      style={{
+        display: 'flex',
+        flexDirection: 'column'
+      }}
     >
       <FormsyText
         id='input-email'

@@ -1,6 +1,6 @@
 // @flow
 import RaisedButton from 'material-ui/RaisedButton'
-import Form from '~/components/presentation/Form'
+import { Form } from 'formsy-react'
 import RecordingInput from './RecordingInput'
 
 type Props = {
@@ -19,20 +19,21 @@ const RecordingFormPresentation = ({recordingFile, handleSubmit, handleChangeFil
   <Form
     onSubmit={handleSubmit}
     encType='multipart/form-data'
+    style={{
+      display: 'flex',
+      flexDirection: 'row'
+    }}
   >
     <RecordingInput
       label={getLabel(!!recordingFile)}
       handleChangeFile={handleChangeFile}
+      style={{marginRight: '20px'}}
     />
     {!!recordingFile && (
-      <span>
-        <span>
-          {recordingFile.name}
-        </span>
-        <RaisedButton type='submit'>
-          Upload Recording
-        </RaisedButton>
-      </span>
+      <RaisedButton
+        label={`Upload Recording: ${recordingFile.name}`}
+        type='submit'
+      />
     )}
     <style jsx>{`
       form {
