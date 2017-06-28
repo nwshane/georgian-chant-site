@@ -15,15 +15,10 @@ const RecordingInput = ({handleChangeFile}: Props) => (
     <span>
       <FileInput
         name='recording-file'
-        accept='.mp3'
+        accept='.mp3,.m4a'
         className='recordingFileInput'
         onChange={handleChangeFile} />
     </span>
-    {/* <audio
-      src={this.getFileSrc()}
-      >
-      <p>Your browser does not support the audio element.</p>
-    </audio> */}
     <style jsx>{`
       span :global(.recordingFileInput) {
         display: none;
