@@ -17,7 +17,9 @@ const Layout = (props : { children?: Children }) => (
       <AuthChangeSubscriber />
       <Header />
       <AppMessageDisplay />
-      {props.children}
+      <main>
+        {props.children}
+      </main>
       <style jsx>{`
       div {
         max-width: 900px;
@@ -25,6 +27,9 @@ const Layout = (props : { children?: Children }) => (
         font-size: 1.6rem;
         font-family: 'Open Sans', sans-serif;
         padding: 0 10px;
+      }
+      main {
+        margin-bottom: 50px;
       }
       `}
       </style>
