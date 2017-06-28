@@ -13,9 +13,9 @@ const RecordingFormPresentation = ({handleSubmit, handleChangeFile}: Props) => (
     onSubmit={handleSubmit}
     encType='multipart/form-data'
   >
-    <h3>
+    <p>
       Add a Recording
-    </h3>
+    </p>
     <RecordingInput handleChangeFile={handleChangeFile} />
     <style jsx>{`
       form {

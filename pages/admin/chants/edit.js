@@ -8,7 +8,8 @@ import type { Chant } from '~/data/types'
 import { getChantBySlug } from '~/data/ducks/chants'
 import fetchChantBySlug from '~/data/thunks/fetchChantBySlug'
 import ChantForm from '~/components/Admin/ChantForm'
-import RecordingForm from '~/components/Admin/RecordingForm/'
+import RecordingsForm from '~/components/Admin/RecordingsForm/'
+import fetchRecordings from '~/data/thunks/fetchRecordings'
 
 // TODO: Localize
 class EditChantPage extends Component {
@@ -18,6 +19,7 @@ class EditChantPage extends Component {
 
   static async getInitialProps ({store, query: {slug}}) {
     await store.dispatch(fetchChantBySlug(slug))
+    await store.dispatch(fetchRecordings())
     return { chant: getChantBySlug(store.getState(), slug) }
   }
 
@@ -36,7 +38,7 @@ class EditChantPage extends Component {
           </LocalizedLink>
         </p>
         <ChantForm chant={chant} />
-        <RecordingForm chant={chant} />
+        <RecordingsForm chant={chant} />
       </Layout>
     )
   }

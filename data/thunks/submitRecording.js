@@ -4,7 +4,7 @@ import { database } from '~/data/firebase'
 import storage from '~/data/firebaseStorage'
 
 const uploadRecordingFile = (key, recordingFile) => {
-  const uploadTask = storage
+  const uploadTask = storage()
   .ref()
   .child('recordings')
   .child(key)

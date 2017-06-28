@@ -25,11 +25,13 @@ export type AppMessage = {
 
 export type Dispatch = Function
 
+export type Recording = {
+  chantSlug: string,
+  url: string
+}
+
 export type Recordings = {
-  [string]: {
-    chantSlug: string,
-    url: string
-  }
+  [string]: Recording
 }
 
 export type State = {
