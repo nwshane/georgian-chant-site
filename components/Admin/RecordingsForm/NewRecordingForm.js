@@ -13,8 +13,9 @@ class RecordingForm extends Component {
   }
 
   state: {
-    recordingFile: ?{},
-    visible: boolean
+    recordingFile: ?{
+      name: string
+    }
   }
 
   constructor () {
@@ -22,13 +23,10 @@ class RecordingForm extends Component {
     const self: any = this
     self.handleSubmit = this.handleSubmit.bind(this)
     self.handleChangeFile = this.handleChangeFile.bind(this)
-    self.showForm = this.showForm.bind(this)
-    self.state = {
-      visible: false
-    }
+    self.state = {}
   }
 
-  handleChangeFile ({target: {files}}: {target: { files: Array<{}>}}) {
+  handleChangeFile ({target: {files}}: {target: { files: Array<{name: string}>}}) {
     console.log('recordingFile', files[0])
     this.setState({
       recordingFile: files[0]
@@ -42,20 +40,12 @@ class RecordingForm extends Component {
     this.props.submitRecording({ chantSlug, recordingFile })
   }
 
-  showForm () {
-    this.setState({
-      visible: true
-    })
-  }
-
   render () {
     return (
       <RecordingFormPresentation
         handleSubmit={this.handleSubmit}
         handleChangeFile={this.handleChangeFile}
-        visible={this.state.visible}
         recordingFile={this.state.recordingFile}
-        showForm={this.showForm}
       />
     )
   }

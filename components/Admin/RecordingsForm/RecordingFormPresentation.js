@@ -6,43 +6,40 @@ import RecordingInput from './RecordingInput'
 type Props = {
   handleSubmit: Function,
   handleChangeFile: Function,
-  visible: boolean,
-  recordingFile: ?{},
-  showForm: Function
+  recordingFile: ?{
+    name: string
+  }
 }
 
 const getLabel = (filePresent) => (
-  filePresent ? 'Choose Different File' : 'Choose File'
+  filePresent ? 'Choose Different File' : 'Add a New Recording'
 )
-const RecordingFormPresentation = ({visible, recordingFile, showForm, handleSubmit, handleChangeFile}: Props) => (
-  visible
-  ? (
-    <Form
-      onSubmit={handleSubmit}
-      encType='multipart/form-data'
-    >
-      <RecordingInput label={getLabel(!!recordingFile)} handleChangeFile={handleChangeFile} />
-      {!!recordingFile && (
+
+const RecordingFormPresentation = ({recordingFile, handleSubmit, handleChangeFile}: Props) => (
+  <Form
+    onSubmit={handleSubmit}
+    encType='multipart/form-data'
+  >
+    <RecordingInput
+      label={getLabel(!!recordingFile)}
+      handleChangeFile={handleChangeFile}
+    />
+    {!!recordingFile && (
+      <span>
         <span>
-          <span>
-            {recordingFile.name}
-          </span>
-          <RaisedButton type='submit'>
-            Upload Recording
-          </RaisedButton>
+          {recordingFile.name}
         </span>
-      )}
-      <style jsx>{`
-        form {
-          margin: 50px 0 30px;
-        }
-      `}</style>
-    </Form>
-  ) : (
-    <RaisedButton onTouchTap={showForm}>
-      Add a New Recording
-    </RaisedButton>
-  )
+        <RaisedButton type='submit'>
+          Upload Recording
+        </RaisedButton>
+      </span>
+    )}
+    <style jsx>{`
+      form {
+        margin: 50px 0 30px;
+      }
+    `}</style>
+  </Form>
 )
 
 export default RecordingFormPresentation
