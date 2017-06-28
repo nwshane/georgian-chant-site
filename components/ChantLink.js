@@ -4,7 +4,14 @@ import type { Chant } from '~/data/types'
 import { injectIntl } from 'react-intl'
 import { getTransliteratedName } from '~/data/getters'
 
-const ChantLink = ({intl, chant}: {intl: *, chant: Chant}) => {
+type Props = {
+  intl: {
+    locale: string
+  },
+  chant: Chant,
+  text?: string
+}
+const ChantLink = ({text, intl, chant}: Props) => {
   const { locale } = intl
   const slug = chant.slug
 
@@ -12,7 +19,7 @@ const ChantLink = ({intl, chant}: {intl: *, chant: Chant}) => {
     <div>
       <LocalizedLink as={`/chants/${slug}`} href={`/chants/show?slug=${slug}`}>
         <a>
-          {getTransliteratedName(chant, locale)}
+          {text || getTransliteratedName(chant, locale)}
         </a>
       </LocalizedLink>
       <style jsx>{`

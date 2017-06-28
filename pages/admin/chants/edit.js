@@ -10,6 +10,7 @@ import fetchChantBySlug from '~/data/thunks/chants/fetchBySlug'
 import ChantForm from '~/components/Admin/ChantForm'
 import RecordingsForm from '~/components/Admin/RecordingsForm/'
 import fetchRecordings from '~/data/thunks/recordings/fetchAll'
+import ChantLink from '~/components/ChantLink'
 
 // TODO: Localize
 class EditChantPage extends Component {
@@ -37,6 +38,7 @@ class EditChantPage extends Component {
             </a>
           </LocalizedLink>
         </p>
+        <ChantLink chant={chant} text="View this chant's page" />
         <ChantForm chant={chant} />
         <RecordingsForm chant={chant} />
       </Layout>
