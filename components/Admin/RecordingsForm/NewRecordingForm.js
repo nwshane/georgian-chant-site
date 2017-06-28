@@ -23,7 +23,7 @@ class RecordingForm extends Component {
     const self: any = this
     self.handleSubmit = this.handleSubmit.bind(this)
     self.handleChangeFile = this.handleChangeFile.bind(this)
-    self.state = {}
+    self.state = { recordingFile: null }
   }
 
   handleChangeFile ({target: {files}}: {target: { files: Array<{name: string}>}}) {
@@ -38,6 +38,7 @@ class RecordingForm extends Component {
     const { recordingFile } = this.state
 
     this.props.submitRecording({ chantSlug, recordingFile })
+    this.setState({ recordingFile: null })
   }
 
   render () {
