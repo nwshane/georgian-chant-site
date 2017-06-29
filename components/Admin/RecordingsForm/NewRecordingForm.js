@@ -33,11 +33,16 @@ class RecordingForm extends Component {
     })
   }
 
-  handleSubmit () {
+  async handleSubmit () {
     const { chant: { slug: chantSlug } } = this.props
     const { recordingFile } = this.state
 
-    this.props.submitRecording({ chantSlug, recordingFile })
+    const { uploadTask } = await this.props.submitRecording({ chantSlug, recordingFile })
+
+    uploadTask.on('state_changed', (snapshot) => {
+      console.log(snapshot.bytesTransferred / snapshot.totalBytes * 100, '%')
+    })
+
     this.setState({ recordingFile: null })
   }
 
