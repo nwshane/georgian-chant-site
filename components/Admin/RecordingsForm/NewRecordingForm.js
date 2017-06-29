@@ -2,7 +2,7 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import type { Chant } from '~/data/types'
+import type { Chant, UploadTask } from '~/data/types'
 import submitRecording from '~/data/thunks/recordings/create'
 import RecordingFormPresentation from './RecordingFormPresentation'
 
@@ -38,8 +38,8 @@ class NewRecordingForm extends Component {
     const { chant: { slug: chantSlug } } = this.props
     const { recordingFile } = this.state
 
-    const { uploadTask }: { uploadTask: { on: Function } } = await this.props.submitRecording({ chantSlug, recordingFile })
-    this.props.addUploadTask(uploadTask)
+    const uploadTaskObject: { [string]: UploadTask } = await this.props.submitRecording({ chantSlug, recordingFile })
+    this.props.addUploadTask(uploadTaskObject)
     this.setState({ recordingFile: null })
   }
 

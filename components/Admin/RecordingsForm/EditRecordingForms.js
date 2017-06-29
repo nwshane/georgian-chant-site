@@ -9,7 +9,9 @@ import UploadTaskRow from './UploadTaskRow'
 
 type Props = {
   recordings: Recordings,
-  uploadTasks: Array<UploadTask>,
+  uploadTasks: {
+    [string]: UploadTask
+  },
   removeUploadTask: Function
 }
 
@@ -44,8 +46,8 @@ const EditRecordingForms = ({recordings, uploadTasks, removeUploadTask}: Props) 
           </TableRowColumn>
         </TableRow>
       ))}
-      {uploadTasks.map((uploadTask) => (
-        <UploadTaskRow {...{uploadTask, removeUploadTask}} />
+      {map(uploadTasks, (uploadTask, key) => (
+        <UploadTaskRow {...{key, uploadTaskKey: key, uploadTask, removeUploadTask}} />
       ))}
     </TableBody>
   </Table>

@@ -43,9 +43,9 @@ export default ({ chantSlug, recordingFile }: RecordingData) => async function (
 
     updateDatabase(dispatch, { newRecordingRef, uploadTask, chantSlug })
 
-    // wrap uploadTask in object so that it is returned without waiting
-    // to be resolved
-    return { uploadTask }
+    const uploadTaskObject = {}
+    uploadTaskObject[newRecordingRef.key] = uploadTask
+    return uploadTaskObject
   } catch (e) {
     dispatch(setAppMessage('Could not save recording', 'error'))
   }

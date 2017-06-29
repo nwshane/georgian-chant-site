@@ -10,8 +10,10 @@ type Props = {
 
 class RecordingsForm extends Component {
   props: Props
-  state = {
-    uploadTasks: []
+  state: {
+    uploadTasks: {
+      [string]: UploadTask
+    }
   }
 
   constructor (props: Props) {
@@ -19,19 +21,23 @@ class RecordingsForm extends Component {
     const self: any = this
     self.addUploadTask = self.addUploadTask.bind(self)
     self.removeUploadTask = self.removeUploadTask.bind(self)
+    this.state = {
+      uploadTasks: {}
+    }
   }
 
-  addUploadTask (uploadTask: UploadTask) {
+  addUploadTask (uploadTaskObject: {[string]: UploadTask}) {
     this.setState({
-      uploadTasks: this.state.uploadTasks.concat(uploadTask)
+      uploadTasks: Object.assign({}, this.state.uploadTasks, uploadTaskObject)
     })
   }
 
-  removeUploadTask (uploadTask: UploadTask) {
+  removeUploadTask (uploadTaskKey: string) {
     const { uploadTasks } = this.state
+    delete uploadTasks[uploadTaskKey]
 
     this.setState({
-      uploadTasks: uploadTasks.filter((uploadTaskItem) => (uploadTaskItem !== uploadTask))
+      uploadTasks: Object.assign({}, uploadTasks)
     })
   }
 

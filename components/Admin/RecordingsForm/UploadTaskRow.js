@@ -5,7 +5,8 @@ import UploadTaskRowPresentation from './UploadTaskRowPresentation'
 
 type Props = {
   uploadTask: UploadTask,
-  removeUploadTask: Function
+  removeUploadTask: Function,
+  uploadTaskKey: string
 }
 
 class UploadTaskRow extends Component {
@@ -29,16 +30,16 @@ class UploadTaskRow extends Component {
   }
 
   componentDidMount () {
-    const { uploadTask, removeUploadTask } = this.props
+    const { uploadTaskKey, uploadTask, removeUploadTask } = this.props
 
     console.log('uploadTask in UploadTaskRow', uploadTask)
 
     uploadTask.on('state_changed', this.setPercentLoaded)
 
     uploadTask.then(() => {
-      removeUploadTask(uploadTask)
+      removeUploadTask(uploadTaskKey)
     }).catch(() => {
-      removeUploadTask(uploadTask)
+      removeUploadTask(uploadTaskKey)
     })
   }
 
