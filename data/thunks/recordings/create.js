@@ -2,6 +2,7 @@
 import { setAppMessage } from '~/data/ducks/appMessage'
 import { database } from '~/data/firebase'
 import storage from '~/data/firebaseStorage'
+import getUpdateRecordingObject from './getUpdateRecordingObject'
 
 type RecordingData = {
   chantSlug: string,
@@ -18,13 +19,6 @@ const uploadRecordingFile = (key, recordingFile) => (
   .put(recordingFile, { contentType: recordingFile.type })
 )
 
-const getUpdateRecordingObject = ({ recordingKey, chantSlug, values }) => {
-  const obj = {}
-  obj[`chants/${chantSlug}/recordings/${recordingKey}`] = true
-  obj[`recordings/${recordingKey}`] = values
-  return obj
-}
-
 async function updateDatabase (dispatch, { newRecordingRef, uploadTask, chantSlug }) {
   const { downloadURL: url } = await uploadTask
   const { key: recordingKey } = newRecordingRef
@@ -32,7 +26,7 @@ async function updateDatabase (dispatch, { newRecordingRef, uploadTask, chantSlu
 
   await database
   .ref()
-  .update(getUpdateRecordingObject({ recordingKey, chantSlug, values }))
+  .update(getUpdateRecordingObject({ recordingKey, chantSlug }, values))
 
   dispatch(setAppMessage('Finished saving the recording', 'success'))
 }
