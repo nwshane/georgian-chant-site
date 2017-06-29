@@ -6,9 +6,9 @@ type PathVariables = {
   chantSlug: string
 }
 
-export default ({ recordingKey, chantSlug }: PathVariables, values: Recording) => {
+export default ({ recordingKey, chantSlug }: PathVariables, values: ?Recording) => {
   const obj = {}
-  obj[`chants/${chantSlug}/recordings/${recordingKey}`] = true
+  obj[`chants/${chantSlug}/recordings/${recordingKey}`] = values ? true : null
   obj[`recordings/${recordingKey}`] = values
   return obj
 }
