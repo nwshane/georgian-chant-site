@@ -34,7 +34,6 @@ async function updateDatabase (dispatch, { newRecordingRef, uploadTask, chantSlu
 
 export default ({ chantSlug, recordingFile }: RecordingData) => async function (dispatch: Function) {
   try {
-    dispatch(setAppMessage('Saving recording'))
     const newRecordingRef = await database.ref().child('recordings').push({
       chantSlug: chantSlug
     })
