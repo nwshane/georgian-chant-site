@@ -6,10 +6,11 @@ import type { Chant } from '~/data/types'
 import submitRecording from '~/data/thunks/recordings/create'
 import RecordingFormPresentation from './RecordingFormPresentation'
 
-class RecordingForm extends Component {
+class NewRecordingForm extends Component {
   props: {
     chant: Chant,
-    submitRecording: Function
+    submitRecording: Function,
+    addUploadTask: Function
   }
 
   state: {
@@ -37,12 +38,8 @@ class RecordingForm extends Component {
     const { chant: { slug: chantSlug } } = this.props
     const { recordingFile } = this.state
 
-    const { uploadTask } = await this.props.submitRecording({ chantSlug, recordingFile })
-
-    uploadTask.on('state_changed', (snapshot) => {
-      console.log(snapshot.bytesTransferred / snapshot.totalBytes * 100, '%')
-    })
-
+    const { uploadTask }: { uploadTask: { on: Function } } = await this.props.submitRecording({ chantSlug, recordingFile })
+    this.props.addUploadTask(uploadTask)
     this.setState({ recordingFile: null })
   }
 
@@ -62,4 +59,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators(
   dispatch
 )
 
-export default connect(null, mapDispatchToProps)(RecordingForm)
+export default connect(null, mapDispatchToProps)(NewRecordingForm)

@@ -1,16 +1,19 @@
 // @flow
-import type { Recordings } from '~/data/types'
+import type { Recordings, UploadTask } from '~/data/types'
 import { connect } from 'react-redux'
 import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import { getRecordingsForChant } from '~/data/ducks/recordings'
 import map from 'lodash.map'
 import DeleteRecordingButton from './DeleteRecordingButton'
+import UploadTaskRow from './UploadTaskRow'
 
 type Props = {
-  recordings: Recordings
+  recordings: Recordings,
+  uploadTasks: Array<UploadTask>,
+  removeUploadTask: Function
 }
 
-const EditRecordingForms = ({recordings}: Props) => (
+const EditRecordingForms = ({recordings, uploadTasks, removeUploadTask}: Props) => (
   <Table>
     <TableHeader
       displaySelectAll={false}
@@ -40,6 +43,9 @@ const EditRecordingForms = ({recordings}: Props) => (
             />
           </TableRowColumn>
         </TableRow>
+      ))}
+      {uploadTasks.map((uploadTask) => (
+        <UploadTaskRow {...{uploadTask, removeUploadTask}} />
       ))}
     </TableBody>
   </Table>

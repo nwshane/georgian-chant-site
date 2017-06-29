@@ -41,6 +41,12 @@ export type State = {
   +recordings: Recordings
 }
 
+export type UploadTask = {
+  on: Function,
+  then: Function,
+  off: Function
+}
+
 // this is the object passed into Next JS Page's getInitialProps method
 export type ServerContext = {
   req: {
