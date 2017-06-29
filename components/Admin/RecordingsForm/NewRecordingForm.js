@@ -28,7 +28,6 @@ class NewRecordingForm extends Component {
   }
 
   handleChangeFile ({target: {files}}: {target: { files: Array<{name: string}>}}) {
-    console.log('recordingFile', files[0])
     this.setState({
       recordingFile: files[0]
     })

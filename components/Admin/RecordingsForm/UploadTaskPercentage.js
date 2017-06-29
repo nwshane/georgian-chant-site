@@ -1,7 +1,6 @@
 // @flow
 import { Component } from 'react'
 import type { UploadTask } from '~/data/types'
-import UploadTaskRowPresentation from './UploadTaskRowPresentation'
 
 type Props = {
   uploadTask: UploadTask,
@@ -9,7 +8,7 @@ type Props = {
   uploadTaskKey: string
 }
 
-class UploadTaskRow extends Component {
+class UploadTaskPercentage extends Component {
   props: Props
 
   state = {
@@ -23,7 +22,6 @@ class UploadTaskRow extends Component {
   }
 
   setPercentLoaded (snapshot: { bytesTransferred: number, totalBytes: number }) {
-    console.log('Calling this.setState')
     this.setState({
       percentLoaded: Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100, 2)
     })
@@ -31,8 +29,6 @@ class UploadTaskRow extends Component {
 
   componentDidMount () {
     const { uploadTaskKey, uploadTask, removeUploadTask } = this.props
-
-    console.log('uploadTask in UploadTaskRow', uploadTask)
 
     uploadTask.on('state_changed', this.setPercentLoaded)
 
@@ -50,9 +46,9 @@ class UploadTaskRow extends Component {
 
   render () {
     return (
-      <UploadTaskRowPresentation percentLoaded={this.state.percentLoaded} />
+      <span>{this.state.percentLoaded}%</span>
     )
   }
 }
 
-export default UploadTaskRow
+export default UploadTaskPercentage

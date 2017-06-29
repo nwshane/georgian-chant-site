@@ -5,7 +5,7 @@ import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'materia
 import { getRecordingsForChant } from '~/data/ducks/recordings'
 import map from 'lodash.map'
 import DeleteRecordingButton from './DeleteRecordingButton'
-import UploadTaskRow from './UploadTaskRow'
+import UploadTaskPercentage from './UploadTaskPercentage'
 
 type Props = {
   recordings: Recordings,
@@ -46,8 +46,17 @@ const EditRecordingForms = ({recordings, uploadTasks, removeUploadTask}: Props) 
           </TableRowColumn>
         </TableRow>
       ))}
-      {map(uploadTasks, (uploadTask, key) => (
-        <UploadTaskRow {...{key, uploadTaskKey: key, uploadTask, removeUploadTask}} />
+      {map(uploadTasks, (uploadTask, uploadTaskKey) => (
+        <TableRow key={uploadTaskKey}>
+          <TableRowColumn>
+            Loading New File: {
+              <UploadTaskPercentage
+                {...{uploadTaskKey, uploadTask, removeUploadTask}}
+              />
+            }
+          </TableRowColumn>
+          <TableRowColumn />
+        </TableRow>
       ))}
     </TableBody>
   </Table>
