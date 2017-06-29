@@ -18,16 +18,21 @@ const uploadRecordingFile = (key, recordingFile) => (
   .put(recordingFile, { contentType: recordingFile.type })
 )
 
+const getUpdateRecordingObject = ({ recordingKey, chantSlug, values }) => {
+  const obj = {}
+  obj[`chants/${chantSlug}/recordings/${recordingKey}`] = true
+  obj[`recordings/${recordingKey}`] = values
+  return obj
+}
+
 async function updateDatabase (dispatch, { newRecordingRef, uploadTask, chantSlug }) {
   const { downloadURL: url } = await uploadTask
-  await newRecordingRef.update({ url, chantSlug })
+  const { key: recordingKey } = newRecordingRef
+  const values = { chantSlug, url }
+
   await database
   .ref()
-  .child('chants')
-  .child(chantSlug)
-  .child('recordings')
-  .child(newRecordingRef.key)
-  .set(true)
+  .update(getUpdateRecordingObject({ recordingKey, chantSlug, values }))
 
   dispatch(setAppMessage('Finished saving the recording', 'success'))
 }
