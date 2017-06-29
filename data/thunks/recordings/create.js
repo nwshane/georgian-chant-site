@@ -20,7 +20,7 @@ const uploadRecordingFile = (key, recordingFile) => (
 
 async function updateDatabase (dispatch, { newRecordingRef, uploadTask, chantSlug }) {
   const { downloadURL: url } = await uploadTask
-  await newRecordingRef.update({ url })
+  await newRecordingRef.update({ url, chantSlug })
   await database
   .ref()
   .child('chants')
@@ -34,9 +34,7 @@ async function updateDatabase (dispatch, { newRecordingRef, uploadTask, chantSlu
 
 export default ({ chantSlug, recordingFile }: RecordingData) => async function (dispatch: Function) {
   try {
-    const newRecordingRef = await database.ref().child('recordings').push({
-      chantSlug: chantSlug
-    })
+    const newRecordingRef = await database.ref().child('recordings').push()
 
     const uploadTask = uploadRecordingFile(newRecordingRef.key, recordingFile)
 
