@@ -18,7 +18,7 @@ export default () => (dispatch: Dispatch, getState: Function) => {
       return
     }
 
-    const idToken = await auth.currentUser.getIdToken()
+    const idToken = await auth.currentUser.getIdToken(true)
 
     // if cookie does not exist, or the token was refreshed, get
     // a new cookie with correct token
