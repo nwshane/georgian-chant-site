@@ -17,7 +17,7 @@ const ChantList = ({chants} : { chants: Chants }) => (
       {map(chants, (chant: Chant, key: string): Element<*> => (
         <li key={key}>
           <ChantLink
-            chant={chant}
+            chantSlug={key}
           />
         </li>
       ))}

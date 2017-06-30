@@ -10,8 +10,8 @@ export const getTranslatedName = (nameable?: Nameable, locale: string): string =
   (nameable && nameable.name && nameable.name[locale]) || ''
 )
 
-export const getTransliteratedName = (nameable: Nameable, locale: string): string => (
-  locale === 'ka'
+export const getTransliteratedName = (nameable?: Nameable, locale: string): string => (
+  !nameable ? '' : locale === 'ka'
   ? nameable.name.ka
   : latinizeGeorgian(nameable.name.ka)
 )

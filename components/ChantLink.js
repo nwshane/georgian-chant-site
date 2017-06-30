@@ -1,25 +1,19 @@
 // @flow
+import { connect } from 'react-redux'
 import LocalizedLink from '~/components/LocalizedLink'
-import type { Chant } from '~/data/types'
 import { injectIntl } from 'react-intl'
-import { getTransliteratedName } from '~/data/getters'
+import { getTransliteratedChantName } from '~/data/getters/chants'
 
 type Props = {
-  intl: {
-    locale: string
-  },
-  chant: Chant,
-  text?: string
+  chantSlug: string,
+  text: string
 }
-const ChantLink = ({text, intl, chant}: Props) => {
-  const { locale } = intl
-  const slug = chant.slug
-
+const ChantLink = ({text, chantSlug}: Props) => {
   return (
     <div>
-      <LocalizedLink as={`/chants/${slug}`} href={`/chants/show?slug=${slug}`}>
+      <LocalizedLink as={`/chants/${chantSlug}`} href={`/chants/show?slug=${chantSlug}`}>
         <a>
-          {text || getTransliteratedName(chant, locale)}
+          {text}
         </a>
       </LocalizedLink>
       <style jsx>{`
@@ -31,4 +25,8 @@ const ChantLink = ({text, intl, chant}: Props) => {
   )
 }
 
-export default injectIntl(ChantLink)
+const mapStateToProps = (state, {text, chantSlug, intl: { locale }}) => ({
+  text: text || getTransliteratedChantName(state, chantSlug, locale)
+})
+
+export default injectIntl(connect(mapStateToProps)(ChantLink))

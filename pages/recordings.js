@@ -3,6 +3,7 @@ import { Component } from 'react'
 import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import wrapPage from '~/components/wrappers/wrapPage'
 import Layout from '~/components/Layout/'
+import ChantLink from '~/components/ChantLink'
 import fetchRecordings from '~/data/thunks/recordings/fetchAll'
 import { getRecordings } from '~/data/ducks/recordings'
 import map from 'lodash.map'
@@ -39,7 +40,7 @@ class RecordingsPage extends Component {
             {map(recordings, (recording, key) => (
               <TableRow {...{key}}>
                 <TableRowColumn>
-                  {recording.chantSlug}
+                  <ChantLink chantSlug={recording.chantSlug} />
                 </TableRowColumn>
                 <TableRowColumn>
                   <audio controls src={recording.url} />

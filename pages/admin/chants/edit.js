@@ -38,7 +38,7 @@ class EditChantPage extends Component {
             </a>
           </LocalizedLink>
         </p>
-        <ChantLink chant={chant} text="View this chant's page" />
+        <ChantLink chantSlug={chant.slug} text="View this chant's page" />
         <ChantForm chant={chant} />
         <RecordingsForm chant={chant} />
       </Layout>

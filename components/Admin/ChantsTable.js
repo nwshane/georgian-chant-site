@@ -29,7 +29,7 @@ const AdminChantsTable = ({chants}: {chants: Chants}) => (
       {map(chants, (chant, slug) => (
         <TableRow key={slug}>
           <TableRowColumn>
-            <ChantLink chant={chant} />
+            <ChantLink chantSlug={slug} />
           </TableRowColumn>
           <TableRowColumn>
             <LocalizedLink
