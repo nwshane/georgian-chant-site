@@ -18,8 +18,13 @@ const ChantText = ({chant, intl: { locale }}: Props) => (
     <div>
       <h3>Text</h3>
       {nl2br(getTransliteratedText(chant, locale))}
+      {locale !== 'ka' && !(getTranslatedText(chant, locale).length > 0) && (
+        <p>
+          No translation available.
+        </p>
+      )}
     </div>
-    {locale !== 'ka' && (
+    {locale !== 'ka' && getTranslatedText(chant, locale).length > 0 && (
       <div>
         <h3>English Translation</h3>
         {nl2br(getTranslatedText(chant, locale))}
