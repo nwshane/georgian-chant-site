@@ -1,10 +1,36 @@
 const { FIREBASE_ID_TOKEN_COOKIE } = require('../universal/constants')
 const firebaseAdmin = require('firebase-admin')
 
-const serviceAccount = require('../georgian-chant-site-firebase-adminsdk-t5tsp-8684456524.json')
+const getFirebaseCredentials = () => {
+  const {
+    FIREBASE_TYPE: type,
+    FIREBASE_PROJECT_ID: projectId,
+    FIREBASE_PRIVATE_KEY_ID: privateKeyId,
+    FIREBASE_PRIVATE_KEY: privateKey,
+    FIREBASE_CLIENT_EMAIL: clientEmail,
+    FIREBASE_CLIENT_ID: clientId,
+    FIREBASE_AUTH_URI: authUri,
+    FIREBASE_TOKEN_URI: tokenUri,
+    FIREBASE_AUTH_PROVIDER_CERT_URL: authProviderX509CertUrl,
+    FIREBASE_CLIENT_CERT_URL: clientX509CertUrl
+  } = process.env
+
+  return {
+    type,
+    projectId,
+    privateKeyId,
+    privateKey,
+    clientEmail,
+    clientId,
+    authUri,
+    tokenUri,
+    authProviderX509CertUrl,
+    clientX509CertUrl
+  }
+}
 
 firebaseAdmin.initializeApp({
-  credential: firebaseAdmin.credential.cert(serviceAccount),
+  credential: firebaseAdmin.credential.cert(getFirebaseCredentials()),
   databaseURL: 'https://georgian-chant-site.firebaseio.com'
 })
 

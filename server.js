@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express')
 const localeRouter = require('./server/localeRouter')
 const app = require('./server/app')
