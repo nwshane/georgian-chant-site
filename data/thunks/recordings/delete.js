@@ -1,9 +1,9 @@
 // @flow
 import type { Recording } from '~/data/types'
 import { database } from '~/data/firebase'
-import storage from '~/data/firebaseStorage'
 import { setAppMessage } from '~/data/ducks/appMessage'
 import getUpdateRecordingObject from './getUpdateRecordingObject'
+import getRecordingStorageFileRef from './getRecordingStorageFileRef'
 
 export default ({chantSlug}: Recording, recordingKey: string) => async function (dispatch: Function) {
   try {
@@ -11,10 +11,7 @@ export default ({chantSlug}: Recording, recordingKey: string) => async function 
     .ref()
     .update(getUpdateRecordingObject({ recordingKey, chantSlug }, null))
 
-    await storage()
-    .ref()
-    .child('recordings')
-    .child(recordingKey)
+    await getRecordingStorageFileRef(recordingKey)
     .delete()
 
     dispatch(setAppMessage('Successfully deleted recording'))

@@ -1,8 +1,8 @@
 // @flow
 import { setAppMessage } from '~/data/ducks/appMessage'
 import { database } from '~/data/firebase'
-import storage from '~/data/firebaseStorage'
 import getUpdateRecordingObject from './getUpdateRecordingObject'
+import getRecordingStorageFileRef from './getRecordingStorageFileRef'
 
 type RecordingData = {
   chantSlug: string,
@@ -12,10 +12,7 @@ type RecordingData = {
 }
 
 const uploadRecordingFile = (key, recordingFile) => (
-  storage()
-  .ref()
-  .child('recordings')
-  .child(key)
+  getRecordingStorageFileRef(key)
   .put(recordingFile, { contentType: recordingFile.type })
 )
 
