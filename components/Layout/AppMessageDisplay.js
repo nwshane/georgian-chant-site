@@ -22,20 +22,13 @@ const categoryToStylesMapper = {
 }
 
 const AppMessageDisplayPresentation = (props: Props) => (
-  <div>
-    <Snackbar
-      open={!!props.messageText}
-      message={props.messageText}
-      autoHideDuration={4000}
-      onRequestClose={props.clearAppMessage}
-      bodyStyle={categoryToStylesMapper[props.messageCategory]}
-    />
-    <style jsx>{`
-      div :global(> div) {
-        height: 500px
-      }
-    `}</style>
-  </div>
+  <Snackbar
+    open={!!props.messageText}
+    message={props.messageText}
+    autoHideDuration={4000}
+    onRequestClose={props.clearAppMessage}
+    bodyStyle={categoryToStylesMapper[props.messageCategory]}
+  />
 )
 
 const mapStateToProps = (state: State) => ({
