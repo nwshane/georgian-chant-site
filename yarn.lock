@@ -3427,9 +3427,9 @@ latest-version@^1.0.0:
   dependencies:
     package-json "^1.0.0"
 
-latinize-georgian@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/latinize-georgian/-/latinize-georgian-0.2.3.tgz#abbd510887cdc1e4e2facd6f2ed10580b342cbae"
+latinize-georgian@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/latinize-georgian/-/latinize-georgian-0.2.4.tgz#a3a9cc44a9588f4ae997e2010b3994a7528af372"
 
 lazy-cache@^1.0.3:
   version "1.0.4"
