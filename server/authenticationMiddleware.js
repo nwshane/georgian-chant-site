@@ -38,6 +38,14 @@ async function decodeToken (firebaseIdToken) {
   return firebaseAdmin.auth().verifyIdToken(firebaseIdToken)
 }
 
+const getFullUrl = (req) => (
+  req.protocol + '://' + req.get('host') + req.originalUrl
+)
+
+const getRedirectUrl = (req) => (
+  `/redirect?url=${encodeURIComponent(getFullUrl(req))}`
+)
+
 async function authenticationMiddleware (req, res, next) {
   const { firebaseIdToken } = req.cookies
 
@@ -47,9 +55,11 @@ async function authenticationMiddleware (req, res, next) {
       const userData = await firebaseAdmin.auth().getUser(decodedToken.uid)
       req.currentUserServerData = userData
     } catch (error) {
-      if (error.code === 'auth/argument-error') {
-        res.clearCookie(FIREBASE_ID_TOKEN_COOKIE)
-      }
+      // if the cookie id token has expired, redirect the user to
+      // /redirect?url={requestedUrl} - the client will try to set
+      // a new cookie and then will redirect to requestedUrl
+      res.clearCookie(FIREBASE_ID_TOKEN_COOKIE)
+      res.redirect(getRedirectUrl(req))
     }
   }
 
