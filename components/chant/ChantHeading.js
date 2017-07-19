@@ -4,7 +4,12 @@ import type { Chant } from '~/data/types'
 import { getTranslatedName, getTransliteratedName } from '~/data/getters'
 import type { IntlShape } from 'react-intl'
 
-const ChantHeading = ({chant, intl: { locale }}: {chant: Chant, intl: IntlShape}) => (
+type Props = {
+  chant: Chant,
+  intl: IntlShape
+}
+
+const ChantHeading = ({chant, intl: {locale}}: Props) => (
   <h1>
     <span>
       {getTransliteratedName(chant, locale)}
