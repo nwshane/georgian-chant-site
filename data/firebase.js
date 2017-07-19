@@ -1,15 +1,13 @@
 // @flow
 import firebase from 'firebase'
+import firebaseConfig from './firebaseConfig'
+
+const env = process.env.NODE_ENV || 'development'
 
 const getOrInitializeFirebaseApp = () => (
-  firebase.apps.length === 0 ? firebase.initializeApp({
-    apiKey: 'AIzaSyANmrGU6f8MiUGC_gxs4BeB8kRZQuMWuNc',
-    authDomain: 'georgian-chant-site.firebaseapp.com',
-    databaseURL: 'https://georgian-chant-site.firebaseio.com',
-    projectId: 'georgian-chant-site',
-    storageBucket: 'georgian-chant-site.appspot.com',
-    messagingSenderId: '730123756383'
-  }) : firebase.apps[0]
+  firebase.apps.length === 0
+    ? firebase.initializeApp(firebaseConfig[env])
+    : firebase.apps[0]
 )
 
 let app = getOrInitializeFirebaseApp()
