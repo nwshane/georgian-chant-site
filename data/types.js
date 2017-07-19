@@ -23,8 +23,6 @@ export type AppMessage = {
   category: AppMessageCategory
 }
 
-export type Dispatch = Function
-
 export type Recording = {
   chantSlug: string,
   url: string
@@ -40,6 +38,22 @@ export type State = {
   +appMessage: AppMessage,
   +recordings: Recordings
 }
+
+export type Action =
+    { type: 'SET_APP_MESSAGE', appMessage: AppMessage }
+  | { type: 'CLEAR_APP_MESSAGE' }
+  | { type: 'MERGE_CHANTS', chants: Chants }
+  | { type: 'SET_CHANTS', chants: Chants }
+  | { type: 'SET_CURRENT_USER', currentUser: User }
+  | { type: 'MERGE_RECORDINGS', recordings: Recordings }
+  | { type: 'SET_RECORDINGS', recordings: Recordings}
+
+export type GetState = () => State
+
+// eslint-disable-next-line
+export type ThunkAction = (dispatch: Dispatch, getState: GetState) => any;
+
+export type Dispatch = (action: Action | ThunkAction) => Promise<*>;
 
 export type UploadTask = {
   on: Function,
