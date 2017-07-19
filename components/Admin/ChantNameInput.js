@@ -2,11 +2,12 @@
 import { defineMessages, injectIntl } from 'react-intl'
 import { FormsyText } from 'formsy-material-ui/lib/'
 import getLocalizedLabelText from '~/helpers/getLocalizedLabelText'
+import type { IntlShape } from 'react-intl'
 
 type Props = {
   locale: string,
   required?: boolean,
-  intl: any,
+  intl: IntlShape,
   value: string
 }
 

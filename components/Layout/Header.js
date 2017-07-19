@@ -3,9 +3,15 @@ import LocalizedLink from '~/components/LocalizedLink'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import LocaleLink from './LocaleLink'
 import AccountMenu from './AccountMenu'
+import type { IntlShape } from 'react-intl'
 
 // TODO: localize
-const Header = ({intl: { locale }}) => (
+
+type Props = {
+  intl: IntlShape
+}
+
+const Header = ({intl: { locale }}: Props) => (
   <nav>
     <LocalizedLink href='/'>
       <a>

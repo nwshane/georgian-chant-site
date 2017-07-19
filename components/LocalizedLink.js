@@ -1,11 +1,10 @@
 // @flow
 import Link from 'next/link'
-import {injectIntl} from 'react-intl'
+import { injectIntl } from 'react-intl'
+import type { IntlShape } from 'react-intl'
 
 type Props = {
-  intl: {
-    locale: string
-  },
+  intl: IntlShape,
   children?: any,
   href: string,
   as?: string

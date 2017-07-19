@@ -3,11 +3,15 @@ import { connect } from 'react-redux'
 import LocalizedLink from '~/components/LocalizedLink'
 import { injectIntl } from 'react-intl'
 import { getTransliteratedChantName } from '~/data/getters/chants'
+import type { IntlShape } from 'react-intl'
+import type { State } from '~/data/types'
 
 type Props = {
   chantSlug: string,
-  text: string
+  text: string,
+  intl: IntlShape
 }
+
 const ChantLink = ({text, chantSlug}: Props) => {
   return (
     <div>
@@ -25,7 +29,7 @@ const ChantLink = ({text, chantSlug}: Props) => {
   )
 }
 
-const mapStateToProps = (state, {text, chantSlug, intl: { locale }}) => ({
+const mapStateToProps = (state: State, {text, chantSlug, intl: { locale }}: Props) => ({
   text: text || getTransliteratedChantName(state, chantSlug, locale)
 })
 

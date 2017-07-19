@@ -2,14 +2,13 @@
 import { injectIntl } from 'react-intl'
 import type { Chant } from '~/data/types'
 import nl2br from 'react-nl2br'
+import type { IntlShape } from 'react-intl'
 
 import { getTranslatedText, getTransliteratedText } from '~/data/getters'
 
 type Props = {
   chant: Chant,
-  intl: {
-    locale: string
-  }
+  intl: IntlShape
 }
 
 // TODO: localize

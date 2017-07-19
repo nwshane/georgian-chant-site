@@ -11,6 +11,7 @@ import { auth } from '~/data/firebase'
 import AccountMenuPresentation from './AccountMenuPresentation'
 import isAdminPage from '~/helpers/isAdminPage'
 import redirectToLocalizedUrl from '~/helpers/redirectToLocalizedUrl'
+import type { IntlShape } from 'react-intl'
 
 const { loggedOutMessage } = defineMessages({
   loggedOutMessage: {
@@ -23,7 +24,7 @@ class AccountMenu extends Component {
   props: {
     currentUser: User,
     setAppMessage: Function,
-    intl: any
+    intl: IntlShape
   }
 
   constructor (props) {
