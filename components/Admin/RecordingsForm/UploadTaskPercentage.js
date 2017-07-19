@@ -23,7 +23,7 @@ class UploadTaskPercentage extends Component {
 
   setPercentLoaded (snapshot: { bytesTransferred: number, totalBytes: number }) {
     this.setState({
-      percentLoaded: Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100, 2)
+      percentLoaded: Math.round(snapshot.bytesTransferred / snapshot.totalBytes * 100)
     })
   }
 
