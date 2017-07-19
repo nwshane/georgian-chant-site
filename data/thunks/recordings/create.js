@@ -25,7 +25,10 @@ async function updateDatabase (dispatch, { newRecordingRef, uploadTask, chantSlu
   .ref()
   .update(getUpdateRecordingObject({ recordingKey, chantSlug }, values))
 
-  dispatch(setAppMessage('Finished saving the recording', 'success'))
+  dispatch(setAppMessage({
+    text: 'Finished saving the recording',
+    category: 'success'
+  }))
 }
 
 export default ({ chantSlug, recordingFile }: RecordingData) => async function (dispatch: Function) {
@@ -40,6 +43,9 @@ export default ({ chantSlug, recordingFile }: RecordingData) => async function (
     uploadTaskObject[newRecordingRef.key] = uploadTask
     return uploadTaskObject
   } catch (e) {
-    dispatch(setAppMessage('Could not save recording', 'error'))
+    dispatch(setAppMessage({
+      text: 'Could not save recording',
+      category: 'error'
+    }))
   }
 }

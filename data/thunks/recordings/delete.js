@@ -14,8 +14,14 @@ export default ({chantSlug}: Recording, recordingKey: string) => async function 
     await getRecordingStorageFileRef(recordingKey)
     .delete()
 
-    dispatch(setAppMessage('Successfully deleted recording'))
+    dispatch(setAppMessage({
+      text: 'Successfully deleted recording',
+      category: 'success'
+    }))
   } catch (e) {
-    dispatch(setAppMessage('Failed to delete recording'))
+    dispatch(setAppMessage({
+      text: 'Failed to delete recording',
+      category: 'error'
+    }))
   }
 }

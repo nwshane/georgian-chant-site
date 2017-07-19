@@ -12,7 +12,11 @@ class LoginPage extends Component {
   static async getInitialProps (context: ServerContext) {
     const { store } = context
     if (getCurrentUser(store.getState())) {
-      store.dispatch(setAppMessage("You're already logged in!"))
+      store.dispatch(setAppMessage({
+        text: "You're already logged in!",
+        category: 'neutral'
+      }))
+
       redirectToLocalizedUrl({ pathname: '/' }, null, context)
     }
   }

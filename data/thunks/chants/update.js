@@ -32,7 +32,11 @@ export default (oldSlug: string, chantValues: Chant) => async function (dispatch
 
     await fetchChantBySlug(slug)
 
-    dispatch(setAppMessage('Chant updated successfully', 'success'))
+    dispatch(setAppMessage({
+      text: 'Chant updated successfully',
+      category: 'success'
+    }))
+
     redirectToLocalizedUrl(
       {
         pathname: '/chants/show',
@@ -41,6 +45,9 @@ export default (oldSlug: string, chantValues: Chant) => async function (dispatch
       { pathname: `/chants/${newChantValues.slug}` }
     )
   } catch (e) {
-    dispatch(setAppMessage('Chant could not be updated', 'error'))
+    dispatch(setAppMessage({
+      text: 'Chant could not be updated',
+      category: 'error'
+    }))
   }
 }

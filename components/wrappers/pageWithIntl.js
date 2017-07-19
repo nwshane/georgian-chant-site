@@ -59,7 +59,10 @@ export default (Page: Element<*> | Function) => {
 
       if (requiresLogin(context)) {
         redirectToLocalizedUrl({ pathname: '/login' }, null, context)
-        store.dispatch(setAppMessage('Please login to access the admin page'))
+        store.dispatch(setAppMessage({
+          text: 'Please login to access the admin page',
+          category: 'neutral'
+        }))
         return
       }
 

@@ -23,7 +23,12 @@ export default (chantValues: Chant) => async function (dispatch: Dispatch) {
     }
 
     await chantRef.set(newChantValues)
-    dispatch(setAppMessage('Chant added successfully', 'success'))
+
+    dispatch(setAppMessage({
+      text: 'Chant added successfully',
+      category: 'success'
+    }))
+
     redirectToLocalizedUrl(
       {
         pathname: '/admin/chants/edit',
@@ -33,6 +38,10 @@ export default (chantValues: Chant) => async function (dispatch: Dispatch) {
   )
   } catch (e) {
     const message = e.message || 'Chant could not be added'
-    dispatch(setAppMessage(message, 'error'))
+
+    dispatch(setAppMessage({
+      text: message,
+      category: 'error'
+    }))
   }
 }

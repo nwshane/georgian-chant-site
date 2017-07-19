@@ -1,15 +1,9 @@
 // @flow
-import type { AppMessage, AppMessageCategory, State, Action } from '~/data/types'
+import type { AppMessage, State, Action } from '~/data/types'
 
-export const setAppMessage = (
-  text: string,
-  category: AppMessageCategory = 'neutral'
-): Action => ({
+export const setAppMessage = (appMessage: AppMessage): Action => ({
   type: 'SET_APP_MESSAGE',
-  appMessage: {
-    text,
-    category
-  }
+  appMessage
 })
 
 export const clearAppMessage = (): Action => ({
