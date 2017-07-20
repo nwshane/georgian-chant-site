@@ -6,5 +6,13 @@
     "projectId": "georgian-chant-site",
     "storageBucket": "georgian-chant-site.appspot.com",
     "messagingSenderId": "730123756383"
+  },
+  "production": {
+    "apiKey": "AIzaSyCucb4nU3nc-us-mVr579O4ILZnUA1rxxg",
+    "authDomain": "georgian-chant-site-production.firebaseapp.com",
+    "databaseURL": "https://georgian-chant-site-production.firebaseio.com",
+    "projectId": "georgian-chant-site-production",
+    "storageBucket": "georgian-chant-site-production.appspot.com",
+    "messagingSenderId": "294435739179"
   }
 }

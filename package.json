@@ -43,7 +43,8 @@
     "translate": "node scripts/manageTranslations.js",
     "test": "jest",
     "testwatch": "jest --watch",
-    "deploy": "now --dotenv"
+    "deploy": "now -e NODE_ENV=development --dotenv=.env",
+    "deploy-production": "now -e NODE_ENV=production --dotenv=.env.production"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

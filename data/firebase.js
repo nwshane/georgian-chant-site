@@ -2,11 +2,13 @@
 import firebase from 'firebase'
 import firebaseConfig from './firebaseConfig'
 
-const env = process.env.NODE_ENV || 'development'
+const getNodeEnv = () => (
+  process.env.NODE_ENV || 'development'
+)
 
 const getOrInitializeFirebaseApp = () => (
   firebase.apps.length === 0
-    ? firebase.initializeApp(firebaseConfig[env])
+    ? firebase.initializeApp(firebaseConfig[getNodeEnv()])
     : firebase.apps[0]
 )
 
