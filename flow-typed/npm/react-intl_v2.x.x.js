@@ -1,3 +1,4 @@
+/* eslint-disable */
 // flow-typed signature: 41ebb00d8548ea9ad82575520159fd28
 // flow-typed version: b43dff3e0e/react-intl_v2.x.x/flow_>=v0.23.x
 
