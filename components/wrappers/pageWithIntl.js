@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from 'react'
-import type { Element } from 'react'
 import PropTypes from 'prop-types'
 import {IntlProvider, addLocaleData, injectIntl} from 'react-intl'
 import requiresLogin from '~/helpers/requiresLogin'
@@ -31,7 +30,8 @@ const getLocale = (req) => (
   req && req.locale ? req.locale : window.__NEXT_DATA__.props.locale
 )
 
-export default (Page: Element<*> | Function) => {
+// TODO: Replace any flow type with correct flow type
+export default (Page: any) => {
   const IntlPage = injectIntl(Page)
 
   class PageWithIntl extends Component {
