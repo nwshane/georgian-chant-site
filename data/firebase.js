@@ -1,10 +1,7 @@
 // @flow
 import firebase from 'firebase'
 import firebaseConfig from './firebaseConfig'
-
-const getNodeEnv = () => (
-  process.env.NODE_ENV || 'development'
-)
+import getNodeEnv from '~/helpers/getNodeEnv'
 
 const getOrInitializeFirebaseApp = () => (
   firebase.apps.length === 0
