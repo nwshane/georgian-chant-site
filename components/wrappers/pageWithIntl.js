@@ -65,7 +65,7 @@ export default (Page: any) => {
           category: 'neutral'
         }))
 
-        return
+        return {}
       }
 
       let props
