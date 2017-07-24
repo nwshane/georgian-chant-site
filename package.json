@@ -32,6 +32,7 @@
     "react-nl2br": "^0.2.0",
     "react-redux": "^5.0.5",
     "react-tap-event-plugin": "^2.0.1",
+    "redux-devtools-extension": "^2.13.2",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   },
@@ -57,7 +58,6 @@
     "lint-staged": "^4.0.0",
     "nodemon": "^1.11.0",
     "react-intl-translations-manager": "^5.0.0",
-    "redux-devtools-extension": "^2.13.2",
     "snazzy": "^7.0.0",
     "standard": "^10.0.2"
   },
