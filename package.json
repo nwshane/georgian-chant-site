@@ -7,6 +7,8 @@
   "dependencies": {
     "axios": "^0.16.2",
     "babel-plugin-react-intl": "^2.3.1",
+    "babel-plugin-root-import": "^5.1.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
@@ -39,17 +41,15 @@
     "build": "next build && npm run translate",
     "lint": "standard --fix | snazzy",
     "precommit": "lint-staged",
-    "start": "NODE_ENV=production node server.js",
+    "start": "node server.js",
     "translate": "node scripts/manageTranslations.js",
     "test": "jest",
     "testwatch": "jest --watch",
-    "deploy": "now -e NODE_ENV=development --dotenv=.env",
-    "deploy-production": "now -e NODE_ENV=production --dotenv=.env.production"
+    "deploy": "now -e NODE_ENV=development --dotenv=.env --public",
+    "deploy-production": "now -e NODE_ENV=production --dotenv=.env.production --public"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "babel-plugin-root-import": "^5.1.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "eslint-plugin-flowtype": "^2.33.0",
     "flow-bin": "^0.46.0",
     "husky": "^0.13.4",
