@@ -59,7 +59,7 @@ async function authenticationMiddleware (req, res, next) {
       // /redirect?url={requestedUrl} - the client will try to set
       // a new cookie and then will redirect to requestedUrl
       res.clearCookie(FIREBASE_ID_TOKEN_COOKIE)
-      res.redirect(getRedirectUrl(req))
+      return res.redirect(getRedirectUrl(req))
     }
   }
 
@@ -72,19 +72,16 @@ authenticationMiddleware.authWithIdTokenRoute = async function ({body: { idToken
     const expireDate = (new Date())
     expireDate.setYear((new Date()).getFullYear() + 1)
     res.cookie(FIREBASE_ID_TOKEN_COOKIE, idToken, { expires: expireDate })
-    res.send()
+    return res.send()
   } catch (error) {
     if (error.code === 'auth/argument-error') {
-      res.status(400)
-      res.send(
-        'error',
-        {
-          error: new Error('Could not decode token')
-        }
-      )
+      return res
+      .status(400)
+      .send({
+        error: new Error('Could not decode token')
+      })
     } else {
-      res.status(500)
-      res.send()
+      return res.status(500).send()
     }
   }
 }

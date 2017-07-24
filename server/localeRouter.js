@@ -10,7 +10,7 @@ localeRouter.use((req, res, next) => {
 })
 
 localeRouter.get('/chants/:slug', (req, res) => {
-  app.render(
+  return app.render(
     req,
     res,
     '/chants/show',
@@ -19,7 +19,7 @@ localeRouter.get('/chants/:slug', (req, res) => {
 })
 
 localeRouter.get('/admin/chants/:slug/edit', (req, res) => {
-  app.render(
+  return app.render(
     req,
     res,
     '/admin/chants/edit',
@@ -28,7 +28,7 @@ localeRouter.get('/admin/chants/:slug/edit', (req, res) => {
 })
 
 localeRouter.get('*', (req, res) => {
-  handle(req, res)
+  return handle(req, res)
 })
 
 module.exports = localeRouter

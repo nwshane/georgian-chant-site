@@ -26,14 +26,14 @@ app.prepare()
   server.post('/authWithIdToken', authWithIdTokenRoute)
 
   server.get('/', (req, res) => {
-    res.redirect('/ka')
+    return res.redirect('/ka')
   })
 
   server.use('/:locale(en|ka)', localeRouter)
 
   server.get('*', (req, res) => {
     localizeRequest(req)
-    handle(req, res)
+    return handle(req, res)
   })
 
   server.listen(3001, (err) => {
