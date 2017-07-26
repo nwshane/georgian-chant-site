@@ -63,7 +63,7 @@ async function authenticationMiddleware (req, res, next) {
       if (error.code === 'auth/argument-error') {
         return res.redirect(getRedirectUrl(req))
       } else {
-        console.log(error)
+        console.log('authenticationMiddleware decoding token or fetching user data error', error)
       }
     }
   }

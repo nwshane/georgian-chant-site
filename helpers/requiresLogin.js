@@ -2,6 +2,7 @@
 
 import type { ServerContext } from '~/data/types'
 import isAdminPage from './isAdminPage'
+import log from '~/helpers/log'
 
 const loggedIn = (currentUser) => (!!currentUser)
 
@@ -12,5 +13,5 @@ const userHasAdminAccess = (currentUser) => (
 )
 
 export default (context: ServerContext) => (
-  isAdminPage(context.pathname) && !userHasAdminAccess(context.store.getState().currentUser)
+  log('isAdminPage', isAdminPage(log('pathname', context.pathname))) && log('!userHasAdminAccess', !userHasAdminAccess(context.store.getState().currentUser))
 )
