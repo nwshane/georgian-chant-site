@@ -1,10 +1,11 @@
 // @flow
 import type { Element } from 'react'
-import connectPage from './connectPage'
 import pageWithIntl from './pageWithIntl'
+import withRedux from 'next-redux-wrapper'
+import initStore from '~/data/initStore'
 
 const wrapPage = (Page: Element<any> | Function) => (
-  connectPage()(pageWithIntl(Page))
+  withRedux(initStore)(pageWithIntl(Page))
 )
 
 export default wrapPage
