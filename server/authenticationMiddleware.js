@@ -55,11 +55,16 @@ async function authenticationMiddleware (req, res, next) {
       const userData = await firebaseAdmin.auth().getUser(decodedToken.uid)
       req.currentUserServerData = userData
     } catch (error) {
+      res.clearCookie(FIREBASE_ID_TOKEN_COOKIE)
+
       // if the cookie id token has expired, redirect the user to
       // /redirect?url={requestedUrl} - the client will try to set
       // a new cookie and then will redirect to requestedUrl
-      res.clearCookie(FIREBASE_ID_TOKEN_COOKIE)
-      return res.redirect(getRedirectUrl(req))
+      if (error.code === 'auth/argument-error') {
+        return res.redirect(getRedirectUrl(req))
+      } else {
+        console.log(error)
+      }
     }
   }
 
