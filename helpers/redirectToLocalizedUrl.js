@@ -4,7 +4,7 @@ import Router from 'next/router'
 import type { ServerContext } from '~/data/types'
 
 const getLocale = (req = {}) => (
-  req.locale ? req.locale : window.__NEXT_DATA__.props.locale
+  req.locale ? req.locale : window.__NEXT_DATA__.props.initialProps.locale
 )
 
 const getLocalizedPathname = (pathname, req) => (

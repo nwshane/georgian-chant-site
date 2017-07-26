@@ -27,7 +27,7 @@ type Props = {
 }
 
 const getLocale = (req) => (
-  req && req.locale ? req.locale : window.__NEXT_DATA__.props.locale
+  req && req.locale ? req.locale : window.__NEXT_DATA__.props.initialProps.locale
 )
 
 // TODO: Replace any flow type with correct flow type
@@ -46,7 +46,7 @@ export default (Page: any) => {
       // In the browser, use the same values that the server serialized.
       const { req, store } = context
       const locale = getLocale(req)
-      const messages = req && req.messages ? req.messages : window.__NEXT_DATA__.props.messages
+      const messages = req && req.messages ? req.messages : window.__NEXT_DATA__.props.initialProps.messages
       const { originalUrl } = req || {}
 
       // Always update the current time on page load/transition because the
