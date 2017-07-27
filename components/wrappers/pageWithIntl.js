@@ -58,7 +58,6 @@ export default (Page: any) => {
       }
 
       if (requiresLogin(context)) {
-        console.log('requiresLogin(context) // => true; context: ', context)
         redirectToLocalizedUrl({ pathname: '/login' }, null, context)
 
         store.dispatch(setAppMessage({
