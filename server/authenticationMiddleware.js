@@ -36,7 +36,8 @@ firebaseAdmin.initializeApp({
 
 async function decodeToken (firebaseIdToken) {
   try {
-    return firebaseAdmin.auth().verifyIdToken(firebaseIdToken)
+    const decodedToken = await firebaseAdmin.auth().verifyIdToken(firebaseIdToken)
+    return decodedToken
   } catch (error) {
     if (error.code !== 'auth/internal-error') throw error
     console.log('firebaseAdmin.auth().verifyIdToken auth/internal-error ERROR: ', error)
@@ -51,14 +52,22 @@ const getRedirectUrl = (req) => (
   `/redirect?url=${encodeURIComponent(getFullUrl(req))}`
 )
 
+async function getUserData (uid) {
+  try {
+    const userData = await firebaseAdmin.auth().getUser(uid)
+    return userData
+  } catch (error) {
+    if (error.code !== 'auth/internal-error') throw error
+    console.log('firebaseAdmin.auth().getUser(uid) auth/internal-error ERROR: ', error)
+  }
+}
+
 async function authenticationMiddleware (req, res, next) {
   const { firebaseIdToken } = req.cookies
 
   if (firebaseIdToken) {
     try {
-      req.currentUserServerData = await firebaseAdmin
-      .auth()
-      .getUser(
+      req.currentUserServerData = await getUserData(
         (await decodeToken(firebaseIdToken))
         .uid
       )
