@@ -35,7 +35,12 @@ firebaseAdmin.initializeApp({
 })
 
 async function decodeToken (firebaseIdToken) {
-  return firebaseAdmin.auth().verifyIdToken(firebaseIdToken)
+  try {
+    return firebaseAdmin.auth().verifyIdToken(firebaseIdToken)
+  } catch (error) {
+    if (error.code !== 'auth/internal-error') throw error
+    console.log('firebaseAdmin.auth().verifyIdToken auth/internal-error ERROR: ', error)
+  }
 }
 
 const getFullUrl = (req) => (
@@ -51,9 +56,12 @@ async function authenticationMiddleware (req, res, next) {
 
   if (firebaseIdToken) {
     try {
-      const decodedToken = await decodeToken(firebaseIdToken)
-      const userData = await firebaseAdmin.auth().getUser(decodedToken.uid)
-      req.currentUserServerData = userData
+      req.currentUserServerData = await firebaseAdmin
+      .auth()
+      .getUser(
+        (await decodeToken(firebaseIdToken))
+        .uid
+      )
     } catch (error) {
       res.clearCookie(FIREBASE_ID_TOKEN_COOKIE)
 
