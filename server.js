@@ -10,7 +10,18 @@ const cookieParser = require('cookie-parser')
 const authenticationMiddleware = require('./server/authenticationMiddleware')
 const { authWithIdTokenRoute } = authenticationMiddleware
 const allowParsingPostBody = require('./server/allowParsingPostBody.js')
+const winston = require('winston')
+const getNodeEnv = require('./helpers/getNodeEnv')
 
+if (getNodeEnv() === 'development') {
+  winston.level = 'debug'
+} else {
+  winston.level = 'debug'
+}
+
+winston.handleExceptions()
+
+winston.info('Starting server', { NODE_ENV: getNodeEnv(), loggingLevel: winston.level })
 app.prepare()
 .then(() => {
   const server = express()
@@ -38,7 +49,7 @@ app.prepare()
 
   server.listen(3001, (err) => {
     if (err) throw err
-    console.log('> Ready on http://localhost:3001')
+    winston.info('Server ready on port 3001')
   })
 })
 .catch((ex) => {

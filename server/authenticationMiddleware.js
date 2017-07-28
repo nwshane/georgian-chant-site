@@ -1,5 +1,6 @@
 const { FIREBASE_ID_TOKEN_COOKIE } = require('../universal/constants')
 const firebaseAdmin = require('firebase-admin')
+const winston = require('winston')
 
 const getFirebaseCredentials = () => {
   const {
@@ -40,7 +41,7 @@ async function decodeToken (firebaseIdToken) {
     return decodedToken
   } catch (error) {
     if (error.code !== 'auth/internal-error') throw error
-    console.log('firebaseAdmin.auth().verifyIdToken auth/internal-error ERROR: ', error)
+    winston.debug('firebase admin auth verifyIdToken error:', error)
   }
 }
 
@@ -58,7 +59,7 @@ async function getUserData (uid) {
     return userData
   } catch (error) {
     if (error.code !== 'auth/internal-error') throw error
-    console.log('firebaseAdmin.auth().getUser(uid) auth/internal-error ERROR: ', error)
+    winston.debug('firebase admin auth getUser error', error)
   }
 }
 
@@ -80,7 +81,7 @@ async function authenticationMiddleware (req, res, next) {
       if (error.code === 'auth/argument-error') {
         return res.redirect(getRedirectUrl(req))
       } else {
-        console.log('authenticationMiddleware decoding token or fetching user data error', error)
+        winston.warn('Unexpected error occurred while processing firebase idToken:', error)
       }
     }
   }
