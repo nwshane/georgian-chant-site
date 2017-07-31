@@ -8,7 +8,8 @@ type RecordingData = {
   chantSlug: string,
   recordingFile: {
     type: string
-  }
+  },
+  school: string
 }
 
 const uploadRecordingFile = (key, recordingFile) => (
@@ -16,14 +17,17 @@ const uploadRecordingFile = (key, recordingFile) => (
   .put(recordingFile, { contentType: recordingFile.type })
 )
 
-async function updateDatabase (dispatch, { newRecordingRef, uploadTask, chantSlug }) {
+async function updateDatabase (dispatch, data) {
+  const { newRecordingRef, school, uploadTask, chantSlug } = data
   const { downloadURL: url } = await uploadTask
   const { key: recordingKey } = newRecordingRef
-  const values = { chantSlug, url }
+  const values = { chantSlug, url, school }
+
+  const updateRecordingObject = getUpdateRecordingObject({ recordingKey, chantSlug }, values)
 
   await database
   .ref()
-  .update(getUpdateRecordingObject({ recordingKey, chantSlug }, values))
+  .update(updateRecordingObject)
 
   dispatch(setAppMessage({
     text: 'Finished saving the recording',
@@ -31,13 +35,15 @@ async function updateDatabase (dispatch, { newRecordingRef, uploadTask, chantSlu
   }))
 }
 
-export default ({ chantSlug, recordingFile }: RecordingData) => async function (dispatch: Function) {
+export default (recordingData: RecordingData) => async function (dispatch: Function) {
+  const { chantSlug, recordingFile, school } = recordingData
   try {
     const newRecordingRef = await database.ref().child('recordings').push()
 
     const uploadTask = uploadRecordingFile(newRecordingRef.key, recordingFile)
 
-    updateDatabase(dispatch, { newRecordingRef, uploadTask, chantSlug })
+    const data = { newRecordingRef, uploadTask, chantSlug, school }
+    updateDatabase(dispatch, data)
 
     const uploadTaskObject = {}
     uploadTaskObject[newRecordingRef.key] = uploadTask

@@ -33,11 +33,20 @@ class NewRecordingForm extends Component {
     })
   }
 
-  async handleSubmit () {
+  async handleSubmit (formValues) {
+    const { school } = formValues
     const { chant: { slug: chantSlug } } = this.props
     const { recordingFile } = this.state
 
-    const uploadTaskObject: { [string]: UploadTask } = await this.props.submitRecording({ chantSlug, recordingFile })
+    const recordingData = {
+      chantSlug,
+      recordingFile,
+      school
+    }
+
+    const uploadTaskObject: { [string]: UploadTask } =
+      await this.props.submitRecording(recordingData)
+
     this.props.addUploadTask(uploadTaskObject)
     this.setState({ recordingFile: null })
   }

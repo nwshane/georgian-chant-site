@@ -1,5 +1,6 @@
 // @flow
 import RaisedButton from 'material-ui/RaisedButton'
+import SelectChantSchool from './SelectChantSchool'
 import { Form } from 'formsy-react'
 import RecordingInput from './RecordingInput'
 
@@ -20,20 +21,31 @@ const RecordingFormPresentation = ({recordingFile, handleSubmit, handleChangeFil
     onSubmit={handleSubmit}
     encType='multipart/form-data'
     style={{
-      display: 'flex',
-      flexDirection: 'row'
+      marginTop: '50px'
     }}
   >
     <RecordingInput
       label={getLabel(!!recordingFile)}
       handleChangeFile={handleChangeFile}
-      style={{marginRight: '20px'}}
+      style={{
+        marginRight: '20px',
+        marginBottom: '20px'
+      }}
+      labelStyle={{
+        textTransform: 'initial'
+      }}
     />
     {!!recordingFile && (
-      <RaisedButton
-        label={`Upload Recording: ${recordingFile.name}`}
-        type='submit'
-      />
+      <div>
+        <SelectChantSchool value='gelati' />
+        <RaisedButton
+          label={`Upload Recording: ${recordingFile.name}`}
+          type='submit'
+          labelStyle={{
+            textTransform: 'initial'
+          }}
+        />
+      </div>
     )}
     <style jsx>{`
       form {
