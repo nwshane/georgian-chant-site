@@ -17,6 +17,7 @@
     "firebase-admin": "^5.0.0",
     "formsy-material-ui": "^0.6.0",
     "formsy-react": "^0.19.2",
+    "global-request-logger": "^0.1.1",
     "latinize-georgian": "^0.2.4",
     "lodash.find": "^4.6.0",
     "lodash.map": "^4.6.0",

@@ -13,6 +13,7 @@ const allowParsingPostBody = require('./server/allowParsingPostBody.js')
 const winston = require('winston')
 const getNodeEnv = require('./helpers/getNodeEnv')
 require('./server/initializeWinston.js')
+require('./server/initializeGlobalRequestLogger.js')
 
 winston.info('Starting server', {
   NODE_ENV: getNodeEnv(),
