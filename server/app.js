@@ -1,6 +1,7 @@
 const next = require('next')
+const getNodeEnv = require('../helpers/getNodeEnv')
 
-const dev = process.env.NODE_ENV !== 'production'
+const dev = getNodeEnv() === 'development'
 const app = next({ dev })
 
 module.exports = app
