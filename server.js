@@ -12,16 +12,13 @@ const { authWithIdTokenRoute } = authenticationMiddleware
 const allowParsingPostBody = require('./server/allowParsingPostBody.js')
 const winston = require('winston')
 const getNodeEnv = require('./helpers/getNodeEnv')
+require('./server/initializeWinston.js')
 
-if (getNodeEnv() === 'development') {
-  winston.level = 'debug'
-} else {
-  winston.level = 'debug'
-}
+winston.info('Starting server', {
+  NODE_ENV: getNodeEnv(),
+  loggingLevel: winston.level
+})
 
-winston.handleExceptions()
-
-winston.info('Starting server', { NODE_ENV: getNodeEnv(), loggingLevel: winston.level })
 app.prepare()
 .then(() => {
   const server = express()
