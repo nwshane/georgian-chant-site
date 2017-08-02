@@ -14,4 +14,5 @@ COPY . $APPDIR/
 
 EXPOSE 3001
 
-CMD yarn dev
+RUN yarn build
+CMD yarn start
