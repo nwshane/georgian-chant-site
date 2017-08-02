@@ -41,7 +41,13 @@ async function decodeToken (firebaseIdToken) {
     return decodedToken
   } catch (error) {
     if (error.code !== 'auth/internal-error') throw error
-    winston.warn('firebase admin auth verifyIdToken error:', error)
+    winston.warn(
+      'firebase admin auth verifyIdToken auth/internal-error:',
+      {
+        firebaseIdToken,
+        error
+      }
+    )
   }
 }
 
@@ -59,7 +65,13 @@ async function getUserData (uid) {
     return userData
   } catch (error) {
     if (error.code !== 'auth/internal-error') throw error
-    winston.warn('firebase admin auth getUser error', error)
+    winston.warn(
+      'firebase admin auth getUser auth/internal-error:',
+      {
+        uid,
+        error
+      }
+    )
   }
 }
 
