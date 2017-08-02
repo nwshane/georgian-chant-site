@@ -3,6 +3,7 @@ import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
 import LocalizedLink from '~/components/LocalizedLink'
 
+// TODO: Localize
 const AdminIndexPage = () => (
   <Layout>
     <h1>Admin Panel</h1>
@@ -13,6 +14,15 @@ const AdminIndexPage = () => (
         >
           <a>
             Manage Chants
+          </a>
+        </LocalizedLink>
+      </li>
+      <li>
+        <LocalizedLink
+          href='/admin/schools'
+        >
+          <a>
+            Manage Chant Schools
           </a>
         </LocalizedLink>
       </li>

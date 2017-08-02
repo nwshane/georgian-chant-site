@@ -14,6 +14,12 @@ export type Chant = {
 
 export type Chants = {[string]: Chant}
 
+export type School = {
+  +name: LocalizedObject
+}
+
+export type Schools = {[string]: School}
+
 export type User = ?{}
 
 export type AppMessageCategory = 'neutral' | 'success' | 'error'
