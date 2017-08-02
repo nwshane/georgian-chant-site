@@ -8,5 +8,5 @@ globalLog.on('success', function (request, response) {
 })
 
 globalLog.on('error', function (request, response) {
-  winston.debug('Errored outgoing request. Request:', request, 'Response: ', response)
+  winston.warn('Errored outgoing request. Request:', request, 'Response: ', response)
 })
