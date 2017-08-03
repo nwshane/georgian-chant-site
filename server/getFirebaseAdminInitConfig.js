@@ -1,5 +1,7 @@
 const firebaseAdmin = require('firebase-admin')
 
+// ENV variables are set in .env file and loaded by dotenv.
+// See for more info: https://github.com/motdotla/dotenv
 const getFirebaseCredentials = () => {
   const {
     FIREBASE_TYPE: type,
