@@ -109,6 +109,11 @@ authenticationMiddleware.authWithIdTokenRoute = async function ({body: { idToken
     res.cookie(FIREBASE_ID_TOKEN_COOKIE, idToken, { expires: expireDate })
     return res.send()
   } catch (error) {
+    winston.warn('authWithIdTokenRoute unexpected error', {
+      idToken,
+      error
+    })
+
     if (error.code === 'auth/argument-error') {
       return res
       .status(400)
