@@ -1,39 +1,14 @@
 const { FIREBASE_ID_TOKEN_COOKIE } = require('../universal/constants')
 const firebaseAdmin = require('firebase-admin')
 const winston = require('winston')
+const getFirebaseAdminInitConfig = require('./getFirebaseAdminInitConfig')
 
-const getFirebaseCredentials = () => {
-  const {
-    FIREBASE_TYPE: type,
-    FIREBASE_PROJECT_ID: projectId,
-    FIREBASE_PRIVATE_KEY_ID: privateKeyId,
-    FIREBASE_PRIVATE_KEY: privateKey,
-    FIREBASE_CLIENT_EMAIL: clientEmail,
-    FIREBASE_CLIENT_ID: clientId,
-    FIREBASE_AUTH_URI: authUri,
-    FIREBASE_TOKEN_URI: tokenUri,
-    FIREBASE_AUTH_PROVIDER_CERT_URL: authProviderX509CertUrl,
-    FIREBASE_CLIENT_CERT_URL: clientX509CertUrl
-  } = process.env
+winston.info(
+  'Initializing Firebase Admin with Config:',
+  getFirebaseAdminInitConfig()
+)
 
-  return {
-    type,
-    projectId,
-    privateKeyId,
-    privateKey,
-    clientEmail,
-    clientId,
-    authUri,
-    tokenUri,
-    authProviderX509CertUrl,
-    clientX509CertUrl
-  }
-}
-
-firebaseAdmin.initializeApp({
-  credential: firebaseAdmin.credential.cert(getFirebaseCredentials()),
-  databaseURL: 'https://georgian-chant-site.firebaseio.com'
-})
+firebaseAdmin.initializeApp(getFirebaseAdminInitConfig())
 
 async function decodeToken (firebaseIdToken) {
   try {
@@ -109,6 +84,11 @@ authenticationMiddleware.authWithIdTokenRoute = async function ({body: { idToken
     res.cookie(FIREBASE_ID_TOKEN_COOKIE, idToken, { expires: expireDate })
     return res.send()
   } catch (error) {
+    winston.warn('authWithIdTokenRoute unexpected error', {
+      idToken,
+      error
+    })
+
     if (error.code === 'auth/argument-error') {
       return res
       .status(400)

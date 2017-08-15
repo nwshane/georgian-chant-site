@@ -1,4 +1,5 @@
-require('dotenv').config()
+const getEnvPath = require('./server/getEnvPath')
+require('dotenv').config({path: getEnvPath()})
 
 const express = require('express')
 const localeRouter = require('./server/localeRouter')
@@ -17,7 +18,9 @@ require('./server/initializeGlobalRequestLogger.js')
 
 winston.info('Starting server', {
   NODE_ENV: getNodeEnv(),
-  loggingLevel: winston.level
+  loggingLevel: winston.level,
+  envPath: getEnvPath(),
+  FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID
 })
 
 app.prepare()
