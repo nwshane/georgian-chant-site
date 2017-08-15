@@ -42,7 +42,8 @@ export type State = {
   +currentUser: User,
   +chants: Chants,
   +appMessage: AppMessage,
-  +recordings: Recordings
+  +recordings: Recordings,
+  +schools: Schools
 }
 
 export type Action =
@@ -52,7 +53,8 @@ export type Action =
   | { type: 'SET_CHANTS', chants: Chants }
   | { type: 'SET_CURRENT_USER', currentUser: User }
   | { type: 'MERGE_RECORDINGS', recordings: Recordings }
-  | { type: 'SET_RECORDINGS', recordings: Recordings}
+  | { type: 'SET_RECORDINGS', recordings: Recordings }
+  | { type: 'SET_SCHOOLS', schools: Schools }
 
 export type GetState = () => State
 

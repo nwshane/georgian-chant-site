@@ -2,11 +2,11 @@
 import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import { connect } from 'react-redux'
 import map from 'lodash.map'
-import LocalizedLink from '~/components/LocalizedLink'
 import type { Schools } from '~/data/types'
 import { getTransliteratedName } from '~/data/getters'
 import type { IntlShape } from 'react-intl'
 import { injectIntl } from 'react-intl'
+import { getSchools } from '~/data/ducks/schools'
 
 type Props = {
   schools: Schools,
@@ -15,7 +15,10 @@ type Props = {
 // TODO: Localize
 const AdminSchoolsTable = ({schools, intl: {locale}}: Props) => (
   <Table>
-    <TableHeader>
+    <TableHeader
+      displaySelectAll={false}
+      adjustForCheckbox={false}
+    >
       <TableRow>
         <TableRowColumn>
           Name
@@ -25,19 +28,16 @@ const AdminSchoolsTable = ({schools, intl: {locale}}: Props) => (
         </TableRowColumn>
       </TableRow>
     </TableHeader>
-    <TableBody>
+    <TableBody
+      displayRowCheckbox={false}
+    >
       {map(schools, (school, key) => (
         <TableRow>
           <TableRowColumn>
             {getTransliteratedName(school, locale)}
           </TableRowColumn>
           <TableRowColumn>
-            <LocalizedLink
-              as={`/admin/schools/${key}/edit`}
-              href={`/admin/schools/edit?key=${key}`}
-            >
-              Edit
-            </LocalizedLink>
+            None Available
           </TableRowColumn>
         </TableRow>
       ))}
@@ -46,13 +46,7 @@ const AdminSchoolsTable = ({schools, intl: {locale}}: Props) => (
 )
 
 const mapStateToProps = (state) => ({
-  schools: {
-    gelati: {
-      name: {
-        ka: 'გელათი'
-      }
-    }
-  }
+  schools: getSchools(state)
 })
 
 export default injectIntl(connect(mapStateToProps)(AdminSchoolsTable))

@@ -3,6 +3,7 @@
 import subscribeAuthChange from './subscribeAuthChange'
 import subscribeToChants from './chants/subscribe'
 import subscribeToRecordings from './recordings/subscribe'
+import subscribeToSchools from './schools/subscribe'
 
 let subscribed = false
 
@@ -15,4 +16,5 @@ export default () => (dispatch: Function) => {
   dispatch(subscribeAuthChange())
   dispatch(subscribeToChants())
   dispatch(subscribeToRecordings())
+  dispatch(subscribeToSchools())
 }
