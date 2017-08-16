@@ -3,10 +3,10 @@ import { Component } from 'react'
 import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import wrapPage from '~/components/wrappers/wrapPage'
 import Layout from '~/components/Layout/'
-import ChantLink from '~/components/ChantLink'
 import fetchRecordings from '~/data/thunks/recordings/fetchAll'
 import { getRecordings } from '~/data/ducks/recordings'
 import map from 'lodash.map'
+import RecordingTableRow from '~/components/shared/RecordingTableRow/'
 
 class RecordingsPage extends Component {
   static async getInitialProps ({store}) {
@@ -30,6 +30,9 @@ class RecordingsPage extends Component {
                 Chant Name
               </TableRowColumn>
               <TableRowColumn>
+                School
+              </TableRowColumn>
+              <TableRowColumn>
                 Recording
               </TableRowColumn>
             </TableRow>
@@ -38,14 +41,7 @@ class RecordingsPage extends Component {
             displayRowCheckbox={false}
           >
             {map(recordings, (recording, key) => (
-              <TableRow {...{key}}>
-                <TableRowColumn>
-                  <ChantLink chantSlug={recording.chantSlug} />
-                </TableRowColumn>
-                <TableRowColumn>
-                  <audio controls src={recording.url} />
-                </TableRowColumn>
-              </TableRow>
+              <RecordingTableRow hide={['actions']} {...{recording, key}} />
             ))}
           </TableBody>
         </Table>
