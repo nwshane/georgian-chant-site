@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import { getRecordingsForChant } from '~/data/ducks/recordings'
 import map from 'lodash.map'
-import DeleteRecordingButton from './DeleteRecordingButton'
 import UploadTaskPercentage from './UploadTaskPercentage'
+import RecordingTableRow from './RecordingTableRow'
 
 type Props = {
   recordings: Recordings,
@@ -26,6 +26,9 @@ const EditRecordingForms = ({recordings, uploadTasks, removeUploadTask}: Props) 
           Recording
         </TableRowColumn>
         <TableRowColumn>
+          School
+        </TableRowColumn>
+        <TableRowColumn>
           Delete
         </TableRowColumn>
       </TableRow>
@@ -34,17 +37,7 @@ const EditRecordingForms = ({recordings, uploadTasks, removeUploadTask}: Props) 
       displayRowCheckbox={false}
     >
       {map(recordings, (recording, key) => (
-        <TableRow key={key}>
-          <TableRowColumn>
-            <audio controls src={recording.url} />
-          </TableRowColumn>
-          <TableRowColumn>
-            <DeleteRecordingButton
-              recording={recording}
-              recordingId={key}
-            />
-          </TableRowColumn>
-        </TableRow>
+        <RecordingTableRow {...{recording, key}} />
       ))}
       {map(uploadTasks, (uploadTask, uploadTaskKey) => (
         <TableRow key={uploadTaskKey}>

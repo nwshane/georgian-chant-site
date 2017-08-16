@@ -1,10 +1,23 @@
 // @flow
 import { Component } from 'react'
+import { connect } from 'react-redux'
+import { getSchools } from '~/data/ducks/schools'
 import { FormsySelect } from 'formsy-material-ui/lib'
 import MenuItem from 'material-ui/MenuItem'
+import type { Schools } from '~/data/types'
+import { getTransliteratedName } from '~/data/getters'
+import { injectIntl } from 'react-intl'
+import type { IntlShape } from 'react-intl'
+import map from 'lodash/map'
+
+type DefaultProps = {
+  value: 'gelati'
+}
 
 type Props = {
-  value: string
+  value: string,
+  schools: Schools,
+  intl: IntlShape
 }
 
 type State = {
@@ -12,7 +25,11 @@ type State = {
 }
 
 // TODO: Localize
-class SelectChantSchool extends Component<void, Props, State> {
+class SelectChantSchool extends Component<DefaultProps, Props, State> {
+  static defaultProps = {
+    value: 'gelati'
+  }
+
   state = {
     value: ''
   }
@@ -27,11 +44,12 @@ class SelectChantSchool extends Component<void, Props, State> {
     self.handleChange = self.handleChange.bind(this)
   }
 
-  handleChange = (event: any, index: string) => {
+  handleChange = (event: any, index: string, bla) => {
     this.setState({value: index})
   }
 
   render () {
+    const {intl: {locale}, schools} = this.props
     return (
       <FormsySelect
         name='school'
@@ -39,13 +57,16 @@ class SelectChantSchool extends Component<void, Props, State> {
         value={this.state.value}
         onChange={this.handleChange}
       >
-        <MenuItem key='gelati' value='gelati' primaryText='Gelati' />
-        <MenuItem key='shemokmedi' value='shemokmedi' primaryText='Shemokmedi' />
-        <MenuItem key='sveti_tskhoveli' value='sveti_tskhoveli' primaryText="Svet'i Tskhoveli" />
-        <MenuItem key='svan' value='svan' primaryText='Svan' />
+        {map(schools, (school, key) => (
+          <MenuItem key={key} value={key} primaryText={getTransliteratedName(school, locale)} />
+        ))}
       </FormsySelect>
     )
   }
 }
 
-export default SelectChantSchool
+const mapStateToProps = (state) => ({
+  schools: getSchools(state)
+})
+
+export default injectIntl(connect(mapStateToProps)(SelectChantSchool))

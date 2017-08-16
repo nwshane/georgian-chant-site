@@ -37,7 +37,7 @@ const RecordingFormPresentation = ({recordingFile, handleSubmit, handleChangeFil
     />
     {!!recordingFile && (
       <div>
-        <SelectChantSchool value='gelati' />
+        <SelectChantSchool />
         <RaisedButton
           label={`Upload Recording: ${recordingFile.name}`}
           type='submit'

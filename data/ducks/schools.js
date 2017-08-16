@@ -1,6 +1,6 @@
 // @flow
 
-import type { Action, Schools, State } from '~/data/types'
+import type { Action, Schools, School, State } from '~/data/types'
 
 export const setSchools = (schools: Schools): Action => ({
   type: 'SET_SCHOOLS',
@@ -9,6 +9,10 @@ export const setSchools = (schools: Schools): Action => ({
 
 export const getSchools = (state: State): Schools => (
   state.schools
+)
+
+export const getSchool = (schoolName: string, state: State): School => (
+  getSchools(state)[schoolName]
 )
 
 export default (schoolsState: Schools = {}, action: Action): Schools => {
