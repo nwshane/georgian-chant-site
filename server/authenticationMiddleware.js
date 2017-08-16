@@ -44,7 +44,8 @@ async function getUserData (uid) {
       'firebase admin auth getUser auth/internal-error:',
       {
         uid,
-        error
+        error,
+        stacktrace: error.stack
       }
     )
   }
