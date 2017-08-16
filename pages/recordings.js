@@ -1,12 +1,10 @@
 // @flow
 import { Component } from 'react'
-import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import wrapPage from '~/components/wrappers/wrapPage'
 import Layout from '~/components/Layout/'
 import fetchRecordings from '~/data/thunks/recordings/fetchAll'
 import { getRecordings } from '~/data/ducks/recordings'
-import map from 'lodash.map'
-import RecordingTableRow from '~/components/shared/RecordingTableRow/'
+import RecordingTable from '~/components/shared/RecordingTable/'
 
 class RecordingsPage extends Component {
   static async getInitialProps ({store}) {
@@ -20,31 +18,7 @@ class RecordingsPage extends Component {
     const { recordings } = this.props
     return (
       <Layout>
-        <Table>
-          <TableHeader
-            displaySelectAll={false}
-            adjustForCheckbox={false}
-          >
-            <TableRow>
-              <TableRowColumn>
-                Chant Name
-              </TableRowColumn>
-              <TableRowColumn>
-                School
-              </TableRowColumn>
-              <TableRowColumn>
-                Recording
-              </TableRowColumn>
-            </TableRow>
-          </TableHeader>
-          <TableBody
-            displayRowCheckbox={false}
-          >
-            {map(recordings, (recording, key) => (
-              <RecordingTableRow hide={['actions']} {...{recording, key}} />
-            ))}
-          </TableBody>
-        </Table>
+        <RecordingTable hide={['actions']} {...{recordings}} />
       </Layout>
     )
   }

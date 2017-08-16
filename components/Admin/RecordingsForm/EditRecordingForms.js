@@ -1,62 +1,11 @@
 // @flow
-import type { Recordings, UploadTask } from '~/data/types'
 import { connect } from 'react-redux'
-import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import { getRecordingsForChant } from '~/data/ducks/recordings'
-import map from 'lodash.map'
-import UploadTaskPercentage from './UploadTaskPercentage'
-import RecordingTableRow from '~/components/shared/RecordingTableRow/'
-
-type Props = {
-  recordings: Recordings,
-  uploadTasks: {
-    [string]: UploadTask
-  },
-  removeUploadTask: Function
-}
-
-const EditRecordingForms = ({recordings, uploadTasks, removeUploadTask}: Props) => (
-  <Table>
-    <TableHeader
-      displaySelectAll={false}
-      adjustForCheckbox={false}
-    >
-      <TableRow>
-        <TableRowColumn>
-          School
-        </TableRowColumn>
-        <TableRowColumn>
-          Recording
-        </TableRowColumn>
-        <TableRowColumn>
-          Delete
-        </TableRowColumn>
-      </TableRow>
-    </TableHeader>
-    <TableBody
-      displayRowCheckbox={false}
-    >
-      {map(recordings, (recording, key) => (
-        <RecordingTableRow hide={['chantName']} {...{recording, key}} />
-      ))}
-      {map(uploadTasks, (uploadTask, uploadTaskKey) => (
-        <TableRow key={uploadTaskKey}>
-          <TableRowColumn>
-            Loading New File: {
-              <UploadTaskPercentage
-                {...{uploadTaskKey, uploadTask, removeUploadTask}}
-              />
-            }
-          </TableRowColumn>
-          <TableRowColumn />
-        </TableRow>
-      ))}
-    </TableBody>
-  </Table>
-)
+import RecordingTable from '~/components/shared/RecordingTable/'
 
 const mapStateToProps = (state, {chant: { slug }}) => ({
-  recordings: getRecordingsForChant(state, slug)
+  recordings: getRecordingsForChant(state, slug),
+  hide: ['chantName']
 })
 
-export default connect(mapStateToProps)(EditRecordingForms)
+export default connect(mapStateToProps)(RecordingTable)
