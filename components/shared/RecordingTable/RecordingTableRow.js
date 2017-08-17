@@ -45,9 +45,9 @@ const RecordingTableRow = (props: Props) => {
               <DeleteRecordingButton
                 recording={recording}
                 recordingId={recordingKey}
-            />
-          </TableRowColumn>
-        )
+              />
+            </TableRowColumn>
+          )
       }
     </TableRow>
   )
