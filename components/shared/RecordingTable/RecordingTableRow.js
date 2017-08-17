@@ -24,12 +24,12 @@ const RecordingTableRow = (props: Props) => {
     <TableRow>
       {
         hide.includes('chantName')
-        ? null
-        : (
-          <TableRowColumn>
-            <ChantLink chantSlug={recording.chantSlug} />
-          </TableRowColumn>
-        )
+          ? null
+          : (
+            <TableRowColumn>
+              <ChantLink chantSlug={recording.chantSlug} />
+            </TableRowColumn>
+          )
       }
       <TableRowColumn>
         {getTransliteratedName(school, locale)}
@@ -39,12 +39,12 @@ const RecordingTableRow = (props: Props) => {
       </TableRowColumn>
       {
         hide.includes('actions')
-        ? null
-        : (
-          <TableRowColumn>
-            <DeleteRecordingButton
-              recording={recording}
-              recordingId={recordingKey}
+          ? null
+          : (
+            <TableRowColumn>
+              <DeleteRecordingButton
+                recording={recording}
+                recordingId={recordingKey}
             />
           </TableRowColumn>
         )
