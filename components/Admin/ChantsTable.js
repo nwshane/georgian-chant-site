@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import LocalizedLink from '~/components/LocalizedLink'
 import ChantLink from '~/components/ChantLink'

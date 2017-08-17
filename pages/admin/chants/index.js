@@ -1,5 +1,5 @@
 // @flow
-import { Component } from 'react'
+import React, { Component } from 'react'
 import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
 import LocalizedLink from '~/components/LocalizedLink'
@@ -8,7 +8,7 @@ import fetchChants from '~/data/thunks/chants/fetchAll'
 
 type InitialPropsContext = {store: {dispatch: Function}}
 
-class AdminChantsIndexPage extends Component {
+class AdminChantsIndexPage extends Component<{}> {
   static async getInitialProps ({store: {dispatch}}: InitialPropsContext) {
     await dispatch(fetchChants())
   }

@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import { connect } from 'react-redux'
 import LocalizedLink from '~/components/LocalizedLink'
 import { injectIntl } from 'react-intl'

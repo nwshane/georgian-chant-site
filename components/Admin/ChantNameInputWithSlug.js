@@ -1,5 +1,5 @@
 // @flow
-import { Component } from 'react'
+import React, { Component } from 'react'
 import ChantNameInput from './ChantNameInput'
 import type { Chant } from '~/data/types'
 import { getTranslatedName } from '~/data/getters'
@@ -9,14 +9,12 @@ type Props = {
   chant: Chant
 }
 
+type State = {
+  name: string
+}
+
 // TODO: localize
-class ChantNameInputWithSlug extends Component {
-  props: Props
-
-  state: {
-    name: string
-  }
-
+class ChantNameInputWithSlug extends Component<Props, State> {
   constructor (props: Props) {
     super(props)
     const self: any = this

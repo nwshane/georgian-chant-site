@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import { connect } from 'react-redux'
 import map from 'lodash.map'

@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import wrapPage from '~/components/wrappers/wrapPage'
 import Layout from '~/components/Layout/'

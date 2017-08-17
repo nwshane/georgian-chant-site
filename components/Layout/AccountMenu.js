@@ -1,5 +1,5 @@
 // @flow
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { defineMessages, injectIntl } from 'react-intl'
@@ -20,13 +20,13 @@ const { loggedOutMessage } = defineMessages({
   }
 })
 
-class AccountMenu extends Component {
-  props: {
-    currentUser: User,
-    setAppMessage: Function,
-    intl: IntlShape
-  }
+type Props = {
+  currentUser: User,
+  setAppMessage: Function,
+  intl: IntlShape
+}
 
+class AccountMenu extends Component<Props> {
   constructor (props) {
     super(props)
 

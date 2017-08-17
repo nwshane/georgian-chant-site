@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import SelectChantSchool from './SelectChantSchool'
 import { Form } from 'formsy-react'

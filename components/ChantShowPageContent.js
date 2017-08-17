@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import type { Chant } from '~/data/types'
 import ChantHeading from '~/components/chant/ChantHeading'
 import ChantText from '~/components/chant/ChantText'

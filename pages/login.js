@@ -1,5 +1,5 @@
 // @flow
-import { Component } from 'react'
+import React, { Component } from 'react'
 import type { ServerContext } from '~/data/types'
 import wrapPage from '~/components/wrappers/wrapPage'
 import Layout from '~/components/Layout/'
@@ -8,7 +8,7 @@ import { getCurrentUser } from '~/data/ducks/currentUser'
 import { setAppMessage } from '~/data/ducks/appMessage'
 import redirectToLocalizedUrl from '~/helpers/redirectToLocalizedUrl'
 
-class LoginPage extends Component {
+class LoginPage extends Component<{}> {
   static async getInitialProps (context: ServerContext) {
     const { store } = context
     if (getCurrentUser(store.getState())) {

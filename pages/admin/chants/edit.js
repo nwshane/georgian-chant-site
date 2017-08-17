@@ -1,5 +1,5 @@
 // @flow
-import { Component } from 'react'
+import React, { Component } from 'react'
 import Error from '~/components/Error'
 import Layout from '~/components/Layout/'
 import LocalizedLink from '~/components/LocalizedLink'
@@ -12,12 +12,12 @@ import RecordingsForm from '~/components/Admin/RecordingsForm/'
 import fetchRecordings from '~/data/thunks/recordings/fetchAll'
 import ChantLink from '~/components/ChantLink'
 
-// TODO: Localize
-class EditChantPage extends Component {
-  props: {
-    chant: Chant
-  }
+type Props = {
+  chant: Chant
+}
 
+// TODO: Localize
+class EditChantPage extends Component<Props> {
   static async getInitialProps ({store, query: {slug}}) {
     await store.dispatch(fetchChantBySlug(slug))
     await store.dispatch(fetchRecordings())

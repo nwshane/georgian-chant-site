@@ -1,5 +1,5 @@
 // @flow
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Router from 'next/router'
@@ -21,7 +21,11 @@ type Props = {
   setAppMessage: Function
 }
 
-class LoginForm extends Component {
+type State = {
+  canSubmit: boolean
+}
+
+class LoginForm extends Component<Props, State> {
   state = {
     canSubmit: false
   }

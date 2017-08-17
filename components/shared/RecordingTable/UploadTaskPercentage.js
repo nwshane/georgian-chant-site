@@ -1,5 +1,5 @@
 // @flow
-import { Component } from 'react'
+import React, { Component } from 'react'
 import type { UploadTask } from '~/data/types'
 
 type Props = {
@@ -8,9 +8,11 @@ type Props = {
   uploadTaskKey: string
 }
 
-class UploadTaskPercentage extends Component {
-  props: Props
+type State = {
+  percentLoaded: number
+}
 
+class UploadTaskPercentage extends Component<Props, State> {
   state = {
     percentLoaded: 0
   }

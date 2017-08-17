@@ -1,5 +1,5 @@
 // @flow
-import { Component } from 'react'
+import React, { Component } from 'react'
 import FlatButton from 'material-ui/FlatButton'
 import type { Recording } from '~/data/types'
 import { connect } from 'react-redux'
@@ -12,7 +12,7 @@ type Props = {
   recordingId: string
 }
 
-class DeleteRecordingButton extends Component<void, Props, void> {
+class DeleteRecordingButton extends Component<Props> {
   constructor (props: Props) {
     super(props)
     const self: any = this

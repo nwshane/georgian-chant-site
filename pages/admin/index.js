@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
 import LocalizedLink from '~/components/LocalizedLink'

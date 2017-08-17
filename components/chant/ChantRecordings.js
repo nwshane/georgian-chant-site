@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import map from 'lodash/map'
 import { connect } from 'react-redux'
 import { getRecordingsForChant } from '~/data/ducks/recordings'

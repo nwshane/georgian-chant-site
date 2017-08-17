@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import NextError from 'next/error'
 import HTTPStatus from 'http-status'
 import Head from 'next/head'

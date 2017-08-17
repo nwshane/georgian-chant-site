@@ -1,5 +1,5 @@
 // @flow
-import { Component } from 'react'
+import React, { Component } from 'react'
 import Error from '~/components/Error'
 import type { Chant } from '~/data/types'
 import Layout from '~/components/Layout/'
@@ -23,9 +23,7 @@ type Props = {
   chant: ?Chant
 }
 
-class ChantShowPage extends Component {
-  props: Props
-
+class ChantShowPage extends Component<Props> {
   static async getInitialProps ({query: {slug}, store}: InitialPropsContext) {
     await store.dispatch(fetchChantBySlug(slug))
     await store.dispatch(fetchRecordings())

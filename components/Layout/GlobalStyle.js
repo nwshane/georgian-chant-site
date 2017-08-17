@@ -1,4 +1,6 @@
 // @flow
+import React from 'react'
+
 const GlobalStyle = () => (
   <style jsx global>
     {`

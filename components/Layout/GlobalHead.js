@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import { defineMessages, injectIntl } from 'react-intl'
 import Head from 'next/head'
 

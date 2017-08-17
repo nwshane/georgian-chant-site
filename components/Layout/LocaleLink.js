@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import Router from 'next/router'
 import PropTypes from 'prop-types'
 

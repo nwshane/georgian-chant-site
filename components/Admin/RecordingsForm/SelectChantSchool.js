@@ -1,5 +1,5 @@
 // @flow
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getSchools } from '~/data/ducks/schools'
 import { FormsySelect } from 'formsy-material-ui/lib'
@@ -9,10 +9,6 @@ import { getTransliteratedName } from '~/data/getters'
 import { injectIntl } from 'react-intl'
 import type { IntlShape } from 'react-intl'
 import map from 'lodash/map'
-
-type DefaultProps = {
-  value: 'gelati'
-}
 
 type Props = {
   value: string,
@@ -25,7 +21,7 @@ type State = {
 }
 
 // TODO: Localize
-class SelectChantSchool extends Component<DefaultProps, Props, State> {
+class SelectChantSchool extends Component<Props, State> {
   static defaultProps = {
     value: 'gelati'
   }

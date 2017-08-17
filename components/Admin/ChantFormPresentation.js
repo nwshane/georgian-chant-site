@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import { Form } from 'formsy-react'
 import type { Chant } from '~/data/types'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -9,7 +10,7 @@ import { getTranslatedName, getTranslatedText } from '~/data/getters'
 
 type Props = {
   handleSubmit: Function,
-  chant?: Chant
+  chant: Chant
 }
 
 // TODO: localize

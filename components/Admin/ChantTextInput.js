@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import { FormsyText } from 'formsy-material-ui/lib/'
 import { defineMessages, injectIntl } from 'react-intl'
 import getLocalizedLabelText from '~/helpers/getLocalizedLabelText'

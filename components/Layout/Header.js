@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import LocalizedLink from '~/components/LocalizedLink'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import LocaleLink from './LocaleLink'

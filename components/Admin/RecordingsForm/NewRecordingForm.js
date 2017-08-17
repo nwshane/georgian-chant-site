@@ -1,24 +1,24 @@
 // @flow
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import type { Chant, UploadTask } from '~/data/types'
 import submitRecording from '~/data/thunks/recordings/create'
 import RecordingFormPresentation from './RecordingFormPresentation'
 
-class NewRecordingForm extends Component {
-  props: {
-    chant: Chant,
-    submitRecording: Function,
-    addUploadTask: Function
-  }
+type Props = {
+  chant: Chant,
+  submitRecording: Function,
+  addUploadTask: Function
+}
 
-  state: {
-    recordingFile: ?{
-      name: string
-    }
+type State = {
+  recordingFile: ?{
+    name: string
   }
+}
 
+class NewRecordingForm extends Component<Props, State> {
   constructor () {
     super()
     const self: any = this

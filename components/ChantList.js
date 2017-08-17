@@ -1,11 +1,14 @@
 // @flow
-import type { Element } from 'react'
+import React from 'react'
+import type { Node } from 'react'
 import type { Chant, Chants } from '~/data/types'
 import { FormattedMessage } from 'react-intl'
 import ChantLink from './ChantLink'
 import map from 'lodash.map'
 
-const ChantList = ({chants} : { chants: Chants }) => (
+type Props = { chants: Chants }
+
+const ChantList = ({chants}: Props) => (
   <div>
     <h1>
       <FormattedMessage
@@ -14,7 +17,7 @@ const ChantList = ({chants} : { chants: Chants }) => (
       />
     </h1>
     <ul>
-      {map(chants, (chant: Chant, key: string): Element<*> => (
+      {map(chants, (chant: Chant, key: string): Node => (
         <li key={key}>
           <ChantLink
             chantSlug={key}

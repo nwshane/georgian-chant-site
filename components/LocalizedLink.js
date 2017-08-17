@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import Link from 'next/link'
 import { injectIntl } from 'react-intl'
 import type { IntlShape } from 'react-intl'

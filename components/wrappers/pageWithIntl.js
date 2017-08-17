@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react'
+import type { Node } from 'react'
 import PropTypes from 'prop-types'
 import {IntlProvider, addLocaleData, injectIntl} from 'react-intl'
 import requiresLogin from '~/helpers/requiresLogin'
@@ -17,26 +18,24 @@ if (typeof window !== 'undefined' && window.ReactIntlLocaleData) {
   })
 }
 
-type Props = {
-  originalUrl: ?string,
-  locale: string,
-  messages: {
-    [string]: string
-  },
-  now: number
-}
-
 const getLocale = (req) => (
   req && req.locale ? req.locale : window.__NEXT_DATA__.props.initialProps.locale
 )
 
 // TODO: Replace any flow type with correct flow type
-export default (Page: any) => {
+export default (Page: Node) => {
   const IntlPage = injectIntl(Page)
 
-  class PageWithIntl extends Component {
-    props: Props
+  type Props = {
+    originalUrl: ?string,
+    locale: string,
+    messages: {
+      [string]: string
+    },
+    now: number
+  }
 
+  class PageWithIntl extends Component<Props> {
     static childContextTypes = {
       originalUrl: PropTypes.string
     }
@@ -69,8 +68,8 @@ export default (Page: any) => {
       }
 
       let props
-      if (typeof Page.getInitialProps === 'function') {
-        props = await Page.getInitialProps(context)
+      if (typeof IntlPage.getInitialProps === 'function') {
+        props = await IntlPage.getInitialProps(context)
       }
 
       return {

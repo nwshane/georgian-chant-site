@@ -1,4 +1,5 @@
 // @flow
+import React from 'react'
 import { TableRow, TableRowColumn } from 'material-ui/Table'
 import { connect } from 'react-redux'
 import { getTransliteratedName } from '~/data/getters'

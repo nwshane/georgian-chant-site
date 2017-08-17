@@ -4,7 +4,11 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import subscribeToFirebase from '~/data/thunks/subscribeToFirebase'
 
-class FirebaseSubscriber extends Component {
+type Props = {
+  subscribeToFirebase: Function
+}
+
+class FirebaseSubscriber extends Component<Props> {
   componentDidMount () {
     this.props.subscribeToFirebase()
   }

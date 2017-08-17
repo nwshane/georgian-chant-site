@@ -1,5 +1,5 @@
 // @flow
-import { Component } from 'react'
+import React, { Component } from 'react'
 import NewRecordingForm from './NewRecordingForm'
 import EditRecordingForms from './EditRecordingForms'
 import type { Chant, UploadTask } from '~/data/types'
@@ -8,14 +8,13 @@ type Props = {
   chant: Chant
 }
 
-class RecordingsForm extends Component {
-  props: Props
-  state: {
-    uploadTasks: {
-      [string]: UploadTask
-    }
+type State = {
+  uploadTasks: {
+    [string]: UploadTask
   }
+}
 
+class RecordingsForm extends Component<Props, State> {
   constructor (props: Props) {
     super(props)
     const self: any = this

@@ -1,5 +1,6 @@
 // @flow
-import type { Children } from 'react'
+import React from 'react'
+import type { Node } from 'react'
 import Header from './Header'
 import GlobalStyle from './GlobalStyle'
 import GlobalHead from './GlobalHead'
@@ -9,7 +10,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppMessageDisplay from './AppMessageDisplay'
 import '~/components/tapEvents'
 
-const Layout = (props : { children?: Children }) => (
+const Layout = (props : { children: Node }) => (
   <MuiThemeProvider muiTheme={getMuiTheme()}>
     <div>
       <GlobalStyle />
