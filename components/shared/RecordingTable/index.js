@@ -51,7 +51,7 @@ const RecordingTable = ({hide, recordings, uploadTasks, removeUploadTask}: Props
       displayRowCheckbox={false}
     >
       {map(recordings, (recording, key) => (
-        <RecordingTableRow {...{hide, recording, key}} />
+        <RecordingTableRow recordingKey={key} {...{hide, recording, key}} />
       ))}
       {
         uploadTasks && removeUploadTask

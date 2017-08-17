@@ -12,9 +12,7 @@ type Props = {
   recordingId: string
 }
 
-class DeleteRecordingButton extends Component {
-  props: Props
-
+class DeleteRecordingButton extends Component<void, Props, void> {
   constructor (props: Props) {
     super(props)
     const self: any = this

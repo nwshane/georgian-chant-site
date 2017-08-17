@@ -12,40 +12,45 @@ import ChantLink from '~/components/ChantLink'
 type Props = {
   hide: Array<string>,
   recording: Recording,
+  recordingKey: string,
   school: School,
   intl: IntlShape
 }
 
-const RecordingTableRow = ({hide, recording, school, intl: {locale}}: Props) => (
-  <TableRow>
-    {
-      hide.includes('chantName')
+const RecordingTableRow = (props: Props) => {
+  const {hide, recording, recordingKey, school, intl: {locale}} = props
+  return (
+    <TableRow>
+      {
+        hide.includes('chantName')
         ? null
         : (
           <TableRowColumn>
             <ChantLink chantSlug={recording.chantSlug} />
           </TableRowColumn>
         )
-    }
-    <TableRowColumn>
-      {getTransliteratedName(school, locale)}
-    </TableRowColumn>
-    <TableRowColumn>
-      <audio controls src={recording.url} />
-    </TableRowColumn>
-    {
-      hide.includes('actions')
+      }
+      <TableRowColumn>
+        {getTransliteratedName(school, locale)}
+      </TableRowColumn>
+      <TableRowColumn>
+        <audio controls src={recording.url} />
+      </TableRowColumn>
+      {
+        hide.includes('actions')
         ? null
         : (
           <TableRowColumn>
             <DeleteRecordingButton
               recording={recording}
+              recordingId={recordingKey}
             />
           </TableRowColumn>
         )
-    }
-  </TableRow>
-)
+      }
+    </TableRow>
+  )
+}
 
 const mapStateToProps = (state, props) => ({
   school: getSchool(props.recording.school, state)
