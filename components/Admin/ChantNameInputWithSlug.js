@@ -20,7 +20,7 @@ class ChantNameInputWithSlug extends Component<Props, State> {
     const self: any = this
     self.handleNameChange = this.handleNameChange.bind(this)
     this.state = {
-      name: getTranslatedName(props.chant, 'ka')
+      name: getTranslatedName('ka', props.chant)
     }
   }
 

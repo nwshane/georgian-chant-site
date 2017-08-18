@@ -13,8 +13,8 @@ type Props = {
 const ChantHeading = ({chant, intl: {locale}}: Props) => (
   <h1>
     <span>
-      {getTransliteratedName(chant, locale)}
-      {locale !== 'ka' && ` - ${getTranslatedName(chant, locale)}`}
+      {getTransliteratedName(locale, chant)}
+      {locale !== 'ka' && ` - ${getTranslatedName(locale, chant)}`}
     </span>
   </h1>
 )

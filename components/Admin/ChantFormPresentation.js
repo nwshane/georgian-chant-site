@@ -23,9 +23,9 @@ const ChantFormPresentation = ({chant, handleSubmit}: Props) => (
     }}
   >
     <ChantNameInputWithSlug chant={chant} />
-    <ChantTextInput value={getTranslatedText(chant, 'ka')} locale='ka' required />
-    <ChantNameInput value={getTranslatedName(chant, 'en')} locale='en' />
-    <ChantTextInput value={getTranslatedText(chant, 'en')} locale='en' />
+    <ChantTextInput value={getTranslatedText('ka', chant)} locale='ka' required />
+    <ChantNameInput value={getTranslatedName('en', chant)} locale='en' />
+    <ChantTextInput value={getTranslatedText('en', chant)} locale='en' />
     <RaisedButton type='submit'>
       {chant ? 'Update Chant' : 'Create New Chant'}
     </RaisedButton>

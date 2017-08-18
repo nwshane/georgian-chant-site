@@ -17,17 +17,17 @@ const ChantText = ({chant, intl: { locale }}: Props) => (
   <section>
     <div>
       <h3>Text</h3>
-      {nl2br(getTransliteratedText(chant, locale))}
-      {locale !== 'ka' && !(getTranslatedText(chant, locale).length > 0) && (
+      {nl2br(getTransliteratedText(locale, chant))}
+      {locale !== 'ka' && !(getTranslatedText(locale, chant).length > 0) && (
         <p>
           No translation available.
         </p>
       )}
     </div>
-    {locale !== 'ka' && getTranslatedText(chant, locale).length > 0 && (
+    {locale !== 'ka' && getTranslatedText(locale, chant).length > 0 && (
       <div>
         <h3>English Translation</h3>
-        {nl2br(getTranslatedText(chant, locale))}
+        {nl2br(getTranslatedText(locale, chant))}
       </div>
     )}
     <style jsx>{`
