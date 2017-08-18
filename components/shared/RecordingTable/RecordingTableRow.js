@@ -11,7 +11,7 @@ import DeleteRecordingButton from './DeleteRecordingButton'
 import ChantLink from '~/components/ChantLink'
 
 type Props = {
-  hide: Array<string>,
+  hide?: Array<string>,
   recording: Recording,
   recordingKey: string,
   school: School,
@@ -23,7 +23,7 @@ const RecordingTableRow = (props: Props) => {
   return (
     <TableRow>
       {
-        hide.includes('chantName')
+        hide && hide.includes('chantName')
           ? null
           : (
             <TableRowColumn>
@@ -38,7 +38,7 @@ const RecordingTableRow = (props: Props) => {
         <audio controls src={recording.url} />
       </TableRowColumn>
       {
-        hide.includes('actions')
+        hide && hide.includes('actions')
           ? null
           : (
             <TableRowColumn>

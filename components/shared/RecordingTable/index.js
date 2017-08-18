@@ -12,7 +12,7 @@ type Props = {
     [string]: UploadTask
   },
   removeUploadTask?: Function,
-  hide: Array<string>
+  hide?: Array<string>
 }
 
 const RecordingTable = ({hide, recordings, uploadTasks, removeUploadTask}: Props) => (
@@ -23,7 +23,7 @@ const RecordingTable = ({hide, recordings, uploadTasks, removeUploadTask}: Props
     >
       <TableRow>
         {
-          hide.includes('chantName')
+          hide && hide.includes('chantName')
             ? null
             : (
               <TableRowColumn>
@@ -38,7 +38,7 @@ const RecordingTable = ({hide, recordings, uploadTasks, removeUploadTask}: Props
           Recording
         </TableRowColumn>
         {
-          hide.includes('actions')
+          hide && hide.includes('actions')
             ? null
             : (
               <TableRowColumn>

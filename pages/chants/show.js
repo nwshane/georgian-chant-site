@@ -7,7 +7,9 @@ import wrapPage from '~/components/wrappers/wrapPage'
 import { getChantBySlug } from '~/data/ducks/chants'
 import fetchChantBySlug from '~/data/thunks/chants/fetchBySlug'
 import fetchRecordings from '~/data/thunks/recordings/fetchAll'
-import ChantShowPageContent from '~/components/ChantShowPageContent'
+import ChantHeading from '~/components/chant/ChantHeading'
+import ChantText from '~/components/chant/ChantText'
+import ChantRecordings from '~/components/chant/ChantRecordings'
 
 type InitialPropsContext = {
   query: {
@@ -37,7 +39,9 @@ class ChantShowPage extends Component<Props> {
 
     return (
       <Layout>
-        {chant && <ChantShowPageContent chant={chant} />}
+        <ChantHeading chant={chant} />
+        <ChantText chant={chant} />
+        <ChantRecordings chant={chant} />
       </Layout>
     )
   }
