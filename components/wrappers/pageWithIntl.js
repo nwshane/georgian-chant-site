@@ -68,8 +68,8 @@ export default (Page: Node) => {
       }
 
       let props
-      if (typeof IntlPage.getInitialProps === 'function') {
-        props = await IntlPage.getInitialProps(context)
+      if (typeof Page.getInitialProps === 'function') {
+        props = await Page.getInitialProps(context)
       }
 
       return {
