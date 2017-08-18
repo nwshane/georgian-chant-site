@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react'
+import type { Dispatch } from 'redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Router from 'next/router'
@@ -80,7 +81,7 @@ class LoginForm extends Component<Props, State> {
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {setAppMessage},
   dispatch
 )

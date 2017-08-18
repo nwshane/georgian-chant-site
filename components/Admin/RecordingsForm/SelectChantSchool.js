@@ -8,7 +8,7 @@ import type { Schools } from '~/data/types'
 import { getTransliteratedName } from '~/data/getters'
 import { injectIntl } from 'react-intl'
 import type { IntlShape } from 'react-intl'
-import map from 'lodash/map'
+import { mapObjIndexed, values } from 'ramda'
 
 type Props = {
   value: string,
@@ -53,9 +53,9 @@ class SelectChantSchool extends Component<Props, State> {
         value={this.state.value}
         onChange={this.handleChange}
       >
-        {map(schools, (school, key) => (
-          <MenuItem key={key} value={key} primaryText={getTransliteratedName(school, locale)} />
-        ))}
+        {values(mapObjIndexed((school, key) => (
+          <MenuItem key={key} value={key} primaryText={getTransliteratedName(locale, school)} />
+        ), schools))}
       </FormsySelect>
     )
   }

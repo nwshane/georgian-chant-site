@@ -7,6 +7,7 @@ import ChantFormPresentation from './ChantFormPresentation'
 import submitNewChant from '~/data/thunks/chants/create'
 import updateChant from '~/data/thunks/chants/update'
 import localizeObject from '~/helpers/localizeObject'
+import type { Dispatch } from 'redux'
 
 type Props = {
   chant: Chant,
@@ -45,7 +46,7 @@ class ChantForm extends Component<Props> {
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {submitNewChant, updateChant},
   dispatch
 )

@@ -1,5 +1,5 @@
 // @flow
-import pick from 'lodash/pick'
+import { pick } from 'ramda'
 import type { Action, Recordings, State } from '~/data/types'
 import { getChantRecordingIds } from '~/data/ducks/chants'
 
@@ -21,7 +21,7 @@ export const getRecordingsForChant = (
   state: State,
   chantSlug: string
 ): Recordings => (
-  pick(getRecordings(state), getChantRecordingIds(state, chantSlug))
+  pick(getChantRecordingIds(state, chantSlug), getRecordings(state))
 )
 
 export default (recordingsState: ?Recordings = {}, action: Action): ?Recordings => {

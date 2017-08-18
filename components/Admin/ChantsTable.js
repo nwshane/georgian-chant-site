@@ -3,13 +3,17 @@ import React from 'react'
 import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import LocalizedLink from '~/components/LocalizedLink'
 import ChantLink from '~/components/ChantLink'
-import map from 'lodash.map'
+import { mapObjIndexed, values } from 'ramda'
 import { connect } from 'react-redux'
 import { getChants } from '~/data/ducks/chants'
 import type { Chants, State } from '~/data/types'
 
+type Props = {
+  chants: Chants
+}
+
 // TODO: Localize
-const AdminChantsTable = ({chants}: {chants: Chants}) => (
+const AdminChantsTable = ({chants}: Props) => (
   <Table>
     <TableHeader
       displaySelectAll={false}
@@ -27,7 +31,7 @@ const AdminChantsTable = ({chants}: {chants: Chants}) => (
     <TableBody
       displayRowCheckbox={false}
     >
-      {map(chants, (chant, slug) => (
+      {values(mapObjIndexed((chant, slug) => (
         <TableRow key={slug}>
           <TableRowColumn>
             <ChantLink chantSlug={slug} />
@@ -43,7 +47,7 @@ const AdminChantsTable = ({chants}: {chants: Chants}) => (
             </LocalizedLink>
           </TableRowColumn>
         </TableRow>
-      ))}
+      ), chants))}
     </TableBody>
   </Table>
 )

@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import type { Dispatch } from 'redux'
 import Snackbar from 'material-ui/Snackbar'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -38,7 +39,7 @@ const mapStateToProps = (state: State) => ({
   key: getAppMessageText(state)
 })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {clearAppMessage},
   dispatch
 )

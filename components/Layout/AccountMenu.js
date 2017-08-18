@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react'
+import type { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { defineMessages, injectIntl } from 'react-intl'
@@ -57,7 +58,7 @@ const mapStateToProps = (state: State) => ({
   currentUser: getCurrentUser(state)
 })
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {setAppMessage},
   dispatch
 )

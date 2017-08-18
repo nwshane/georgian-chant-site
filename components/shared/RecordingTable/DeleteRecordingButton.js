@@ -1,4 +1,5 @@
 // @flow
+import type { Dispatch } from 'redux'
 import React, { Component } from 'react'
 import FlatButton from 'material-ui/FlatButton'
 import type { Recording } from '~/data/types'
@@ -31,7 +32,7 @@ class DeleteRecordingButton extends Component<Props> {
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {deleteRecording},
   dispatch
 )

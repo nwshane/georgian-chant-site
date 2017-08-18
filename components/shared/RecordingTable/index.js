@@ -2,7 +2,7 @@
 import React from 'react'
 import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import type { Recordings, UploadTask } from '~/data/types'
-import map from 'lodash.map'
+import { mapObjIndexed, values } from 'ramda'
 import RecordingTableRow from './RecordingTableRow'
 import UploadTaskPercentage from './UploadTaskPercentage'
 
@@ -51,15 +51,13 @@ const RecordingTable = ({hide, recordings, uploadTasks, removeUploadTask}: Props
     <TableBody
       displayRowCheckbox={false}
     >
-      {map(recordings, (recording, key) => (
-        <RecordingTableRow recordingKey={key} {...{hide, recording, key}} />
-      ))}
+      {values(mapObjIndexed((recording, key) => {
+        return <RecordingTableRow recordingKey={key} {...{hide, recording, key}} />
+      }, recordings))}
       {
         uploadTasks && removeUploadTask
-          ? null
-          : (
-            map(
-              uploadTasks,
+          ? (
+            values(mapObjIndexed(
               (uploadTask, uploadTaskKey) => (
                 <TableRow key={uploadTaskKey}>
                   <TableRowColumn>
@@ -71,9 +69,11 @@ const RecordingTable = ({hide, recordings, uploadTasks, removeUploadTask}: Props
                   </TableRowColumn>
                   <TableRowColumn />
                 </TableRow>
-              )
+              ),
+              uploadTasks
             )
-          )
+            ))
+          : null
       }
     </TableBody>
   </Table>

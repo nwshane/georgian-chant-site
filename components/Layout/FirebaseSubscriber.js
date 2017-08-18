@@ -1,5 +1,6 @@
 // @flow
 import { Component } from 'react'
+import type { Dispatch } from 'redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import subscribeToFirebase from '~/data/thunks/subscribeToFirebase'
@@ -18,7 +19,7 @@ class FirebaseSubscriber extends Component<Props> {
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {subscribeToFirebase},
   dispatch
 )

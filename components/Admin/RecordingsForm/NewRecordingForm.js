@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react'
+import type { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import type { Chant, UploadTask } from '~/data/types'
@@ -62,7 +63,7 @@ class NewRecordingForm extends Component<Props, State> {
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators(
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {submitRecording},
   dispatch
 )

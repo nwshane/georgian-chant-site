@@ -2,7 +2,7 @@
 import React from 'react'
 import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import { connect } from 'react-redux'
-import map from 'lodash.map'
+import { map, values } from 'ramda'
 import type { Schools } from '~/data/types'
 import { getTransliteratedName } from '~/data/getters'
 import type { IntlShape } from 'react-intl'
@@ -32,16 +32,16 @@ const AdminSchoolsTable = ({schools, intl: {locale}}: Props) => (
     <TableBody
       displayRowCheckbox={false}
     >
-      {map(schools, (school, key) => (
+      {map((school) => (
         <TableRow>
           <TableRowColumn>
-            {getTransliteratedName(school, locale)}
+            {getTransliteratedName(locale, school)}
           </TableRowColumn>
           <TableRowColumn>
             None Available
           </TableRowColumn>
         </TableRow>
-      ))}
+      ), values(schools))}
     </TableBody>
   </Table>
 )

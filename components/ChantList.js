@@ -4,7 +4,7 @@ import type { Node } from 'react'
 import type { Chant, Chants } from '~/data/types'
 import { FormattedMessage } from 'react-intl'
 import ChantLink from './ChantLink'
-import map from 'lodash.map'
+import { mapObjIndexed, values } from 'ramda'
 
 type Props = { chants: Chants }
 
@@ -17,13 +17,13 @@ const ChantList = ({chants}: Props) => (
       />
     </h1>
     <ul>
-      {map(chants, (chant: Chant, key: string): Node => (
+      {values(mapObjIndexed((chant: Chant, key: string): Node => (
         <li key={key}>
           <ChantLink
             chantSlug={key}
           />
         </li>
-      ))}
+      ), chants))}
     </ul>
   </div>
 )
