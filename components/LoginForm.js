@@ -55,16 +55,28 @@ class LoginForm extends Component<Props, State> {
 
       Router.push('/admin', `/${intl.locale}/admin`)
 
-      setAppMessage(intl.formatMessage(loggedInMessage, { email: data.email }), 'success')
+      setAppMessage({
+        text: intl.formatMessage(loggedInMessage, { email: data.email }),
+        category: 'success'
+      })
     } catch (error) {
       console.log(error)
 
       if (error.code === 'auth/network-request-failed') {
-        setAppMessage('Network request failed - is your internet working?', 'error')
+        setAppMessage({
+          text: 'Network request failed - is your internet working?',
+          category: 'error'
+        })
       } else if (error.code === 'auth/wrong-password') {
-        setAppMessage(error.message, 'error')
+        setAppMessage({
+          text: error.message,
+          category: 'error'
+        })
       } else {
-        setAppMessage('Could not log in - please try again later', 'error')
+        setAppMessage({
+          text: 'Could not log in - please try again later',
+          category: 'error'
+        })
       }
     }
   }
