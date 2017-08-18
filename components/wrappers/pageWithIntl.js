@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react'
-import type { Node } from 'react'
+import type { ComponentType } from 'react'
 import PropTypes from 'prop-types'
 import {IntlProvider, addLocaleData, injectIntl} from 'react-intl'
 import requiresLogin from '~/helpers/requiresLogin'
@@ -23,7 +23,7 @@ const getLocale = (req) => (
 )
 
 // TODO: Replace any flow type with correct flow type
-export default (Page: Node) => {
+export default (Page: ComponentType<any>) => {
   const IntlPage = injectIntl(Page)
 
   type Props = {

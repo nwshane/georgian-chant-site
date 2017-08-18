@@ -1,10 +1,10 @@
 // @flow
-import type { Node } from 'react'
+import type { ComponentType } from 'react'
 import pageWithIntl from './pageWithIntl'
 import withRedux from 'next-redux-wrapper'
 import initStore from '~/data/initStore'
 
-const wrapPage = (Page: Node | Function) => (
+const wrapPage = (Page: ComponentType<any>) => (
   withRedux(initStore)(pageWithIntl(Page))
 )
 
