@@ -22,7 +22,8 @@ const RecordingFormPresentation = ({recordingFile, handleSubmit, handleChangeFil
     onSubmit={handleSubmit}
     encType='multipart/form-data'
     style={{
-      marginTop: '50px'
+      marginTop: '50px',
+      marginBottom: '30px'
     }}
   >
     <RecordingInput
@@ -49,8 +50,9 @@ const RecordingFormPresentation = ({recordingFile, handleSubmit, handleChangeFil
       </div>
     )}
     <style jsx>{`
-      form {
-        margin: 50px 0 30px;
+      div {
+        display: flex;
+        flex-direction: column;
       }
     `}</style>
   </Form>
