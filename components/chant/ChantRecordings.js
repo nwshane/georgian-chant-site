@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import { connect } from 'react-redux'
+import type { Chant, State } from '~/data/types'
 import { getRecordingsForChant } from '~/data/ducks/recordings'
 import RecordingTable from '~/components/shared/RecordingTable/'
 
@@ -22,7 +23,7 @@ const ChantRecordings = ({recordings}: Props) => (
     )
 )
 
-const mapStateToProps = (state, {chant}) => ({
+const mapStateToProps = (state: State, {chant}: {chant: Chant}) => ({
   recordings: getRecordingsForChant(state, chant.slug)
 })
 

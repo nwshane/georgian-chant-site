@@ -71,6 +71,9 @@ export type UploadTask = {
 
 // this is the object passed into Next JS Page's getInitialProps method
 export type ServerContext = {
+  query: {
+    slug: string
+  },
   req: {
     locale: string,
     originalUrl: string,
@@ -81,7 +84,7 @@ export type ServerContext = {
   },
   pathname: string,
   store: {
-    getState: Function,
-    dispatch: Function
+    getState: GetState,
+    dispatch: Dispatch
   }
 }
