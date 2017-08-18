@@ -21,13 +21,13 @@ async function updateDatabase (dispatch, data) {
   const { newRecordingRef, school, uploadTask, chantSlug } = data
   const { downloadURL: url } = await uploadTask
   const { key: recordingKey } = newRecordingRef
-  const values = { chantSlug, url, school }
 
-  const updateRecordingObject = getUpdateRecordingObject({ recordingKey, chantSlug }, values)
+  const values = { chantSlug, url, school }
+  const pathVariables = { recordingKey, chantSlug }
 
   await database
   .ref()
-  .update(updateRecordingObject)
+  .update(getUpdateRecordingObject(pathVariables, values))
 
   dispatch(setAppMessage({
     text: 'Finished saving the recording',
