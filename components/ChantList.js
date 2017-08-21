@@ -1,31 +1,11 @@
 // @flow
-import React from 'react'
-import type { Node } from 'react'
-import type { Chant, Chants } from '~/data/types'
-import { FormattedMessage } from 'react-intl'
-import ChantLink from './ChantLink'
-import { mapObjIndexed, values } from 'ramda'
+import { connect } from 'react-redux'
+import ChantListPresentation from './ChantListPresentation'
+import type { State } from '~/data/types'
+import { getChants } from '~/data/ducks/chants'
 
-type Props = { chants: Chants }
+const mapStateToProps = (state: State) => ({
+  chants: getChants(state)
+})
 
-const ChantList = ({chants}: Props) => (
-  <div>
-    <h1>
-      <FormattedMessage
-        id='ChantList.title'
-        defaultMessage='All Chants'
-      />
-    </h1>
-    <ul>
-      {values(mapObjIndexed((chant: Chant, key: string): Node => (
-        <li key={key}>
-          <ChantLink
-            chantSlug={key}
-          />
-        </li>
-      ), chants))}
-    </ul>
-  </div>
-)
-
-export default ChantList
+export default connect(mapStateToProps)(ChantListPresentation)

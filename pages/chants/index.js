@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
 import fetchChants from '~/data/thunks/chants/fetchAll'
-import ChantListContainer from '~/components/ChantListContainer'
+import ChantList from '~/components/ChantList'
 
 type InitialPropsContext = {store: {dispatch: Function}}
 
@@ -15,7 +15,7 @@ class ChantIndexPage extends Component<{}> {
   render () {
     return (
       <Layout>
-        <ChantListContainer />
+        <ChantList />
       </Layout>
     )
   }
