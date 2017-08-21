@@ -35,7 +35,11 @@ const getDatabaseUrl = () => {
   return `https://${projectId}.firebaseio.com`
 }
 
-module.exports = () => ({
-  credential: firebaseAdmin.credential.cert(getFirebaseCredentials()),
-  databaseURL: getDatabaseUrl()
-})
+module.exports = () => {
+  console.log('getFirebaseCredentials', getFirebaseCredentials())
+
+  return ({
+    credential: firebaseAdmin.credential.cert(getFirebaseCredentials()),
+    databaseURL: getDatabaseUrl()
+  })
+}
