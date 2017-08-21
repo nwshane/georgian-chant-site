@@ -30,6 +30,7 @@ const Layout = (props : { children: Node }) => (
         padding: 0 10px;
       }
       main {
+        margin-top: 30px;
         margin-bottom: 50px;
       }
       `}

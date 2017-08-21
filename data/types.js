@@ -38,10 +38,15 @@ export type Recordings = {
   [string]: Recording
 }
 
+export type Filters = {
+  search: string
+}
+
 export type State = {
   +currentUser: User,
   +chants: Chants,
   +appMessage: AppMessage,
+  +filters: Filters,
   +recordings: Recordings,
   +schools: Schools
 }
@@ -55,6 +60,7 @@ export type Action =
   | { type: 'MERGE_RECORDINGS', recordings: Recordings }
   | { type: 'SET_RECORDINGS', recordings: Recordings }
   | { type: 'SET_SCHOOLS', schools: Schools }
+  | { type: 'SET_SEARCH', search: string }
 
 export type GetState = () => State
 
