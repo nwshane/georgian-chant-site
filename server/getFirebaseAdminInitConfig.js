@@ -20,7 +20,7 @@ const getFirebaseCredentials = () => {
     type,
     projectId,
     privateKeyId,
-    privateKey,
+    privateKey: privateKey.replace(/\\n/g, '\n'),
     clientEmail,
     clientId,
     authUri,
