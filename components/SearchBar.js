@@ -30,8 +30,7 @@ class SearchBar extends Component<Props> {
         onRequestSearch={() => console.log('onRequestSearch')}
         value={this.props.search}
         style={{
-          margin: '0 auto',
-          maxWidth: 800
+          maxWidth: 400
         }}
       />
     )

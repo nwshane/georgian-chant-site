@@ -30,8 +30,14 @@ class ChantShowPage extends Component<Props> {
     return (
       <Layout>
         <ChantHeading chant={chant} />
+        <h3>Text</h3>
         <ChantText chant={chant} />
         <ChantRecordings chant={chant} />
+        <style jsx>{`
+          h3 {
+            margin-top: 30px;
+          }
+        `}</style>
       </Layout>
     )
   }

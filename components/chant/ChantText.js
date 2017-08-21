@@ -16,7 +16,6 @@ type Props = {
 const ChantText = ({chant, intl: { locale }}: Props) => (
   <section>
     <div>
-      <h3>Text</h3>
       {nl2br(getTransliteratedText(locale, chant))}
       {locale !== 'ka' && !(getTranslatedText(locale, chant).length > 0) && (
         <p>
@@ -44,10 +43,6 @@ const ChantText = ({chant, intl: { locale }}: Props) => (
         section {
           flex-direction: row;
         }
-      }
-
-      h3 {
-        margin-top: 30px;
       }
     `}</style>
   </section>
