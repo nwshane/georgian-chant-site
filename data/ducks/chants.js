@@ -1,5 +1,6 @@
 // @flow
 import type { Action, Chant, Chants, State } from '~/data/types'
+import { curry } from 'ramda'
 
 export const mergeChants = (chants: Chants): Action => ({
   type: 'MERGE_CHANTS',
@@ -11,7 +12,7 @@ export const setChants = (chants: Chants): Action => ({
   chants
 })
 
-export const getChants = (state: State): Chants => state.chants
+export const getChants = curry((state: State): Chants => state.chants)
 
 export const getChantBySlug = (state: State, slug: string): Chant => (
   getChants(state)[slug]
