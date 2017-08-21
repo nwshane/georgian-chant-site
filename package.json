@@ -46,6 +46,7 @@
     "lint": "standard --fix | snazzy",
     "precommit": "lint-staged",
     "start": "node server.js",
+    "postinstall": "yarn run build",
     "translate": "node scripts/manageTranslations.js",
     "test": "jest",
     "testwatch": "jest --watch",
