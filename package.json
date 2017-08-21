@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "repository": "https://github.com/nwshane/georgian-chant-site",
+  "engines": {
+    "node": "8.1.x"
+  },
   "dependencies": {
     "axios": "^0.16.2",
     "babel-plugin-react-intl": "^2.3.1",
