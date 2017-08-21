@@ -50,9 +50,7 @@
     "postinstall": "yarn run build",
     "translate": "node scripts/manageTranslations.js",
     "test": "jest",
-    "testwatch": "jest --watch",
-    "deploy": "now -e NODE_ENV=development --dotenv=.env --public --docker",
-    "deploy-production": "now -e NODE_ENV=production --dotenv=.env.production --public --docker"
+    "testwatch": "jest --watch"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
