@@ -10,11 +10,17 @@ type Props = {
   intl: IntlShape
 }
 
+const getHeaderSuffix = (locale, chant) => (
+  locale !== 'ka' && getTranslatedName(locale, chant)
+    ? getTranslatedName(locale, chant)
+    : null
+)
+
 const ChantHeading = ({chant, intl: {locale}}: Props) => (
   <h1>
     <span>
       {getTransliteratedName(locale, chant)}
-      {locale !== 'ka' && ` - ${getTranslatedName(locale, chant)}`}
+      {getHeaderSuffix(locale, chant)}
     </span>
   </h1>
 )
