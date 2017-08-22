@@ -8,7 +8,10 @@ import { getSearch } from '~/data/ducks/filters/search'
 
 const filterBySearch = curry((search: string, chants: Chants): Chants => (
   filter((chant) => (
-    chant.name.ka.includes(search)
+    chant.name.ka.includes(search) ||
+      chant.name.en.includes(search) ||
+      chant.text.ka.includes(search) ||
+      chant.text.en.includes(search)
   ), chants)
 ))
 
