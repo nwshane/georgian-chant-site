@@ -19,7 +19,7 @@ export const getChantBySlug = (state: State, slug: string): Chant => (
 )
 
 export const getChantRecordingIds = (state: State, slug: string): Array<string> => (
-  getChantBySlug(state, slug).recordings
+  getChantBySlug(state, slug).recordings || []
 )
 
 export default (state: Chants = {}, action: Action): Chants => {

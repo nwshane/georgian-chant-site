@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import type { Chant, State } from '~/data/types'
 import { getRecordingsForChant } from '~/data/ducks/recordings'
 import RecordingTable from '~/components/shared/RecordingTable/'
+import { values } from 'ramda'
 
 type Props = {
   recordings: {}
@@ -11,7 +12,7 @@ type Props = {
 
 // TODO: localize
 const ChantRecordings = ({recordings}: Props) => (
-  !recordings
+  values(recordings).length === 0
     ? null
     : (
       <section>

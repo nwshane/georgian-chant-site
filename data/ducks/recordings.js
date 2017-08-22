@@ -21,7 +21,10 @@ export const getRecordingsForChant = (
   state: State,
   chantSlug: string
 ): Recordings => (
-  pick(getChantRecordingIds(state, chantSlug), getRecordings(state))
+  pick(
+    getChantRecordingIds(state, chantSlug),
+    getRecordings(state)
+  )
 )
 
 export default (recordingsState: ?Recordings = {}, action: Action): ?Recordings => {
