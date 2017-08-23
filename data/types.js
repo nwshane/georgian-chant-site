@@ -51,6 +51,7 @@ export type Filters = {
 export type State = {
   +currentUser: User,
   +chants: Chants,
+  +choirs: Choirs,
   +appMessage: AppMessage,
   +filters: Filters,
   +recordings: Recordings,
