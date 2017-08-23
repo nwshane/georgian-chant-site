@@ -14,6 +14,12 @@ export type Chant = {
 
 export type Chants = {[string]: Chant}
 
+export type Choir = {
+  +name: LocalizedObject
+}
+
+export type Choirs = {[string: string]: Choir}
+
 export type School = {
   +name: LocalizedObject
 }
@@ -56,6 +62,7 @@ export type Action =
   | { type: 'CLEAR_APP_MESSAGE' }
   | { type: 'MERGE_CHANTS', chants: Chants }
   | { type: 'SET_CHANTS', chants: Chants }
+  | { type: 'SET_CHOIRS', choirs: Choirs }
   | { type: 'SET_CURRENT_USER', currentUser: User }
   | { type: 'MERGE_RECORDINGS', recordings: Recordings }
   | { type: 'SET_RECORDINGS', recordings: Recordings }

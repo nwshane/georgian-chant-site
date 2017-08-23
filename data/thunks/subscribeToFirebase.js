@@ -2,6 +2,7 @@
 
 import subscribeAuthChange from './subscribeAuthChange'
 import subscribeToChants from './chants/subscribe'
+import subscribeToChoirs from './choirs/subscribe'
 import subscribeToRecordings from './recordings/subscribe'
 import subscribeToSchools from './schools/subscribe'
 
@@ -15,6 +16,7 @@ export default () => (dispatch: Function) => {
 
   dispatch(subscribeAuthChange())
   dispatch(subscribeToChants())
+  dispatch(subscribeToChoirs())
   dispatch(subscribeToRecordings())
   dispatch(subscribeToSchools())
 }
