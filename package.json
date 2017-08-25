@@ -60,6 +60,7 @@
     "jest": "^20.0.4",
     "lint-staged": "^4.0.0",
     "nodemon": "^1.11.0",
+    "puppeteer": "^0.10.0",
     "react-intl-translations-manager": "^5.0.0",
     "snazzy": "^7.0.0",
     "standard": "^10.0.2"

@@ -9,7 +9,7 @@ import Layout from '~/components/Layout/'
 const HomePage = ({intl}) => (
   <Layout>
     <Head>
-      <title>GeorgianChant.org Home</title>
+      <title>GeorgianChant.org</title>
     </Head>
     <FormattedMessage id='hello' defaultMessage='Hello Georgian Chanters!' />
   </Layout>
