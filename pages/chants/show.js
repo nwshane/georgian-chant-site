@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react'
+import Head from 'next/head'
 import Error from '~/components/Error'
 import type { Chant, ServerContext } from '~/data/types'
 import Layout from '~/components/Layout/'
@@ -29,6 +30,11 @@ class ChantShowPage extends Component<Props> {
 
     return (
       <Layout>
+        <Head>
+          <title>
+            Chant Show
+          </title>
+        </Head>
         <ChantHeading chant={chant} />
         <ChantText chant={chant} />
         <ChantRecordings chant={chant} />
