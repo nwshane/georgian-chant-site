@@ -11,9 +11,12 @@ import fetchRecordings from '~/data/thunks/recordings/fetchAll'
 import ChantHeading from '~/components/chant/ChantHeading'
 import ChantText from '~/components/chant/ChantText'
 import ChantRecordings from '~/components/chant/ChantRecordings'
+import { getTransliteratedName } from '~/data/getters'
+import type { IntlShape } from 'react-intl'
 
 type Props = {
-  chant: ?Chant
+  chant: ?Chant,
+  intl: IntlShape
 }
 
 class ChantShowPage extends Component<Props> {
@@ -24,7 +27,7 @@ class ChantShowPage extends Component<Props> {
   }
 
   render () {
-    const { chant } = this.props
+    const {chant, intl: {locale}} = this.props
 
     if (!chant) return <Error statusCode={404} />
 
@@ -32,7 +35,7 @@ class ChantShowPage extends Component<Props> {
       <Layout>
         <Head>
           <title>
-            Chant Show
+            {getTransliteratedName(locale, chant)} - GeorgianChant.org
           </title>
         </Head>
         <ChantHeading chant={chant} />
