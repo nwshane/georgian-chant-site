@@ -12,7 +12,7 @@ type Props = {
 
 const getHeaderSuffix = (locale, chant) => (
   locale !== 'ka' && getTranslatedName(locale, chant)
-    ? getTranslatedName(locale, chant)
+    ? ` - ${getTranslatedName(locale, chant)}`
     : null
 )
 
