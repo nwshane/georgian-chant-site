@@ -1,10 +1,17 @@
+const webpack = require('webpack')
+
 module.exports = {
-  webpack: function (c) {
+  webpack: function (config) {
     // Fixes bug: https://github.com/zeit/next.js/issues/1877
-    if (c.resolve.alias) {
-      delete c.resolve.alias['react']
-      delete c.resolve.alias['react-dom']
+    if (config.resolve.alias) {
+      delete config.resolve.alias['react']
+      delete config.resolve.alias['react-dom']
     }
-    return c
+
+    config.plugins.push(new webpack.DefinePlugin({
+      'process.env.FIREBASE_ENV': JSON.stringify(process.env.FIREBASE_ENV || '')
+    }))
+    
+    return config
   }
 }
