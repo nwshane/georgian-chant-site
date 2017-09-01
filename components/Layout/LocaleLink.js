@@ -35,16 +35,28 @@ type Context = {
 }
 
 const LocaleLink = (props: Props, context: Context) => (
-  <span>
-    <a href={newPath(props, context)}>
-      {props.text}
-    </a>
-    <style jsx>{`
-      a {
-        text-decoration: none;
-      }
-    `}</style>
-  </span>
+  props.disabled
+    ? (
+      <span>
+        {props.text}
+        <style jsx>{`
+          span {
+            font-weight: bold;
+          }
+        `}</style>
+      </span>
+    ) : (
+      <span>
+        <a href={newPath(props, context)}>
+          {props.text}
+        </a>
+        <style jsx>{`
+          a {
+            text-decoration: none;
+          }
+        `}</style>
+      </span>
+    )
 )
 
 LocaleLink.contextTypes = {

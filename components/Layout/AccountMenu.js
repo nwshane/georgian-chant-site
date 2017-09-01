@@ -5,8 +5,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { defineMessages, injectIntl } from 'react-intl'
 import Router from 'next/router'
-import type { State, User } from '~/data/types'
-import { getCurrentUser } from '~/data/ducks/currentUser'
 import { setAppMessage } from '~/data/ducks/appMessage'
 import { auth } from '~/data/firebase'
 import AccountMenuPresentation from './AccountMenuPresentation'
@@ -22,7 +20,6 @@ const { loggedOutMessage } = defineMessages({
 })
 
 type Props = {
-  currentUser: User,
   setAppMessage: Function,
   intl: IntlShape
 }
@@ -47,20 +44,15 @@ class AccountMenu extends Component<Props> {
   }
 
   render () {
-    if (!this.props.currentUser) return null
     return (
       <AccountMenuPresentation handleSignout={this.handleSignout} />
     )
   }
 }
 
-const mapStateToProps = (state: State) => ({
-  currentUser: getCurrentUser(state)
-})
-
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {setAppMessage},
   dispatch
 )
 
-export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(AccountMenu))
+export default injectIntl(connect(null, mapDispatchToProps)(AccountMenu))

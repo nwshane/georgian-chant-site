@@ -10,8 +10,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppMessageDisplay from './AppMessageDisplay'
 import '~/components/tapEvents'
 
+const muiTheme = getMuiTheme({
+  fontFamily: "'Open Sans', sans-serif"
+})
+
 const Layout = (props : { children: Node }) => (
-  <MuiThemeProvider muiTheme={getMuiTheme()}>
+  <MuiThemeProvider muiTheme={muiTheme}>
     <div>
       <GlobalStyle />
       <GlobalHead />
@@ -27,7 +31,7 @@ const Layout = (props : { children: Node }) => (
         margin: 0 auto;
         font-size: 1.6rem;
         font-family: 'Open Sans', sans-serif;
-        padding: 0 10px;
+        padding: 0 15px;
       }
       main {
         margin-top: 30px;
