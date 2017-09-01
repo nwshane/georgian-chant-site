@@ -68,7 +68,6 @@
   "lint-staged": {
     "*.js": [
       "npm run lint",
-      "npm run test",
       "npm run translate"
     ]
   },
