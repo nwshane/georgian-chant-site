@@ -11,7 +11,7 @@ module.exports = {
     config.plugins.push(new webpack.DefinePlugin({
       'process.env.FIREBASE_ENV': JSON.stringify(process.env.FIREBASE_ENV || '')
     }))
-    
+
     return config
   }
 }
