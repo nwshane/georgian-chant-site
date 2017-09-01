@@ -12,20 +12,27 @@ type Props = {
   intl: IntlShape
 }
 
+const showNoTranslationMessage = (locale, chant) => (
+  locale !== 'ka' && !(getTranslatedText(locale, chant).length > 0)
+)
+
+const showTranslation = (locale, chant) => (
+  locale !== 'ka' && getTranslatedText(locale, chant).length > 0
+)
+
 // TODO: localize
 const ChantText = ({chant, intl: { locale }}: Props) => (
   <section>
-    <div>
+    <div className='text'>
       {nl2br(getTransliteratedText(locale, chant))}
-      {locale !== 'ka' && !(getTranslatedText(locale, chant).length > 0) && (
+      {showNoTranslationMessage(locale, chant) && (
         <p>
           No translation available.
         </p>
       )}
     </div>
-    {locale !== 'ka' && getTranslatedText(locale, chant).length > 0 && (
-      <div>
-        <h3>English Translation</h3>
+    {showTranslation(locale, chant) && (
+      <div className='translation'>
         {nl2br(getTranslatedText(locale, chant))}
       </div>
     )}
@@ -35,13 +42,22 @@ const ChantText = ({chant, intl: { locale }}: Props) => (
         flex-direction: column;
       }
 
-      div {
+      .text {
         margin-right: 25px;
+        margin-bottom: 1rem;
       }
 
       @media (min-width: 600px) {
+        .text {
+          margin-bottom: 0;
+        }
+
         section {
           flex-direction: row;
+        }
+
+        section div {
+          width: 50%;
         }
       }
     `}</style>
