@@ -3,6 +3,7 @@ node_modules
 lang/.messages
 .env*
 !.env.example
+screenshots/*
 
 # firebase service account key - provides access to firebase
 # from server
