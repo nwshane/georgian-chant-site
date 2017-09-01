@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import Head from 'next/head'
 import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
 import LocalizedLink from '~/components/LocalizedLink'
@@ -7,6 +8,9 @@ import LocalizedLink from '~/components/LocalizedLink'
 // TODO: Localize
 const AdminIndexPage = () => (
   <Layout>
+    <Head>
+      <title>Admin Home - GeorgianChant.org</title>
+    </Head>
     <h1>Admin Panel</h1>
     <ul>
       <li>

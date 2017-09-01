@@ -7,6 +7,7 @@ import LoginForm from '~/components/LoginForm'
 import { getCurrentUser } from '~/data/ducks/currentUser'
 import { setAppMessage } from '~/data/ducks/appMessage'
 import redirectToLocalizedUrl from '~/helpers/redirectToLocalizedUrl'
+import Head from 'next/head'
 
 class LoginPage extends Component<{}> {
   static async getInitialProps (context: ServerContext) {
@@ -24,6 +25,9 @@ class LoginPage extends Component<{}> {
   render () {
     return (
       <Layout>
+        <Head>
+          <title>Login - GeorgianChant.org</title>
+        </Head>
         <LoginForm />
       </Layout>
     )
