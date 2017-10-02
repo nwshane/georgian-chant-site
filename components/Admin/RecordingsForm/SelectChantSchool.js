@@ -52,6 +52,7 @@ class SelectChantSchool extends Component<Props, State> {
         required
         value={this.state.value}
         onChange={this.handleChange}
+        floatingLabelText='Chant School'
       >
         {values(mapObjIndexed((school, key) => (
           <MenuItem key={key} value={key} primaryText={getTransliteratedName(locale, school)} />
