@@ -8,6 +8,7 @@ import type { Choir } from '~/data/types'
 import { getChoir } from '~/data/ducks/choirs'
 import fetchChoirBySlug from '~/data/thunks/choirs/fetchChoirBySlug'
 import ChoirLink from '~/components/ChoirLink'
+import ChoirForm from '~/components/Admin/choirs/ChoirForm'
 
 type Props = {
   choir: Choir
@@ -35,7 +36,7 @@ class EditChoirPage extends Component<Props> {
           </LocalizedLink>
         </p>
         <ChoirLink slug={choir.slug} text="View this choir's page" />
-        {/* <ChoirForm choir={choir} /> */}
+        <ChoirForm choir={choir} />
         {/* <RecordingsForm choir={choir} /> */}
       </Layout>
     )

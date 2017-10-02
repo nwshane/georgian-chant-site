@@ -3,6 +3,7 @@
   "ChantList.title": "ყველა საგალობელი",
   "ChantNameInput.label": "Chant Name",
   "ChantTextInput.label": "Chant Text",
+  "ChoirNameInput.label": "გუნდის სახელი",
   "Header.about": "შესახებ",
   "Header.chants": "საგალობლები",
   "appMessage.loggedIn": "Welcome, {email}!",
