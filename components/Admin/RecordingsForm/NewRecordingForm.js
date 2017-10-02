@@ -4,12 +4,12 @@ import type { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import type { Chant, UploadTask } from '~/data/types'
-import submitRecording from '~/data/thunks/recordings/create'
+import createRecording from '~/data/thunks/recordings/createRecording'
 import RecordingFormPresentation from './RecordingFormPresentation'
 
 type Props = {
   chant: Chant,
-  submitRecording: Function,
+  createRecording: Function,
   addUploadTask: Function
 }
 
@@ -46,7 +46,7 @@ class NewRecordingForm extends Component<Props, State> {
     }
 
     const uploadTaskObject: { [string]: UploadTask } =
-      await this.props.submitRecording(recordingData)
+      await this.props.createRecording(recordingData)
 
     this.props.addUploadTask(uploadTaskObject)
     this.setState({ recordingFile: null })
@@ -64,7 +64,7 @@ class NewRecordingForm extends Component<Props, State> {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
-  {submitRecording},
+  {createRecording},
   dispatch
 )
 
