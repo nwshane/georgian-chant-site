@@ -12,16 +12,16 @@ export default (oldSlug: string, chantValues: Chant) => async function (dispatch
     slug: convertNameToSlug(chantValues.name.ka)
   }
 
-  const { slug } = newChantValues
+  const { slug: newSlug } = newChantValues
 
   try {
     await database
     .ref()
     .child('chants')
-    .child(slug)
+    .child(newSlug)
     .update(newChantValues)
 
-    if (oldSlug !== slug) {
+    if (oldSlug !== newSlug) {
       const oldChant = await database
       .ref()
       .child('chants')
@@ -30,7 +30,7 @@ export default (oldSlug: string, chantValues: Chant) => async function (dispatch
       oldChant.remove()
     }
 
-    await fetchChantBySlug(slug)
+    await fetchChantBySlug(newSlug)
 
     dispatch(setAppMessage({
       text: 'Chant updated successfully',
