@@ -36,6 +36,15 @@ localeRouter.get('/choirs/:slug', (req, res) => {
   )
 })
 
+localeRouter.get('/admin/choirs/:slug/edit', (req, res) => {
+  return app.render(
+    req,
+    res,
+    '/admin/choirs/edit',
+    { slug: req.params.slug }
+  )
+})
+
 localeRouter.get('*', (req, res) => {
   return handle(req, res)
 })

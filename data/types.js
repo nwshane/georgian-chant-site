@@ -15,6 +15,7 @@ export type Chant = {
 export type Chants = {[string]: Chant}
 
 export type Choir = {
+  +slug: string,
   +name: LocalizedObject
 }
 
