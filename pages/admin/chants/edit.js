@@ -11,6 +11,7 @@ import ChantForm from '~/components/Admin/ChantForm'
 import RecordingsForm from '~/components/Admin/RecordingsForm/'
 import fetchRecordings from '~/data/thunks/recordings/fetchAll'
 import ChantLink from '~/components/ChantLink'
+import { Tabs, Tab } from 'material-ui/Tabs'
 
 type Props = {
   chant: Chant
@@ -39,8 +40,18 @@ class EditChantPage extends Component<Props> {
           </LocalizedLink>
         </p>
         <ChantLink chantSlug={chant.slug} text="View this chant's page" />
-        <ChantForm chant={chant} />
-        <RecordingsForm chant={chant} />
+        <Tabs
+          style={{
+            marginTop: '20px'
+          }}
+        >
+          <Tab label='Chant Info'>
+            <ChantForm chant={chant} />
+          </Tab>
+          <Tab label='Recordings'>
+            <RecordingsForm chant={chant} />
+          </Tab>
+        </Tabs>
       </Layout>
     )
   }
