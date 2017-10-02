@@ -18,11 +18,11 @@ const uploadRecordingFile = (key, recordingFile) => (
 )
 
 async function updateDatabase (dispatch, data) {
-  const { newRecordingRef, school, uploadTask, chantSlug } = data
+  const { newRecordingRef, school, uploadTask, chantSlug, choir } = data
   const { downloadURL: url } = await uploadTask
   const { key: recordingKey } = newRecordingRef
 
-  const values = { chantSlug, url, school }
+  const values = { chantSlug, url, school, choir }
   const pathVariables = { recordingKey, chantSlug }
 
   await database
@@ -36,13 +36,13 @@ async function updateDatabase (dispatch, data) {
 }
 
 export default (recordingData: RecordingData) => async function (dispatch: Function) {
-  const { chantSlug, recordingFile, school } = recordingData
+  const { chantSlug, recordingFile, school, choir } = recordingData
   try {
     const newRecordingRef = await database.ref().child('recordings').push()
 
     const uploadTask = uploadRecordingFile(newRecordingRef.key, recordingFile)
 
-    const data = { newRecordingRef, uploadTask, chantSlug, school }
+    const data = { newRecordingRef, uploadTask, chantSlug, school, choir }
     updateDatabase(dispatch, data)
 
     const uploadTaskObject = {}

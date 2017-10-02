@@ -2,6 +2,7 @@
 import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 import SelectChantSchool from './SelectChantSchool'
+import SelectChoir from './SelectChoir'
 import { Form } from 'formsy-react'
 import RecordingInput from './RecordingInput'
 
@@ -40,6 +41,7 @@ const RecordingFormPresentation = ({recordingFile, handleSubmit, handleChangeFil
     {!!recordingFile && (
       <div>
         <SelectChantSchool />
+        <SelectChoir />
         <RaisedButton
           label={`Upload Recording: ${recordingFile.name}`}
           type='submit'
