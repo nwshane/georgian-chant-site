@@ -18,7 +18,7 @@ type Props = {
 class EditChoirPage extends Component<Props> {
   static async getInitialProps ({store, query: {slug}}) {
     await store.dispatch(fetchChoirBySlug(slug))
-    return { choir: getChoir(store.getState(), slug) }
+    return { choir: getChoir(slug, store.getState()) }
   }
 
   render () {
