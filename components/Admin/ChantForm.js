@@ -10,7 +10,7 @@ import localizeObject from '~/helpers/localizeObject'
 import type { Dispatch } from 'redux'
 
 type Props = {
-  chant: Chant,
+  chant: ?Chant,
   updateChant: Function,
   submitNewChant: Function
 }

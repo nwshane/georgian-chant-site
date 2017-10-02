@@ -10,7 +10,7 @@ import { getTranslatedName, getTranslatedText } from '~/data/getters'
 
 type Props = {
   handleSubmit: Function,
-  chant: Chant
+  chant: ?Chant
 }
 
 // TODO: localize

@@ -6,7 +6,7 @@ import { getTranslatedName } from '~/data/getters'
 import convertNameToSlug from '~/helpers/convertNameToSlug'
 
 type Props = {
-  chant: Chant
+  chant: ?Chant
 }
 
 type State = {

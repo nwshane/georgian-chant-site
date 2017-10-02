@@ -6,7 +6,7 @@ type Nameable = {
   +name: LocalizedObject
 }
 
-export const getTranslatedName = (locale: string, nameable?: Nameable): string => (
+export const getTranslatedName = (locale: string, nameable: ?Nameable): string => (
   (nameable && nameable.name && nameable.name[locale]) || ''
 )
 
@@ -20,7 +20,7 @@ type Textable = {
   +text: LocalizedObject
 }
 
-export const getTranslatedText = (locale: string, textable?: Textable): string => (
+export const getTranslatedText = (locale: string, textable: ?Textable): string => (
   (textable && textable.text && textable.text[locale]) || ''
 )
 
