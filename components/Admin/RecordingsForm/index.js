@@ -44,7 +44,6 @@ class RecordingsForm extends Component<Props, State> {
     const { chant } = this.props
     return (
       <section>
-        <h3>Recordings</h3>
         <EditRecordingForms
           chant={chant}
           uploadTasks={this.state.uploadTasks}
