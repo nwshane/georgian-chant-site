@@ -27,7 +27,9 @@ class ChoirShowPage extends Component<Props> {
 
     return (
       <Layout>
-        {getTranslatedName(locale, choir)}
+        <h1>
+          {getTranslatedName(locale, choir)}
+        </h1>
         <style jsx>{`
           h3 {
             margin-top: 30px;

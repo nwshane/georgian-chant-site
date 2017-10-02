@@ -22,7 +22,7 @@ const ChoirFormPresentation = ({choir, handleSubmit}: Props) => (
     <ChoirNameInputWithSlug choir={choir} />
     <ChoirNameInput value={getTranslatedName('en', choir)} locale='en' />
     <RaisedButton type='submit'>
-      Update Choir
+      {choir ? 'Update Choir' : 'Create New Choir'}
     </RaisedButton>
   </Form>
 )
