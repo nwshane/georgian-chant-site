@@ -12,6 +12,7 @@ import RecordingsForm from '~/components/Admin/RecordingsForm/'
 import fetchRecordings from '~/data/thunks/recordings/fetchAll'
 import ChantLink from '~/components/ChantLink'
 import { Tabs, Tab } from 'material-ui/Tabs'
+import ChantLocalizedName from '~/components/chant/ChantLocalizedName'
 
 type Props = {
   chant: Chant
@@ -32,6 +33,9 @@ class EditChantPage extends Component<Props> {
 
     return (
       <Layout>
+        <h1>
+          Edit Chant: <ChantLocalizedName chant={chant} />
+        </h1>
         <p>
           <LocalizedLink href='/admin/chants'>
             <a>

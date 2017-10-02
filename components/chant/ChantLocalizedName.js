@@ -12,17 +12,15 @@ type Props = {
 
 const getHeaderSuffix = (locale, chant) => (
   locale !== 'ka' && getTranslatedName(locale, chant)
-    ? ` - ${getTranslatedName(locale, chant)}`
-    : null
+  ? ` - ${getTranslatedName(locale, chant)}`
+  : null
 )
 
-const ChantHeading = ({chant, intl: {locale}}: Props) => (
-  <h1>
-    <span>
-      {getTransliteratedName(locale, chant)}
-      {getHeaderSuffix(locale, chant)}
-    </span>
-  </h1>
+const ChantLocalizedName = ({chant, intl: {locale}}: Props) => (
+  <span>
+    {getTransliteratedName(locale, chant)}
+    {getHeaderSuffix(locale, chant)}
+  </span>
 )
 
-export default injectIntl(ChantHeading)
+export default injectIntl(ChantLocalizedName)

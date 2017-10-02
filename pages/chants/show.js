@@ -7,7 +7,7 @@ import wrapPage from '~/components/wrappers/wrapPage'
 import { getChantBySlug } from '~/data/ducks/chants'
 import fetchChantBySlug from '~/data/thunks/chants/fetchBySlug'
 import fetchRecordings from '~/data/thunks/recordings/fetchAll'
-import ChantHeading from '~/components/chant/ChantHeading'
+import ChantLocalizedName from '~/components/chant/ChantLocalizedName'
 import ChantText from '~/components/chant/ChantText'
 import ChantRecordings from '~/components/chant/ChantRecordings'
 
@@ -29,7 +29,9 @@ class ChantShowPage extends Component<Props> {
 
     return (
       <Layout>
-        <ChantHeading chant={chant} />
+        <h1>
+          <ChantLocalizedName chant={chant} />
+        </h1>
         <ChantText chant={chant} />
         <ChantRecordings chant={chant} />
         <style jsx>{`
