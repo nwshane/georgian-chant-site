@@ -14,6 +14,10 @@ type Props = {
 const ChoirFormPresentation = ({choir, handleSubmit}: Props) => (
   <Form
     onSubmit={handleSubmit}
+    style={{
+      display: 'flex',
+      flexDirection: 'column'
+    }}
   >
     <ChoirNameInputWithSlug choir={choir} />
     <ChoirNameInput value={getTranslatedName('en', choir)} locale='en' />
