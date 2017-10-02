@@ -1,8 +1,9 @@
 // @flow
 import React from 'react'
 import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
+import LocalizedLink from '~/components/LocalizedLink'
 import { connect } from 'react-redux'
-import { map, values } from 'ramda'
+import { mapObjIndexed, values } from 'ramda'
 import type { Choirs } from '~/data/types'
 import { getTransliteratedName } from '~/data/getters'
 import type { IntlShape } from 'react-intl'
@@ -32,16 +33,28 @@ const AdminChoirsTable = ({choirs, intl: {locale}}: Props) => (
     <TableBody
       displayRowCheckbox={false}
     >
-      {map((school) => (
+      {values(mapObjIndexed((choir, slug) => (
         <TableRow>
           <TableRowColumn>
-            {getTransliteratedName(locale, school)}
+            <LocalizedLink
+              href={`/choirs/show?slug=${slug}`}
+              as={`/choirs/${slug}`}
+            >
+              {getTransliteratedName(locale, choir)}
+            </LocalizedLink>
           </TableRowColumn>
           <TableRowColumn>
-            None Available
+            <LocalizedLink
+              as={`/admin/choirs/${slug}/edit`}
+              href={`/admin/choirs/edit?slug=${slug}`}
+            >
+              <a>
+                Edit Choir
+              </a>
+            </LocalizedLink>
           </TableRowColumn>
         </TableRow>
-      ), values(choirs))}
+      ), choirs))}
     </TableBody>
   </Table>
 )

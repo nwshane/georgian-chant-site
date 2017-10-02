@@ -63,6 +63,7 @@ export type Action =
   | { type: 'CLEAR_APP_MESSAGE' }
   | { type: 'MERGE_CHANTS', chants: Chants }
   | { type: 'SET_CHANTS', chants: Chants }
+  | { type: 'MERGE_CHOIRS', choirs: Choirs }
   | { type: 'SET_CHOIRS', choirs: Choirs }
   | { type: 'SET_CURRENT_USER', currentUser: User }
   | { type: 'MERGE_RECORDINGS', recordings: Recordings }
