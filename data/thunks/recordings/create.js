@@ -9,6 +9,7 @@ type RecordingData = {
   recordingFile: {
     type: string
   },
+  choir: string,
   school: string
 }
 

@@ -16,7 +16,7 @@ export const getChoirs = (state: State): Choirs => (
   state.choirs
 )
 
-export const getChoir = (state: State, slug: string): Choir => (
+export const getChoir = (slug: string, state: State): Choir => (
   getChoirs(state)[slug]
 )
 

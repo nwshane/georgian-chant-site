@@ -38,7 +38,8 @@ export type AppMessage = {
 
 export type Recording = {
   chantSlug: string,
-  url: string
+  url: string,
+  choir: string
 }
 
 export type Recordings = {

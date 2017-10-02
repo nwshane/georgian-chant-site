@@ -17,7 +17,7 @@ type Props = {
 class ChoirShowPage extends Component<Props> {
   static async getInitialProps ({query: {slug}, store}: ServerContext) {
     await store.dispatch(fetchChoirBySlug(slug))
-    return { choir: getChoir(store.getState(), slug) }
+    return { choir: getChoir(slug, store.getState()) }
   }
 
   render () {

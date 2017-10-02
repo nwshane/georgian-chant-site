@@ -32,6 +32,9 @@ const RecordingTable = ({hide, recordings, uploadTasks, removeUploadTask}: Props
             )
         }
         <TableRowColumn>
+          Choir
+        </TableRowColumn>
+        <TableRowColumn>
           School
         </TableRowColumn>
         <TableRowColumn>
