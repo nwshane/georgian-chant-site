@@ -5,7 +5,7 @@ import type { Choir, ServerContext } from '~/data/types'
 import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
 import fetchChoirBySlug from '~/data/thunks/choirs/fetchChoirBySlug'
-import {getTransliteratedName} from '~/data/getters'
+import {getTranslatedName} from '~/data/getters'
 import type { IntlShape } from 'react-intl'
 import {getChoir} from '~/data/ducks/choirs'
 
@@ -27,7 +27,7 @@ class ChoirShowPage extends Component<Props> {
 
     return (
       <Layout>
-        {getTransliteratedName(locale, choir)}
+        {getTranslatedName(locale, choir)}
         <style jsx>{`
           h3 {
             margin-top: 30px;
