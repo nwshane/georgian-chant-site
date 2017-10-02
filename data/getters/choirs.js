@@ -1,8 +1,8 @@
 // @flow
 import type { State } from '~/data/types'
 import { getChoir } from '~/data/ducks/choirs'
-import { getTransliteratedName } from '../getters'
+import { getTranslatedName } from '../getters'
 
-export const getTransliteratedChoirName = (state: State, slug: string, locale: string) => (
-  getTransliteratedName(locale, getChoir(slug, state))
+export const getTranslatedChoirName = (state: State, slug: string, locale: string) => (
+  getTranslatedName(locale, getChoir(slug, state))
 )

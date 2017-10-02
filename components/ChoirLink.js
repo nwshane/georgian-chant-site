@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import LocalizedLink from '~/components/LocalizedLink'
 import { injectIntl } from 'react-intl'
-import { getTransliteratedChoirName } from '~/data/getters/choirs'
+import { getTranslatedChoirName } from '~/data/getters/choirs'
 import type { IntlShape } from 'react-intl'
 import type { State } from '~/data/types'
 
@@ -31,7 +31,7 @@ const ChoirLink = ({text, slug}: Props) => {
 }
 
 const mapStateToProps = (state: State, {text, slug, intl: { locale }}: Props) => ({
-  text: text || getTransliteratedChoirName(state, slug, locale)
+  text: text || getTranslatedChoirName(state, slug, locale)
 })
 
 export default injectIntl(connect(mapStateToProps)(ChoirLink))

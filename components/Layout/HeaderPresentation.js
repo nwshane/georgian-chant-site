@@ -50,6 +50,16 @@ const HeaderPresentation = (props: Props) => {
           </LocalizedLink>
         </li>
         <li>
+          <LocalizedLink href='/choirs'>
+            <a>
+              <FormattedMessage
+                id='Header.choirs'
+                defaultMessage='Choirs'
+              />
+            </a>
+          </LocalizedLink>
+        </li>
+        <li>
           <LocalizedLink href='/recordings'>
             <a>
               Recordings
