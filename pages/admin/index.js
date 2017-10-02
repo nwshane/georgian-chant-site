@@ -20,6 +20,15 @@ const AdminIndexPage = () => (
       </li>
       <li>
         <LocalizedLink
+          href='/admin/choirs'
+        >
+          <a>
+            Manage Choirs
+          </a>
+        </LocalizedLink>
+      </li>
+      <li>
+        <LocalizedLink
           href='/admin/schools'
         >
           <a>
