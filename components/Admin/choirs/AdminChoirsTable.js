@@ -34,13 +34,15 @@ const AdminChoirsTable = ({choirs, intl: {locale}}: Props) => (
       displayRowCheckbox={false}
     >
       {values(mapObjIndexed((choir, slug) => (
-        <TableRow>
+        <TableRow key={slug}>
           <TableRowColumn>
             <LocalizedLink
               href={`/choirs/show?slug=${slug}`}
               as={`/choirs/${slug}`}
             >
-              {getTransliteratedName(locale, choir)}
+              <a>
+                {getTransliteratedName(locale, choir)}
+              </a>
             </LocalizedLink>
           </TableRowColumn>
           <TableRowColumn>
