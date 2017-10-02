@@ -9,7 +9,7 @@ import localizeObject from '~/helpers/localizeObject'
 import type { Dispatch } from 'redux'
 
 type Props = {
-  choir: Choir,
+  choir: ?Choir,
   updateChoir: Function
 }
 

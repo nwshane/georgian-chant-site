@@ -8,7 +8,7 @@ import { getTranslatedName } from '~/data/getters'
 import ChoirNameInputWithSlug from './ChoirNameInputWithSlug'
 
 type Props = {
-  choir: Choir,
+  choir: ?Choir,
   handleSubmit: Function
 }
 const ChoirFormPresentation = ({choir, handleSubmit}: Props) => (
