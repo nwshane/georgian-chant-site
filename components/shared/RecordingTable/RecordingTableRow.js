@@ -2,7 +2,7 @@
 import React from 'react'
 import { TableRow, TableRowColumn } from 'material-ui/Table'
 import { connect } from 'react-redux'
-import { getTranslatedName, getTransliteratedName } from '~/data/getters'
+import { getTransliteratedName } from '~/data/getters'
 import { getSchool } from '~/data/ducks/schools'
 import type { Recording, School, Choir, State } from '~/data/types'
 import { injectIntl } from 'react-intl'
@@ -10,6 +10,7 @@ import type { IntlShape } from 'react-intl'
 import DeleteRecordingButton from './DeleteRecordingButton'
 import ChantLink from '~/components/ChantLink'
 import { getChoir } from '~/data/ducks/choirs'
+import ChoirLink from '~/components/ChoirLink'
 
 type Props = {
   hide?: Array<string>,
@@ -34,7 +35,11 @@ const RecordingTableRow = (props: Props) => {
           )
       }
       <TableRowColumn>
-        {getTranslatedName(locale, choir)}
+        {
+          choir && (
+            <ChoirLink slug={choir.slug} />
+          )
+        }
       </TableRowColumn>
       <TableRowColumn>
         {getTransliteratedName(locale, school)}
