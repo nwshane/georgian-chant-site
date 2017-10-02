@@ -4,13 +4,15 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import type { Choir } from '~/data/types'
 import ChoirFormPresentation from './ChoirFormPresentation'
+import createChoir from '~/data/thunks/choirs/createChoir'
 import updateChoir from '~/data/thunks/choirs/updateChoir'
 import localizeObject from '~/helpers/localizeObject'
 import type { Dispatch } from 'redux'
 
 type Props = {
   choir: ?Choir,
-  updateChoir: Function
+  updateChoir: Function,
+  createChoir: Function
 }
 
 // TODO: Localize
@@ -26,6 +28,7 @@ class ChoirForm extends Component<Props> {
     if (this.props.choir) {
       this.props.updateChoir(this.props.choir.slug, localizedValues)
     } else {
+      this.props.createChoir(localizedValues)
     }
   }
 
@@ -44,7 +47,7 @@ class ChoirForm extends Component<Props> {
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
-  {updateChoir},
+  {createChoir, updateChoir},
   dispatch
 )
 

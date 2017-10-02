@@ -7,11 +7,20 @@ import AdminChoirsTable from '~/components/Admin/choirs/AdminChoirsTable'
 
 const SchoolsPage = () => (
   <Layout>
-    <LocalizedLink href='/admin'>
-      <a>
-        Return to Admin Panel
-      </a>
-    </LocalizedLink>
+    <p>
+      <LocalizedLink href='/admin'>
+        <a>
+          Return to Admin Panel
+        </a>
+      </LocalizedLink>
+    </p>
+    <p>
+      <LocalizedLink href='/admin/choirs/new'>
+        <a>
+          Add New Choir
+        </a>
+      </LocalizedLink>
+    </p>
     <AdminChoirsTable />
   </Layout>
 )
