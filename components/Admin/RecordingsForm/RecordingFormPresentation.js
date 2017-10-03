@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
-import SelectChantSchool from './SelectChantSchool'
+import SelectChantSchool from '~/components/Admin/shared/SelectChantSchool'
 import SelectChoir from './SelectChoir'
 import { Form } from 'formsy-react'
 import RecordingInput from './RecordingInput'

@@ -13,7 +13,8 @@ import { mapObjIndexed, values } from 'ramda'
 type Props = {
   value: string,
   schools: Schools,
-  intl: IntlShape
+  intl: IntlShape,
+  disabled: boolean
 }
 
 type State = {
@@ -50,6 +51,7 @@ class SelectChantSchool extends Component<Props, State> {
       <FormsySelect
         name='school'
         required
+        disabled={this.props.disabled}
         value={this.state.value}
         onChange={this.handleChange}
         floatingLabelText='Chant School'

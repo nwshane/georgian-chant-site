@@ -9,7 +9,11 @@ type File = {
   type: string
 }
 
-export default (sheetMusicFile: File) => async function (dispatch: Dispatch) {
+type FormValues = {
+  school: string
+}
+
+export default (sheetMusicFile: File, formValues: FormValues) => async function (dispatch: Dispatch) {
   console.log('Called thunk createSheetMusic with file', sheetMusicFile)
   try {
     const newSheetMusicRef = await database.ref().child('sheetMusic').push()
@@ -30,6 +34,7 @@ export default (sheetMusicFile: File) => async function (dispatch: Dispatch) {
         sheetMusicKey: newSheetMusicRef.key
       },
       {
+        school: formValues.school,
         url
       }
     ))

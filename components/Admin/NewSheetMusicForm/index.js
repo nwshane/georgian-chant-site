@@ -18,6 +18,10 @@ type State = {
 
 type FileInputValue = {target: {files: Array<{name: string}>}}
 
+type FormValues = {
+  school: string
+}
+
 class NewSheetMusicForm extends Component<Props, State> {
   constructor (props: Props) {
     super(props)
@@ -28,15 +32,14 @@ class NewSheetMusicForm extends Component<Props, State> {
   }
 
   handleChangeFile ({target: {files}}: FileInputValue) {
-    console.log('changed file', files[0])
     this.setState({
       selectedFile: files[0]
     })
   }
 
-  handleSubmit (formValues: {}) {
+  handleSubmit (formValues: FormValues) {
     console.log('submitting formValues', formValues)
-    this.props.createSheetMusic(this.state.selectedFile)
+    this.props.createSheetMusic(this.state.selectedFile, formValues)
   }
 
   render () {

@@ -3,6 +3,7 @@ import React from 'react'
 import SheetMusicInput from './SheetMusicInput'
 import RaisedButton from 'material-ui/RaisedButton'
 import { Form } from 'formsy-react'
+import SelectChantSchool from '~/components/Admin/shared/SelectChantSchool'
 
 type Props = {
   handleSubmit: Function,
@@ -33,6 +34,11 @@ const NewSheetMusicFormPresentation = (props: Props) => (
       label={getSelectFileLabel(props.selectedFile)}
       handleChangeFile={props.handleChangeFile}
     />
+    <div>
+      <SelectChantSchool
+        disabled={!props.selectedFile}
+      />
+    </div>
     <div>
       <RaisedButton
         label={getUploadButtonLabel(props.selectedFile)}
