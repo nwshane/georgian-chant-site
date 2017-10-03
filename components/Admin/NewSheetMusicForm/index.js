@@ -40,6 +40,9 @@ class NewSheetMusicForm extends Component<Props, State> {
   handleSubmit (formValues: FormValues) {
     console.log('submitting formValues', formValues)
     this.props.createSheetMusic(this.state.selectedFile, formValues)
+    this.setState({
+      selectedFile: null
+    })
   }
 
   render () {
