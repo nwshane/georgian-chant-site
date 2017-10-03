@@ -31,9 +31,15 @@ const RecordingTable = ({hide, recordings, uploadTasks, removeUploadTask}: Props
               </TableRowColumn>
             )
         }
-        <TableRowColumn>
-          Choir
-        </TableRowColumn>
+        {
+          hide && hide.includes('choir')
+            ? null
+            : (
+              <TableRowColumn>
+                Choir
+              </TableRowColumn>
+            )
+        }
         <TableRowColumn>
           School
         </TableRowColumn>

@@ -34,13 +34,19 @@ const RecordingTableRow = (props: Props) => {
             </TableRowColumn>
           )
       }
-      <TableRowColumn>
-        {
-          choir && (
-            <ChoirLink slug={choir.slug} />
+      {
+        hide && hide.includes('choir')
+          ? null
+          : (
+            <TableRowColumn>
+              {
+                choir && (
+                  <ChoirLink slug={choir.slug} />
+                )
+              }
+            </TableRowColumn>
           )
-        }
-      </TableRowColumn>
+      }
       <TableRowColumn>
         {getTransliteratedName(locale, school)}
       </TableRowColumn>

@@ -19,7 +19,7 @@ const ChoirRecordings = ({recordings}: Props) => (
         <h3>
           Recordings
         </h3>
-        <RecordingTable hide={['actions']} {...{recordings}} />
+        <RecordingTable hide={['choir', 'actions']} {...{recordings}} />
       </section>
     )
 )
