@@ -24,7 +24,7 @@ async function updateDatabase (dispatch, data) {
   const { key: recordingKey } = newRecordingRef
 
   const values = { chantSlug, url, school, choir }
-  const pathVariables = { recordingKey, chantSlug }
+  const pathVariables = { recordingKey, chantSlug, choir }
 
   await database
   .ref()

@@ -5,11 +5,11 @@ import { setAppMessage } from '~/data/ducks/appMessage'
 import getUpdateRecordingObject from './getUpdateRecordingObject'
 import getRecordingStorageFileRef from './getRecordingStorageFileRef'
 
-export default ({chantSlug}: Recording, recordingKey: string) => async function (dispatch: Function) {
+export default ({chantSlug, choir}: Recording, recordingKey: string) => async function (dispatch: Function) {
   try {
     await database
     .ref()
-    .update(getUpdateRecordingObject({ recordingKey, chantSlug }, null))
+    .update(getUpdateRecordingObject({ choir, recordingKey, chantSlug }, null))
 
     await getRecordingStorageFileRef(recordingKey)
     .delete()
