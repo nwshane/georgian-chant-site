@@ -14,11 +14,8 @@ type FormValues = {
 }
 
 export default (sheetMusicFile: File, formValues: FormValues) => async function (dispatch: Dispatch) {
-  console.log('Called thunk createSheetMusic with file', sheetMusicFile)
   try {
     const newSheetMusicRef = await database.ref().child('sheetMusic').push()
-    console.log('newSheetMusicRef', newSheetMusicRef)
-    console.log('newSheetMusicRef.key', newSheetMusicRef.key)
 
     const uploadTask = app
     .storage()

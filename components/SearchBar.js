@@ -27,7 +27,6 @@ class SearchBar extends Component<Props> {
     return (
       <MSearchBar
         onChange={this.onChange}
-        onRequestSearch={() => console.log('onRequestSearch')}
         value={this.props.search}
         style={{
           maxWidth: 400

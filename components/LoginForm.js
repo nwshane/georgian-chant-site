@@ -60,8 +60,6 @@ class LoginForm extends Component<Props, State> {
         category: 'success'
       })
     } catch (error) {
-      console.log(error)
-
       if (error.code === 'auth/network-request-failed') {
         setAppMessage({
           text: 'Network request failed - is your internet working?',

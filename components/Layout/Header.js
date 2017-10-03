@@ -25,8 +25,6 @@ class Header extends Component<Props, ComponentState> {
     this.setState({
       menuVisible: !this.state.menuVisible
     })
-
-    console.log(this.state.menuVisible)
   }
 
   render () {
