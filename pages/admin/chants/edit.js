@@ -13,6 +13,7 @@ import fetchRecordings from '~/data/thunks/recordings/fetchAll'
 import ChantLink from '~/components/ChantLink'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import ChantLocalizedName from '~/components/chant/ChantLocalizedName'
+import NewSheetMusicForm from '~/components/Admin/NewSheetMusicForm'
 
 type Props = {
   chant: Chant
@@ -54,6 +55,12 @@ class EditChantPage extends Component<Props> {
           </Tab>
           <Tab label='Recordings'>
             <RecordingsForm chant={chant} />
+          </Tab>
+          <Tab label='Sheet Music'>
+            <section>
+              <h3>Upload New Sheet Music</h3>
+              <NewSheetMusicForm chant={chant} />
+            </section>
           </Tab>
         </Tabs>
       </Layout>
