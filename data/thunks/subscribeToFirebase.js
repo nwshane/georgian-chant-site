@@ -5,6 +5,7 @@ import subscribeToChants from './chants/subscribe'
 import subscribeToChoirs from './choirs/subscribe'
 import subscribeToRecordings from './recordings/subscribe'
 import subscribeToSchools from './schools/subscribe'
+import subscribeToSheetMusic from './sheetMusic/subscribe'
 
 let subscribed = false
 
@@ -19,4 +20,5 @@ export default () => (dispatch: Function) => {
   dispatch(subscribeToChoirs())
   dispatch(subscribeToRecordings())
   dispatch(subscribeToSchools())
+  dispatch(subscribeToSheetMusic())
 }

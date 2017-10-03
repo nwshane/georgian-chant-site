@@ -7,6 +7,7 @@ import appMessage from './ducks/appMessage'
 import recordings from './ducks/recordings'
 import schools from './ducks/schools'
 import filters from './ducks/filters'
+import sheetMusic from './ducks/sheetMusic'
 
 export default combineReducers({
   currentUser,
@@ -15,5 +16,6 @@ export default combineReducers({
   appMessage,
   recordings,
   schools,
-  filters
+  filters,
+  sheetMusic
 })

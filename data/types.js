@@ -14,6 +14,13 @@ export type Chant = {
 
 export type Chants = {[string]: Chant}
 
+export type SheetMusicScore = {
+  +url: string,
+  +school: string
+}
+
+export type SheetMusic = {[string]: SheetMusicScore}
+
 export type Choir = {
   +slug: string,
   +name: LocalizedObject,
@@ -72,6 +79,7 @@ export type Action =
   | { type: 'MERGE_RECORDINGS', recordings: Recordings }
   | { type: 'SET_RECORDINGS', recordings: Recordings }
   | { type: 'SET_SCHOOLS', schools: Schools }
+  | { type: 'SET_SHEET_MUSIC', sheetMusic: SheetMusic }
   | { type: 'SET_SEARCH', search: string }
 
 export type GetState = () => State
