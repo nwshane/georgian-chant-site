@@ -16,7 +16,8 @@ export type Chants = {[string]: Chant}
 
 export type Choir = {
   +slug: string,
-  +name: LocalizedObject
+  +name: LocalizedObject,
+  +recordings: {[string]: boolean}
 }
 
 export type Choirs = {[string: string]: Choir}

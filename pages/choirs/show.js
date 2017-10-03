@@ -7,6 +7,7 @@ import wrapPage from '~/components/wrappers/wrapPage'
 import fetchChoirBySlug from '~/data/thunks/choirs/fetchChoirBySlug'
 import {getTranslatedName} from '~/data/getters'
 import type { IntlShape } from 'react-intl'
+import ChoirRecordings from '~/components/ChoirRecordings'
 import {getChoir} from '~/data/ducks/choirs'
 
 type Props = {
@@ -30,6 +31,7 @@ class ChoirShowPage extends Component<Props> {
         <h1>
           {getTranslatedName(locale, choir)}
         </h1>
+        <ChoirRecordings choir={choir} />
         <style jsx>{`
           h3 {
             margin-top: 30px;

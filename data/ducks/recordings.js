@@ -2,6 +2,7 @@
 import { pick } from 'ramda'
 import type { Action, Recordings, State } from '~/data/types'
 import { getChantRecordingIds } from '~/data/ducks/chants'
+import { getChoirRecordingIds } from '~/data/ducks/choirs'
 
 export const mergeRecordings = (recordings: Recordings): Action => ({
   type: 'MERGE_RECORDINGS',
@@ -23,6 +24,16 @@ export const getRecordingsForChant = (
 ): Recordings => (
   pick(
     getChantRecordingIds(state, chantSlug),
+    getRecordings(state)
+  )
+)
+
+export const getRecordingsForChoir = (
+  state: State,
+  choirSlug: string
+): Recordings => (
+  pick(
+    getChoirRecordingIds(choirSlug, state),
     getRecordings(state)
   )
 )

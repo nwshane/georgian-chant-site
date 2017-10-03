@@ -20,6 +20,10 @@ export const getChoir = (slug: string, state: State): Choir => (
   getChoirs(state)[slug]
 )
 
+export const getChoirRecordingIds = (slug: string, state: State): Array<string> => (
+  Object.keys(getChoir(slug, state).recordings || {})
+)
+
 export default (state: Choirs = {}, action: Action): Choirs => {
   switch (action.type) {
     case 'MERGE_CHOIRS':
