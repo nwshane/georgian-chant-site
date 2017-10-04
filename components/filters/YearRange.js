@@ -18,6 +18,13 @@ type Props = {
   maximumYear: number
 }
 
+const getMarks = (minimumYear, maximumYear) => {
+  const obj = {}
+  obj[minimumYear] = minimumYear
+  obj[maximumYear] = maximumYear
+  return obj
+}
+
 class YearRange extends Component<Props> {
   constructor () {
     super()
@@ -37,7 +44,6 @@ class YearRange extends Component<Props> {
         <div>
           Selected Years: {startYear} - {endYear}
         </div>
-        <span>{minimumYear}</span>
         <Range
           value={[startYear, endYear]}
           defaultValue={[minimumYear, maximumYear]}
@@ -45,8 +51,8 @@ class YearRange extends Component<Props> {
           min={minimumYear}
           max={maximumYear}
           step={1}
+          marks={getMarks(minimumYear, maximumYear)}
         />
-        <span>{maximumYear}</span>
         <RcFilterCss />
         <style jsx>{`
           div {
