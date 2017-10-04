@@ -146,7 +146,7 @@ const HeaderPresentation = (props: Props) => {
         li {
           list-style-type: none;
           text-align: center;
-          margin: 10px 15px;
+          margin: 10px 10px;
         }
 
         a {
