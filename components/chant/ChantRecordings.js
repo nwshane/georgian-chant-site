@@ -16,10 +16,10 @@ const ChantRecordings = ({recordings}: Props) => (
     ? null
     : (
       <section>
-        <h3>
-          Chant Recordings
-        </h3>
-        <RecordingTable hide={['actions']} {...{recordings}} />
+        <h2>
+          Recordings
+        </h2>
+        <RecordingTable hide={['chantName', 'actions']} {...{recordings}} />
       </section>
     )
 )

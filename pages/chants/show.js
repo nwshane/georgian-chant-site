@@ -40,8 +40,8 @@ class ChantShowPage extends Component<Props> {
           <ChantSheetMusicTable hide={['chant', 'actions']} chant={chant} />
         </section>
         <style jsx>{`
-          h3 {
-            margin-top: 30px;
+          h2 {
+            margin-top: 40px;
           }
         `}</style>
       </Layout>
