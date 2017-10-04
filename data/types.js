@@ -49,7 +49,8 @@ export type AppMessage = {
 export type Recording = {
   chantSlug: string,
   url: string,
-  choir: string
+  choir: string,
+  year: number
 }
 
 export type Recordings = {
