@@ -34,13 +34,14 @@ class NewRecordingForm extends Component<Props, State> {
     })
   }
 
-  async handleSubmit (formValues) {
+  async handleSubmit ({year, ...formValues}) {
     const { chant: { slug: chantSlug } } = this.props
     const { recordingFile } = this.state
 
     const recordingData = {
       chantSlug,
       recordingFile,
+      year: parseInt(year),
       ...formValues
     }
 

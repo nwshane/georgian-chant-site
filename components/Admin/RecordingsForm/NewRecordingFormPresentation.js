@@ -5,6 +5,7 @@ import SelectChantSchool from '~/components/Admin/shared/SelectChantSchool'
 import SelectChoir from './SelectChoir'
 import { Form } from 'formsy-react'
 import RecordingInput from './RecordingInput'
+import YearInput from './YearInput'
 
 type Props = {
   handleSubmit: Function,
@@ -45,6 +46,9 @@ const NewRecordingFormPresentation = ({recordingFile, handleSubmit, handleChange
     </div>
     <div>
       <SelectChoir disabled={!recordingFile} />
+    </div>
+    <div>
+      <YearInput disabled={!recordingFile} />
     </div>
     <div>
       <RaisedButton
