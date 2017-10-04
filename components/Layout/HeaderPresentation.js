@@ -67,6 +67,13 @@ const HeaderPresentation = (props: Props) => {
           </LocalizedLink>
         </li>
         <li>
+          <LocalizedLink href='/sheetMusic'>
+            <a>
+              Sheet Music
+            </a>
+          </LocalizedLink>
+        </li>
+        <li>
           <LocalizedLink href='/about'>
             <a>
               <FormattedMessage
