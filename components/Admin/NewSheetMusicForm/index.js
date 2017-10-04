@@ -2,11 +2,12 @@
 import React, {Component} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import type {Dispatch} from '~/data/types'
+import type {Chant, Dispatch} from '~/data/types'
 import NewSheetMusicFormPresentation from './NewSheetMusicFormPresentation'
 import createSheetMusic from '~/data/thunks/sheetMusic/createSheetMusic'
 
 type Props = {
+  chant: Chant,
   createSheetMusic: Function
 }
 
@@ -38,7 +39,13 @@ class NewSheetMusicForm extends Component<Props, State> {
   }
 
   handleSubmit (formValues: FormValues) {
-    this.props.createSheetMusic(this.state.selectedFile, formValues)
+    this.props.createSheetMusic(
+      this.state.selectedFile,
+      {
+        chantSlug: this.props.chant.slug,
+        ...formValues
+      }
+    )
     this.setState({
       selectedFile: null
     })

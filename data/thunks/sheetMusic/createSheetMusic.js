@@ -10,7 +10,8 @@ type File = {
 }
 
 type FormValues = {
-  school: string
+  school: string,
+  chantSlug: string
 }
 
 export default (sheetMusicFile: File, formValues: FormValues) => async function (dispatch: Dispatch) {
@@ -32,6 +33,7 @@ export default (sheetMusicFile: File, formValues: FormValues) => async function 
       },
       {
         school: formValues.school,
+        chantSlug: formValues.chantSlug,
         url
       }
     ))

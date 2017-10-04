@@ -4,9 +4,7 @@ type PathVariables = {
   sheetMusicKey: string
 }
 
-type Values = {
-  url: string
-}
+type Values = {}
 
 export default (pathVariables: PathVariables, values: Values) => {
   const {sheetMusicKey} = pathVariables
