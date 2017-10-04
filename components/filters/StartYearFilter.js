@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import type {State, Dispatch} from '~/data/types'
 import {bindActionCreators} from 'redux'
 import {setStartYear, getStartYear} from '~/data/ducks/filters/startYear'
+import {getMinimumRecordingsYear, getMaximumRecordingsYear} from '~/data/ducks/recordings'
 import RcFilterCss from './RcFilterCss'
 
 type Props = {
@@ -45,8 +46,8 @@ class StartYearFilter extends Component<Props> {
 
 const mapStateToProps = (state: State) => ({
   startYear: getStartYear(state),
-  minimumYear: 1921,
-  maximumYear: 2021
+  minimumYear: getMinimumRecordingsYear(state),
+  maximumYear: getMaximumRecordingsYear(state)
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
