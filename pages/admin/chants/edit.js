@@ -14,7 +14,7 @@ import ChantLink from '~/components/ChantLink'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import ChantLocalizedName from '~/components/chant/ChantLocalizedName'
 import NewSheetMusicForm from '~/components/Admin/NewSheetMusicForm'
-import SheetMusicTable from '~/components/shared/SheetMusicTable'
+import EditChantSheetMusicTable from '~/components/Admin/EditChantSheetMusicTable'
 
 type Props = {
   chant: Chant
@@ -59,8 +59,7 @@ class EditChantPage extends Component<Props> {
           </Tab>
           <Tab label='Sheet Music'>
             <section>
-              <h3>Sheet Music for this Chant</h3>
-              <SheetMusicTable />
+              <EditChantSheetMusicTable chant={chant} />
               <h3>Upload New Sheet Music</h3>
               <NewSheetMusicForm chant={chant} />
             </section>

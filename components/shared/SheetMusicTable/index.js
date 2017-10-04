@@ -2,9 +2,7 @@
 import React from 'react'
 import { Table, TableHeader, TableBody, TableRow, TableRowColumn } from 'material-ui/Table'
 import type {SheetMusic} from '~/data/types'
-import {getSheetMusic} from '~/data/ducks/sheetMusic'
 import {mapObjIndexed, values} from 'ramda'
-import {connect} from 'react-redux'
 import SheetMusicTableRow from './SheetMusicTableRow'
 
 type Props = {
@@ -36,8 +34,4 @@ const SheetMusicTable = ({sheetMusic}: Props) => (
   </Table>
 )
 
-const mapStateToProps = (state) => ({
-  sheetMusic: getSheetMusic(state)
-})
-
-export default connect(mapStateToProps)(SheetMusicTable)
+export default SheetMusicTable

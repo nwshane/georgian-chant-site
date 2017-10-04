@@ -5,21 +5,22 @@ export type LocalizedObject = {
   [string]: string
 }
 
-export type Chant = {
-  +slug: string,
-  +name: LocalizedObject,
-  +text: LocalizedObject,
-  +recordings: Array<string>
-}
-
-export type Chants = {[string]: Chant}
-
 export type SheetMusicScore = {
   +url: string,
   +school: string
 }
 
 export type SheetMusic = {[string]: SheetMusicScore}
+
+export type Chant = {
+  +slug: string,
+  +name: LocalizedObject,
+  +text: LocalizedObject,
+  +recordings: Array<string>,
+  +sheetMusic: SheetMusic
+}
+
+export type Chants = {[string]: Chant}
 
 export type Choir = {
   +slug: string,
@@ -65,7 +66,8 @@ export type State = {
   +appMessage: AppMessage,
   +filters: Filters,
   +recordings: Recordings,
-  +schools: Schools
+  +schools: Schools,
+  +sheetMusic: SheetMusic
 }
 
 export type Action =

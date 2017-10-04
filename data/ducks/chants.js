@@ -22,6 +22,10 @@ export const getChantRecordingIds = (state: State, slug: string): Array<string> 
   getChantBySlug(state, slug).recordings || []
 )
 
+export const getChantSheetMusicIds = (slug: string, state: State): Array<string> => (
+  Object.keys(getChantBySlug(state, slug).sheetMusic || {})
+)
+
 export default (state: Chants = {}, action: Action): Chants => {
   switch (action.type) {
     case 'MERGE_CHANTS':
