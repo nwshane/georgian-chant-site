@@ -51,6 +51,9 @@ const RecordingTableRow = (props: Props) => {
         {getTransliteratedName(locale, school)}
       </TableRowColumn>
       <TableRowColumn>
+        {recording.year}
+      </TableRowColumn>
+      <TableRowColumn>
         <audio controls src={recording.url} />
       </TableRowColumn>
       {

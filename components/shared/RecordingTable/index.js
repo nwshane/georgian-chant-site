@@ -44,6 +44,9 @@ const RecordingTable = ({hide, recordings, uploadTasks, removeUploadTask}: Props
           School
         </TableRowColumn>
         <TableRowColumn>
+          Year
+        </TableRowColumn>
+        <TableRowColumn>
           Recording
         </TableRowColumn>
         {
