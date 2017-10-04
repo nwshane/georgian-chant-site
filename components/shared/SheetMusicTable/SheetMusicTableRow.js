@@ -4,7 +4,7 @@ import { TableRow, TableRowColumn } from 'material-ui/Table'
 import type {SheetMusicScore, School} from '~/data/types'
 import {getSchool} from '~/data/ducks/schools'
 import {connect} from 'react-redux'
-import {getTranslatedName} from '~/data/getters'
+import {getTransliteratedName} from '~/data/getters'
 import {injectIntl} from 'react-intl'
 import type {IntlShape} from 'react-intl'
 
@@ -19,7 +19,7 @@ const SheetMusicTableRow = (props: Props) => {
   return (
     <TableRow>
       <TableRowColumn>
-        {getTranslatedName(locale, school)}
+        {getTransliteratedName(locale, school)}
       </TableRowColumn>
       <TableRowColumn>
         <a target='_blank' href={sheetMusicScore.url}>
