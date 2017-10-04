@@ -15,17 +15,19 @@ type Props = {
 }
 
 const getLabel = (filePresent) => (
-  filePresent ? 'Choose Different File' : 'Add a New Recording'
+  filePresent ? 'Select Different File' : 'Select File'
+)
+
+const getSubmitButtonLabel = (recordingFile) => (
+  recordingFile
+    ? `Upload Recording: ${recordingFile.name}`
+    : 'Upload Recording'
 )
 
 const NewRecordingFormPresentation = ({recordingFile, handleSubmit, handleChangeFile}: Props) => (
   <Form
     onSubmit={handleSubmit}
     encType='multipart/form-data'
-    style={{
-      marginTop: '50px',
-      marginBottom: '30px'
-    }}
   >
     <RecordingInput
       label={getLabel(!!recordingFile)}
@@ -38,25 +40,22 @@ const NewRecordingFormPresentation = ({recordingFile, handleSubmit, handleChange
         textTransform: 'initial'
       }}
     />
-    {!!recordingFile && (
-      <div>
-        <SelectChantSchool />
-        <SelectChoir />
-        <RaisedButton
-          label={`Upload Recording: ${recordingFile.name}`}
-          type='submit'
-          labelStyle={{
-            textTransform: 'initial'
-          }}
-        />
-      </div>
-    )}
-    <style jsx>{`
-      div {
-        display: flex;
-        flex-direction: column;
-      }
-    `}</style>
+    <div>
+      <SelectChantSchool disabled={!recordingFile} />
+    </div>
+    <div>
+      <SelectChoir disabled={!recordingFile} />
+    </div>
+    <div>
+      <RaisedButton
+        label={getSubmitButtonLabel(recordingFile)}
+        type='submit'
+        disabled={!recordingFile}
+        labelStyle={{
+          textTransform: 'initial'
+        }}
+      />
+    </div>
   </Form>
 )
 

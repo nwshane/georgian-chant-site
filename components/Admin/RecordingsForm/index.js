@@ -49,10 +49,18 @@ class RecordingsForm extends Component<Props, State> {
           uploadTasks={this.state.uploadTasks}
           removeUploadTask={this.removeUploadTask}
         />
+        <h3>
+          Upload New Recording
+        </h3>
         <NewRecordingForm
           chant={chant}
           addUploadTask={this.addUploadTask}
         />
+        <style jsx>{`
+          h3 {
+            margin-top: 40px;
+          }
+        `}</style>
       </section>
     )
   }
