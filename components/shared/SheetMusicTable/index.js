@@ -6,19 +6,26 @@ import {mapObjIndexed, values} from 'ramda'
 import SheetMusicTableRow from './SheetMusicTableRow'
 
 type Props = {
+  hide?: Array<string>,
   sheetMusic: SheetMusic
 }
 
-const SheetMusicTable = ({sheetMusic}: Props) => (
+const SheetMusicTable = ({hide, sheetMusic}: Props) => (
   <Table>
     <TableHeader
       displaySelectAll={false}
       adjustForCheckbox={false}
     >
       <TableRow>
-        <TableRowColumn>
-          Chant
-        </TableRowColumn>
+        {
+          hide && hide.includes('chant')
+            ? null
+            : (
+              <TableRowColumn>
+                Chant
+              </TableRowColumn>
+            )
+        }
         <TableRowColumn>
           School
         </TableRowColumn>
@@ -31,7 +38,7 @@ const SheetMusicTable = ({sheetMusic}: Props) => (
       displayRowCheckbox={false}
     >
       {values(mapObjIndexed((sheetMusicScore, key) => (
-        <SheetMusicTableRow {...{sheetMusicScore, key}} />
+        <SheetMusicTableRow {...{sheetMusicScore, key, hide}} />
       ), sheetMusic))}
     </TableBody>
   </Table>

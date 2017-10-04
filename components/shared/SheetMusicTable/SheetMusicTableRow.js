@@ -10,18 +10,25 @@ import type {IntlShape} from 'react-intl'
 import ChantLink from '~/components/ChantLink'
 
 type Props = {
+  hide?: Array<string>,
   sheetMusicScore: SheetMusicScore,
   school: School,
   intl: IntlShape
 }
 
 const SheetMusicTableRow = (props: Props) => {
-  const {sheetMusicScore, school, intl: {locale}} = props
+  const {hide, sheetMusicScore, school, intl: {locale}} = props
   return (
     <TableRow>
-      <TableRowColumn>
-        <ChantLink chantSlug={sheetMusicScore.chantSlug} />
-      </TableRowColumn>
+      {
+        hide && hide.includes('chant')
+          ? null
+          : (
+            <TableRowColumn>
+              <ChantLink chantSlug={sheetMusicScore.chantSlug} />
+            </TableRowColumn>
+          )
+      }
       <TableRowColumn>
         {getTransliteratedName(locale, school)}
       </TableRowColumn>
