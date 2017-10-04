@@ -1,14 +1,17 @@
 // @flow
 import React, {Component} from 'react'
-import TextField from 'material-ui/TextField'
+import {Range} from 'rc-slider'
 import {connect} from 'react-redux'
 import type {State, Dispatch} from '~/data/types'
 import {bindActionCreators} from 'redux'
 import {setStartYear, getStartYear} from '~/data/ducks/filters/startYear'
+import RcFilterCss from './RcFilterCss'
 
 type Props = {
   startYear: number,
-  setStartYear: Function
+  setStartYear: Function,
+  minimumYear: number,
+  maximumYear: number
 }
 
 class StartYearFilter extends Component<Props> {
@@ -18,25 +21,32 @@ class StartYearFilter extends Component<Props> {
     self.handleChange = self.handleChange.bind(self)
   }
 
-  handleChange (event: {target: {value: number}}) {
-    this.props.setStartYear(event.target.value)
+  handleChange (values) {
+    this.props.setStartYear(values[0])
   }
 
   render () {
+    const {startYear, minimumYear, maximumYear} = this.props
     return (
-      <TextField
-        name='start-year-filter'
-        value={this.props.startYear}
-        onChange={this.handleChange}
-        floatingLabelText='Start Year'
-        type='number'
-      />
+      <div>
+        <Range
+          value={[startYear, maximumYear]}
+          defaultValue={[minimumYear, maximumYear]}
+          onChange={this.handleChange}
+          min={minimumYear}
+          max={maximumYear}
+          step={1}
+        />
+        <RcFilterCss />
+      </div>
     )
   }
 }
 
 const mapStateToProps = (state: State) => ({
-  startYear: getStartYear(state)
+  startYear: getStartYear(state),
+  minimumYear: 1921,
+  maximumYear: 2021
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

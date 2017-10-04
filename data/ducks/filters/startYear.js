@@ -11,7 +11,7 @@ export const setStartYear = (startYear: number): Action => ({
   startYear
 })
 
-export default (startYearState: number = null, action: Action): number => {
+export default (startYearState: ?number = null, action: Action): ?number => {
   switch (action.type) {
     case 'SET_FILTER_START_YEAR':
       return action.startYear
