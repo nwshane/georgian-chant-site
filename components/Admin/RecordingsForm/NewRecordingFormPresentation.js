@@ -18,7 +18,7 @@ const getLabel = (filePresent) => (
   filePresent ? 'Choose Different File' : 'Add a New Recording'
 )
 
-const RecordingFormPresentation = ({recordingFile, handleSubmit, handleChangeFile}: Props) => (
+const NewRecordingFormPresentation = ({recordingFile, handleSubmit, handleChangeFile}: Props) => (
   <Form
     onSubmit={handleSubmit}
     encType='multipart/form-data'
@@ -60,4 +60,4 @@ const RecordingFormPresentation = ({recordingFile, handleSubmit, handleChangeFil
   </Form>
 )
 
-export default RecordingFormPresentation
+export default NewRecordingFormPresentation

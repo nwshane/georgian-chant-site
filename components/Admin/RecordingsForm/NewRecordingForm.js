@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import type { Chant, UploadTask } from '~/data/types'
 import createRecording from '~/data/thunks/recordings/createRecording'
-import RecordingFormPresentation from './RecordingFormPresentation'
+import NewRecordingFormPresentation from './NewRecordingFormPresentation'
 
 type Props = {
   chant: Chant,
@@ -53,7 +53,7 @@ class NewRecordingForm extends Component<Props, State> {
 
   render () {
     return (
-      <RecordingFormPresentation
+      <NewRecordingFormPresentation
         handleSubmit={this.handleSubmit}
         handleChangeFile={this.handleChangeFile}
         recordingFile={this.state.recordingFile}
