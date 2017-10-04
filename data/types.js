@@ -7,6 +7,7 @@ export type LocalizedObject = {
 
 export type SheetMusicScore = {
   +url: string,
+  +chantSlug: string,
   +school: string
 }
 

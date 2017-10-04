@@ -17,7 +17,10 @@ const SheetMusicTable = ({sheetMusic}: Props) => (
     >
       <TableRow>
         <TableRowColumn>
-          Chant School
+          Chant
+        </TableRowColumn>
+        <TableRowColumn>
+          School
         </TableRowColumn>
         <TableRowColumn>
           Link

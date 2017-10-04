@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import {getTransliteratedName} from '~/data/getters'
 import {injectIntl} from 'react-intl'
 import type {IntlShape} from 'react-intl'
+import ChantLink from '~/components/ChantLink'
 
 type Props = {
   sheetMusicScore: SheetMusicScore,
@@ -18,6 +19,9 @@ const SheetMusicTableRow = (props: Props) => {
   const {sheetMusicScore, school, intl: {locale}} = props
   return (
     <TableRow>
+      <TableRowColumn>
+        <ChantLink chantSlug={sheetMusicScore.chantSlug} />
+      </TableRowColumn>
       <TableRowColumn>
         {getTransliteratedName(locale, school)}
       </TableRowColumn>
