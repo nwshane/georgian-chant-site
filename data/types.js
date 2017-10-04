@@ -58,7 +58,8 @@ export type Recordings = {
 }
 
 export type Filters = {
-  search: string
+  search: string,
+  startYear: number
 }
 
 export type State = {
@@ -85,6 +86,7 @@ export type Action =
   | { type: 'SET_SCHOOLS', schools: Schools }
   | { type: 'SET_SHEET_MUSIC', sheetMusic: SheetMusic }
   | { type: 'SET_SEARCH', search: string }
+  | { type: 'SET_FILTER_START_YEAR', startYear: number }
 
 export type GetState = () => State
 

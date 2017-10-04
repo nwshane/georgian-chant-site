@@ -1,9 +1,6 @@
 // @flow
-import type { Action, Filters, State } from '~/data/types'
-
-export const getFilters = (state: State): Filters => (
-  state.filters
-)
+import type { Action, State } from '~/data/types'
+import { getFilters } from '../filters'
 
 export const getSearch = (state: State): string => (
   getFilters(state).search
