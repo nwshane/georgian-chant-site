@@ -32,13 +32,22 @@ const SheetMusicTable = ({hide, sheetMusic}: Props) => (
         <TableRowColumn>
           Link
         </TableRowColumn>
+        {
+          hide && hide.includes('actions')
+            ? null
+            : (
+              <TableRowColumn>
+                Actions
+              </TableRowColumn>
+            )
+        }
       </TableRow>
     </TableHeader>
     <TableBody
       displayRowCheckbox={false}
     >
       {values(mapObjIndexed((sheetMusicScore, key) => (
-        <SheetMusicTableRow {...{sheetMusicScore, key, hide}} />
+        <SheetMusicTableRow sheetMusicScoreId={key} {...{sheetMusicScore, key, hide}} />
       ), sheetMusic))}
     </TableBody>
   </Table>

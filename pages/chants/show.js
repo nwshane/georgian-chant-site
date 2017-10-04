@@ -10,6 +10,7 @@ import fetchRecordings from '~/data/thunks/recordings/fetchAll'
 import ChantLocalizedName from '~/components/chant/ChantLocalizedName'
 import ChantText from '~/components/chant/ChantText'
 import ChantRecordings from '~/components/chant/ChantRecordings'
+import ChantSheetMusicTable from '~/components/chant/ChantSheetMusicTable'
 
 type Props = {
   chant: ?Chant
@@ -34,6 +35,10 @@ class ChantShowPage extends Component<Props> {
         </h1>
         <ChantText chant={chant} />
         <ChantRecordings chant={chant} />
+        <section>
+          <h2>Sheet Music</h2>
+          <ChantSheetMusicTable hide={['chant', 'actions']} chant={chant} />
+        </section>
         <style jsx>{`
           h3 {
             margin-top: 30px;

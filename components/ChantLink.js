@@ -6,6 +6,7 @@ import { injectIntl } from 'react-intl'
 import { getTransliteratedChantName } from '~/data/getters/chants'
 import type { IntlShape } from 'react-intl'
 import type { State } from '~/data/types'
+import ChantSheetMusicTable from '~/components/chant/ChantSheetMusicTable'
 
 type Props = {
   chantSlug: string,

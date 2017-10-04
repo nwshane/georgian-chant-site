@@ -6,12 +6,13 @@ import type {SheetMusic, State, Chant} from '~/data/types'
 import SheetMusicTable from '~/components/shared/SheetMusicTable'
 
 type Props = {
+  hide: Array<string>,
   sheetMusic: SheetMusic
 }
 
-const EditChantSheetMusicTable = ({sheetMusic}: Props) => (
+const ChantSheetMusicTable = ({hide, sheetMusic}: Props) => (
   <div>
-    <SheetMusicTable hide={['chant']} sheetMusic={sheetMusic} />
+    <SheetMusicTable {...{hide, sheetMusic}} />
     <style jsx>{`
       div {
         margin-bottom: 50px;
@@ -24,4 +25,4 @@ const mapStateToProps = (state: State, {chant}: {chant: Chant}) => ({
   sheetMusic: getSheetMusicForChant(chant.slug, state)
 })
 
-export default connect(mapStateToProps)(EditChantSheetMusicTable)
+export default connect(mapStateToProps)(ChantSheetMusicTable)

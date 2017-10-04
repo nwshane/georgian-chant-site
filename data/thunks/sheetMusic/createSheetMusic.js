@@ -1,8 +1,9 @@
 // @flow
 import type {Dispatch} from '~/data/types'
 import getUpdateSheetMusicObject from './helpers/getUpdateSheetMusicObject'
-import app, {database} from '~/data/firebase'
+import {database} from '~/data/firebase'
 import {setAppMessage} from '~/data/ducks/appMessage'
+import getSheetMusicStorageRef from './helpers/getSheetMusicStorageRef'
 
 type File = {
   name: string,
@@ -18,11 +19,7 @@ export default (sheetMusicFile: File, formValues: FormValues) => async function 
   try {
     const newSheetMusicRef = await database.ref().child('sheetMusic').push()
 
-    const uploadTask = app
-    .storage()
-    .ref()
-    .child('sheetMusic')
-    .child(newSheetMusicRef.key)
+    const uploadTask = getSheetMusicStorageRef(newSheetMusicRef.key)
     .put(sheetMusicFile, { contentType: sheetMusicFile.type })
 
     const { downloadURL: url } = await uploadTask

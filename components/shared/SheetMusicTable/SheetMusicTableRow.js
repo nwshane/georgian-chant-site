@@ -8,16 +8,18 @@ import {getTransliteratedName} from '~/data/getters'
 import {injectIntl} from 'react-intl'
 import type {IntlShape} from 'react-intl'
 import ChantLink from '~/components/ChantLink'
+import DeleteSheetMusicButton from '~/components/Admin/DeleteSheetMusicButton'
 
 type Props = {
   hide?: Array<string>,
   sheetMusicScore: SheetMusicScore,
+  sheetMusicScoreId: string,
   school: School,
   intl: IntlShape
 }
 
 const SheetMusicTableRow = (props: Props) => {
-  const {hide, sheetMusicScore, school, intl: {locale}} = props
+  const {hide, sheetMusicScoreId, sheetMusicScore, school, intl: {locale}} = props
   return (
     <TableRow>
       {
@@ -37,6 +39,17 @@ const SheetMusicTableRow = (props: Props) => {
           View
         </a>
       </TableRowColumn>
+      {
+        hide && hide.includes('actions')
+          ? null
+          : (
+            <TableRowColumn>
+              <DeleteSheetMusicButton
+                {...{sheetMusicScoreId, sheetMusicScore}}
+              />
+            </TableRowColumn>
+          )
+      }
     </TableRow>
   )
 }
