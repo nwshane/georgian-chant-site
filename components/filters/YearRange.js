@@ -15,7 +15,7 @@ type Props = {
   maximumYear: number
 }
 
-class StartYearFilter extends Component<Props> {
+class YearRange extends Component<Props> {
   constructor () {
     super()
     const self: any = this
@@ -55,4 +55,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   dispatch
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(StartYearFilter)
+export default connect(mapStateToProps, mapDispatchToProps)(YearRange)

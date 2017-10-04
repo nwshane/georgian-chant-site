@@ -6,7 +6,7 @@ import fetchRecordings from '~/data/thunks/recordings/fetchAll'
 import { getRecordings } from '~/data/ducks/recordings'
 import FilteredRecordingsTable from '~/components/FilteredRecordingsTable'
 import type { Recordings } from '~/data/types'
-import StartYearFilter from '~/components/filters/StartYearFilter.js'
+import YearRange from '~/components/filters/YearRange.js'
 
 type Props = {
   recordings: Recordings
@@ -25,7 +25,7 @@ class RecordingsPage extends Component<Props> {
     const { recordings } = this.props
     return (
       <Layout>
-        <StartYearFilter />
+        <YearRange />
         <FilteredRecordingsTable hide={['actions']} {...{recordings}} />
       </Layout>
     )
