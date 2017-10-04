@@ -23,18 +23,10 @@ type State = {
 
 // TODO: Localize
 class SelectChantSchool extends Component<Props, State> {
-  static defaultProps = {
-    value: 'gelati'
-  }
-
-  state = {
-    value: ''
-  }
-
   constructor (props: Props) {
     super(props)
     this.state = {
-      value: props.value
+      value: props.value || Object.keys(props.schools)[0]
     }
 
     const self: any = this

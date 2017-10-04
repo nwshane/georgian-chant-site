@@ -13,7 +13,8 @@ import { mapObjIndexed, values } from 'ramda'
 type Props = {
   value: string,
   choirs: Choirs,
-  intl: IntlShape
+  intl: IntlShape,
+  disabled: boolean
 }
 
 type State = {
@@ -22,18 +23,10 @@ type State = {
 
 // TODO: Localize
 class SelectChoir extends Component<Props, State> {
-  static defaultProps = {
-    value: 'gelati'
-  }
-
-  state = {
-    value: ''
-  }
-
   constructor (props: Props) {
     super(props)
     this.state = {
-      value: props.value
+      value: props.value || Object.keys(props.choirs)[0]
     }
 
     const self: any = this
@@ -50,6 +43,7 @@ class SelectChoir extends Component<Props, State> {
       <FormsySelect
         name='choir'
         required
+        disabled={this.props.disabled}
         value={this.state.value}
         onChange={this.handleChange}
         floatingLabelText='Choir'
