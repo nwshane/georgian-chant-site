@@ -28,6 +28,7 @@ class StartYearFilter extends Component<Props> {
         name='start-year-filter'
         value={this.props.startYear}
         onChange={this.handleChange}
+        floatingLabelText='Start Year'
         type='number'
       />
     )
