@@ -11,8 +11,12 @@ type Props = {
 
 const EditChantSheetMusicTable = ({sheetMusic}: Props) => (
   <div>
-    <h3>Sheet Music for this Chant</h3>
     <SheetMusicTable sheetMusic={sheetMusic} />
+    <style jsx>{`
+      div {
+        margin-bottom: 50px;
+      }
+    `}</style>
   </div>
 )
 
