@@ -30,6 +30,7 @@ class YearRange extends Component<Props> {
     const {startYear, minimumYear, maximumYear} = this.props
     return (
       <div>
+        <span>{minimumYear}</span>
         <Range
           value={[startYear, maximumYear]}
           defaultValue={[minimumYear, maximumYear]}
@@ -38,6 +39,7 @@ class YearRange extends Component<Props> {
           max={maximumYear}
           step={1}
         />
+        <span>{maximumYear}</span>
         <RcFilterCss />
         <style jsx>{`
           div {
