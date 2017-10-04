@@ -34,6 +34,9 @@ class YearRange extends Component<Props> {
     const {startYear, endYear, minimumYear, maximumYear} = this.props
     return (
       <div>
+        <div>
+          Selected Years: {startYear} - {endYear}
+        </div>
         <span>{minimumYear}</span>
         <Range
           value={[startYear, endYear]}
