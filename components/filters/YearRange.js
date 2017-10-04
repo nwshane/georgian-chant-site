@@ -39,6 +39,11 @@ class YearRange extends Component<Props> {
           step={1}
         />
         <RcFilterCss />
+        <style jsx>{`
+          div {
+            max-width: 300px;
+          }
+        `}</style>
       </div>
     )
   }
