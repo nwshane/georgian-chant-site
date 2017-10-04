@@ -3,7 +3,7 @@ import React from 'react'
 import wrapPage from '~/components/wrappers/wrapPage'
 import Layout from '~/components/Layout/'
 import ChoirList from '~/components/ChoirList/'
-import fetchChoirList from '~/data/thunks/choirs/fetchChoirList'
+import fetchChoirs from '~/data/thunks/choirs/fetchChoirs'
 import type { ServerContext } from '~/data/types'
 
 const ChoirIndexPage = () => (
@@ -15,7 +15,7 @@ const ChoirIndexPage = () => (
 
 ChoirIndexPage.getInitialProps = async function (context: ServerContext) {
   const {store: {dispatch}} = context
-  await dispatch(fetchChoirList())
+  await dispatch(fetchChoirs())
 }
 
 export default wrapPage(ChoirIndexPage)

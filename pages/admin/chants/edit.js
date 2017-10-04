@@ -15,6 +15,8 @@ import { Tabs, Tab } from 'material-ui/Tabs'
 import ChantLocalizedName from '~/components/chant/ChantLocalizedName'
 import NewSheetMusicForm from '~/components/Admin/NewSheetMusicForm'
 import ChantSheetMusicTable from '~/components/chant/ChantSheetMusicTable'
+import fetchSchools from '~/data/thunks/schools/fetchSchools'
+import fetchChoirs from '~/data/thunks/choirs/fetchChoirs'
 
 type Props = {
   chant: Chant
@@ -25,6 +27,8 @@ class EditChantPage extends Component<Props> {
   static async getInitialProps ({store, query: {slug}}) {
     await store.dispatch(fetchChantBySlug(slug))
     await store.dispatch(fetchRecordings())
+    await store.dispatch(fetchSchools())
+    await store.dispatch(fetchChoirs())
     return { chant: getChantBySlug(store.getState(), slug) }
   }
 
