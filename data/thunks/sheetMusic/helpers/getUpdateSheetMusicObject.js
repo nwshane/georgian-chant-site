@@ -1,14 +1,16 @@
 // @flow
 
 type PathVariables = {
-  sheetMusicKey: string
+  sheetMusicKey: string,
+  chantSlug: string
 }
 
-type Values = {}
+type Values = ?{}
 
 export default (pathVariables: PathVariables, values: Values) => {
-  const {sheetMusicKey} = pathVariables
+  const {chantSlug, sheetMusicKey} = pathVariables
   const obj = {}
+  obj[`chants/${chantSlug}/sheetMusic/${sheetMusicKey}`] = values ? true : null
   obj[`sheetMusic/${sheetMusicKey}`] = values
   return obj
 }

@@ -26,14 +26,16 @@ export default (sheetMusicFile: File, formValues: FormValues) => async function 
     .put(sheetMusicFile, { contentType: sheetMusicFile.type })
 
     const { downloadURL: url } = await uploadTask
+    const {chantSlug, school} = formValues
 
     await database.ref().update(getUpdateSheetMusicObject(
       {
-        sheetMusicKey: newSheetMusicRef.key
+        sheetMusicKey: newSheetMusicRef.key,
+        chantSlug
       },
       {
-        school: formValues.school,
-        chantSlug: formValues.chantSlug,
+        school,
+        chantSlug,
         url
       }
     ))
