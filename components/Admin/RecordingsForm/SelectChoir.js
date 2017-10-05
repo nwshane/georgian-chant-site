@@ -25,8 +25,10 @@ type State = {
 class SelectChoir extends Component<Props, State> {
   constructor (props: Props) {
     super(props)
-    this.state = {
-      value: props.value || Object.keys(props.choirs)[0]
+    if (props.choirs) {
+      this.state = {
+        value: props.value || Object.keys(props.choirs)[0]
+      }
     }
 
     const self: any = this
@@ -39,7 +41,7 @@ class SelectChoir extends Component<Props, State> {
 
   render () {
     const {intl: {locale}, choirs} = this.props
-    return (
+    return choirs ? (
       <FormsySelect
         name='choir'
         required
@@ -52,6 +54,10 @@ class SelectChoir extends Component<Props, State> {
           <MenuItem key={key} value={key} primaryText={getTranslatedName(locale, choir)} />
         ), choirs))}
       </FormsySelect>
+    ) : (
+      <p>
+        Please add some choirs!
+      </p>
     )
   }
 }
