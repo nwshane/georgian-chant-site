@@ -9,7 +9,7 @@ type Props = {
 }
 
 const LoggedInAsMessage = ({currentUser}: Props) => (
-  <p>Logged in as {currentUser.email}.</p>
+  currentUser && <p>Logged in as {currentUser.email}.</p>
 )
 
 const mapStateToProps = (state) => ({
