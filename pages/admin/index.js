@@ -3,11 +3,13 @@ import React from 'react'
 import Layout from '~/components/Layout/'
 import wrapPage from '~/components/wrappers/wrapPage'
 import LocalizedLink from '~/components/LocalizedLink'
+import LoggedInAsMessage from '~/components/Admin/LoggedInAsMessage'
 
 // TODO: Localize
 const AdminIndexPage = () => (
   <Layout>
     <h1>Admin Panel</h1>
+    <LoggedInAsMessage />
     <ul>
       <li>
         <LocalizedLink

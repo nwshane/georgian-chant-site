@@ -37,7 +37,9 @@ export type School = {
 
 export type Schools = {[string]: School}
 
-export type User = ?{}
+export type User = ?{
+  email: string
+}
 
 export type AppMessageCategory = 'neutral' | 'success' | 'error'
 
