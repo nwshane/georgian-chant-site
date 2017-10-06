@@ -1,9 +1,9 @@
 // @flow
 import React, {Component} from 'react'
-import {values} from 'ramda'
+import {filter, values} from 'ramda'
 import {Range} from 'rc-slider'
 import {connect} from 'react-redux'
-import type {Recordings, State, Dispatch} from '~/data/types'
+import type {Recordings, Recording, State, Dispatch} from '~/data/types'
 import {bindActionCreators} from 'redux'
 import {setStartYear, getStartYear} from '~/data/ducks/filters/startYear'
 import {setEndYear, getEndYear} from '~/data/ducks/filters/endYear'
@@ -25,16 +25,16 @@ const getMarks = (minimumYear, maximumYear) => {
   return obj
 }
 
-const getMinimumRecordingsYear = (recordings: Recordings): number => (
-  values(recordings).reduce((minYear, recording) => (
+const getMinimumRecordingsYear = (recordings: Array<Recording>): ?number => (
+  recordings.reduce((minYear, recording) => (
     recording.year < minYear ? recording.year : minYear
-  ), 1920)
+  ), recordings[0].year)
 )
 
-const getMaximumRecordingsYear = (recordings: Recordings): number => (
-  values(recordings).reduce((maxYear, recording) => (
+const getMaximumRecordingsYear = (recordings: Array<Recording>): number => (
+  recordings.reduce((maxYear, recording) => (
     recording.year > maxYear ? recording.year : maxYear
-  ), 2017)
+  ), recordings[0].year)
 )
 
 class YearRange extends Component<Props> {
@@ -76,12 +76,18 @@ class YearRange extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state: State, {recordings}: {recordings: Recordings}) => ({
-  startYear: getStartYear(state),
-  endYear: getEndYear(state),
-  minimumYear: getMinimumRecordingsYear(recordings),
-  maximumYear: getMaximumRecordingsYear(recordings)
-})
+const mapStateToProps = (state: State, {recordings}: {recordings: Recordings}) => {
+  const recordingsWithYear = filter(
+    (recording) => (!!recording.year)
+  )(values(recordings))
+
+  return {
+    startYear: getStartYear(state),
+    endYear: getEndYear(state),
+    minimumYear: getMinimumRecordingsYear(recordingsWithYear),
+    maximumYear: getMaximumRecordingsYear(recordingsWithYear)
+  }
+}
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {setStartYear, setEndYear},
