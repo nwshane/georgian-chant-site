@@ -1,6 +1,6 @@
 // @flow
 import React, {Component} from 'react'
-import {filter, values} from 'ramda'
+import {compose, filter, values} from 'ramda'
 import {Range} from 'rc-slider'
 import {connect} from 'react-redux'
 import type {Recordings, Recording, State, Dispatch} from '~/data/types'
@@ -77,9 +77,10 @@ class YearRange extends Component<Props> {
 }
 
 const mapStateToProps = (state: State, {recordings}: {recordings: Recordings}) => {
-  const recordingsWithYear = filter(
-    (recording) => (!!recording.year)
-  )(values(recordings))
+  const recordingsWithYear = compose(
+    filter((recording) => (!!recording.year)),
+    values
+  )(recordings)
 
   return {
     startYear: getStartYear(state),
