@@ -1,5 +1,5 @@
 // @flow
-import { pick, values } from 'ramda'
+import { pick } from 'ramda'
 import type { Action, Recordings, State } from '~/data/types'
 import { getChantRecordingIds } from '~/data/ducks/chants'
 import { getChoirRecordingIds } from '~/data/ducks/choirs'
@@ -36,18 +36,6 @@ export const getRecordingsForChoir = (
     getChoirRecordingIds(choirSlug, state),
     getRecordings(state)
   )
-)
-
-export const getMinimumRecordingsYear = (state: State): number => (
-  values(getRecordings(state)).reduce((minYear, recording) => (
-    recording.year < minYear ? recording.year : minYear
-  ), 1920)
-)
-
-export const getMaximumRecordingsYear = (state: State): number => (
-  values(getRecordings(state)).reduce((maxYear, recording) => (
-    recording.year > maxYear ? recording.year : maxYear
-  ), 2017)
 )
 
 export default (recordingsState: ?Recordings = {}, action: Action): ?Recordings => {

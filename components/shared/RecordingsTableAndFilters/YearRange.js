@@ -1,12 +1,12 @@
 // @flow
 import React, {Component} from 'react'
+import {values} from 'ramda'
 import {Range} from 'rc-slider'
 import {connect} from 'react-redux'
-import type {State, Dispatch} from '~/data/types'
+import type {Recordings, State, Dispatch} from '~/data/types'
 import {bindActionCreators} from 'redux'
 import {setStartYear, getStartYear} from '~/data/ducks/filters/startYear'
 import {setEndYear, getEndYear} from '~/data/ducks/filters/endYear'
-import {getMinimumRecordingsYear, getMaximumRecordingsYear} from '~/data/ducks/recordings'
 import RcFilterCss from './RcFilterCss'
 
 type Props = {
@@ -24,6 +24,18 @@ const getMarks = (minimumYear, maximumYear) => {
   obj[maximumYear] = maximumYear
   return obj
 }
+
+const getMinimumRecordingsYear = (recordings: Recordings): number => (
+  values(recordings).reduce((minYear, recording) => (
+    recording.year < minYear ? recording.year : minYear
+  ), 1920)
+)
+
+const getMaximumRecordingsYear = (recordings: Recordings): number => (
+  values(recordings).reduce((maxYear, recording) => (
+    recording.year > maxYear ? recording.year : maxYear
+  ), 2017)
+)
 
 class YearRange extends Component<Props> {
   constructor () {
@@ -64,11 +76,11 @@ class YearRange extends Component<Props> {
   }
 }
 
-const mapStateToProps = (state: State) => ({
+const mapStateToProps = (state: State, {recordings}: {recordings: Recordings}) => ({
   startYear: getStartYear(state),
   endYear: getEndYear(state),
-  minimumYear: getMinimumRecordingsYear(state),
-  maximumYear: getMaximumRecordingsYear(state)
+  minimumYear: getMinimumRecordingsYear(recordings),
+  maximumYear: getMaximumRecordingsYear(recordings)
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

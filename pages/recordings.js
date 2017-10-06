@@ -4,9 +4,8 @@ import wrapPage from '~/components/wrappers/wrapPage'
 import Layout from '~/components/Layout/'
 import fetchRecordings from '~/data/thunks/recordings/fetchAll'
 import { getRecordings } from '~/data/ducks/recordings'
-import FilteredRecordingsTable from '~/components/FilteredRecordingsTable'
+import RecordingsTableAndFilters from '~/components/shared/RecordingsTableAndFilters'
 import type { Recordings } from '~/data/types'
-import YearRange from '~/components/filters/YearRange.js'
 
 type Props = {
   recordings: Recordings
@@ -25,8 +24,7 @@ class RecordingsPage extends Component<Props> {
     const { recordings } = this.props
     return (
       <Layout>
-        <YearRange />
-        <FilteredRecordingsTable hide={['actions']} {...{recordings}} />
+        <RecordingsTableAndFilters hide={['actions']} {...{recordings}} />
       </Layout>
     )
   }
