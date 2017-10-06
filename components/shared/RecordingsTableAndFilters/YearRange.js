@@ -56,13 +56,26 @@ class YearRange extends Component<Props> {
 
   render () {
     const {startYear, endYear, minimumYear, maximumYear} = this.props
+
+    if (minimumYear === maximumYear) return null
+    
     return (
       <div>
-        <div>
-          Selected Years: {startYear} - {endYear}
-        </div>
+        {
+          startYear && endYear
+            ? (
+              <div>
+                Selected Years: {startYear} - {endYear}
+              </div>
+            )
+            : (
+              <div>
+                Select Years:
+              </div>
+            )
+        }
         <Range
-          value={[startYear, endYear]}
+          value={[startYear || minimumYear, endYear || maximumYear]}
           defaultValue={[minimumYear, maximumYear]}
           onChange={this.handleChange}
           min={minimumYear}

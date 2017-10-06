@@ -3,7 +3,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import type { Chant, State } from '~/data/types'
 import { getRecordingsForChant } from '~/data/ducks/recordings'
-import RecordingTable from '~/components/shared/RecordingTable/'
+import RecordingsTableAndFilters from '~/components/shared/RecordingsTableAndFilters'
 import { values } from 'ramda'
 
 type Props = {
@@ -19,7 +19,7 @@ const ChantRecordings = ({recordings}: Props) => (
         <h2>
           Recordings
         </h2>
-        <RecordingTable hide={['chantName', 'actions']} {...{recordings}} />
+        <RecordingsTableAndFilters hide={['actions', 'chantName']} {...{recordings}} />
       </section>
     )
 )
