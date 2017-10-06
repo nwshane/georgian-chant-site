@@ -15,4 +15,5 @@ const RecordingsTableAndFilters = ({hide, recordings}: Props) => (
     <FilteredRecordingsTable {...{hide, recordings}} />
   </div>
 )
+
 export default RecordingsTableAndFilters
