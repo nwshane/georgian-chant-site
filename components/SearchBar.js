@@ -22,7 +22,14 @@ class SearchBar extends Component<Props> {
   }
 
   onChange (event: {target: {value: string}}) {
-    this.props.setSearch(event.target.value)
+    // cancel button handler calls onChange('') in material-ui-search-bar;
+    // the below is a workaround until this bug gets fixed:
+    // https://github.com/TeamWertarbyte/material-ui-search-bar/issues/22#issuecomment-334503605
+    if (typeof event === 'string') {
+      this.props.setSearch(event)
+    } else {
+      this.props.setSearch(event.target.value)
+    }
   }
 
   render () {
