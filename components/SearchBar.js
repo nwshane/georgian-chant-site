@@ -12,6 +12,8 @@ type Props = {
   setSearch: Function
 }
 
+const noop = () => (null)
+
 class SearchBar extends Component<Props> {
   constructor () {
     super()
@@ -27,6 +29,7 @@ class SearchBar extends Component<Props> {
     return (
       <MSearchBar
         onChange={this.onChange}
+        onRequestSearch={noop}
         value={this.props.search}
         style={{
           maxWidth: 400
