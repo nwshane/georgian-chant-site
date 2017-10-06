@@ -70,7 +70,7 @@ class YearRange extends Component<Props> {
             )
             : (
               <div>
-                Select Years:
+                Selected Years: All
               </div>
             )
         }
