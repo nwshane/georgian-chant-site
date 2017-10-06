@@ -22,7 +22,7 @@ class SheetMusicPage extends Component<Props> {
   render () {
     return (
       <Layout>
-        <SheetMusicTable sheetMusic={this.props.sheetMusic} />
+        <SheetMusicTable hide={['actions']} sheetMusic={this.props.sheetMusic} />
       </Layout>
     )
   }
