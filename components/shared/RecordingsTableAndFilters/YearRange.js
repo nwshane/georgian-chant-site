@@ -49,6 +49,11 @@ class YearRange extends Component<Props> {
     this.props.setEndYear(values[1])
   }
 
+  componentDidMount () {
+    this.props.setStartYear(null)
+    this.props.setEndYear(null)
+  }
+
   render () {
     const {startYear, endYear, minimumYear, maximumYear} = this.props
     return (
