@@ -58,7 +58,7 @@ class YearRange extends Component<Props> {
     const {startYear, endYear, minimumYear, maximumYear} = this.props
 
     if (minimumYear === maximumYear) return null
-    
+
     return (
       <div>
         {
@@ -74,19 +74,24 @@ class YearRange extends Component<Props> {
               </div>
             )
         }
-        <Range
-          value={[startYear || minimumYear, endYear || maximumYear]}
-          defaultValue={[minimumYear, maximumYear]}
-          onChange={this.handleChange}
-          min={minimumYear}
-          max={maximumYear}
-          step={1}
-          marks={getMarks(minimumYear, maximumYear)}
-        />
+        <span>
+          <Range
+            value={[startYear || minimumYear, endYear || maximumYear]}
+            defaultValue={[minimumYear, maximumYear]}
+            onChange={this.handleChange}
+            min={minimumYear}
+            max={maximumYear}
+            step={1}
+            marks={getMarks(minimumYear, maximumYear)}
+          />
+        </span>
         <RcFilterCss />
         <style jsx>{`
-          div {
-            max-width: 300px;
+          span {
+            max-width: 200px;
+            margin: 15px 0;
+            padding-left: 15px;
+            display: block;
           }
         `}</style>
       </div>
