@@ -4,11 +4,12 @@ import { database } from '~/data/firebase'
 import getUpdateRecordingObject from './getUpdateRecordingObject'
 import getRecordingStorageFileRef from './getRecordingStorageFileRef'
 
+type File = {
+  type: string
+}
+
 type RecordingData = {
   chantSlug: string,
-  recordingFile: {
-    type: string
-  },
   choir: string,
   school: string,
   year: number
@@ -19,13 +20,20 @@ const uploadRecordingFile = (key, recordingFile) => (
   .put(recordingFile, { contentType: recordingFile.type })
 )
 
-async function updateDatabase (dispatch, data) {
-  const { newRecordingRef, school, uploadTask, chantSlug, choir, year } = data
+async function updateDatabase (dispatch, uploadTask, newRecordingRef, data) {
   const { downloadURL: url } = await uploadTask
-  const { key: recordingKey } = newRecordingRef
 
-  const values = { chantSlug, url, school, choir, year }
-  const pathVariables = { recordingKey, chantSlug, choir }
+  const values = Object.assign(
+    {},
+    data,
+    {url}
+  )
+
+  const pathVariables = {
+    recordingKey: newRecordingRef.key,
+    chantSlug: data.chantSlug,
+    choir: data.choir
+  }
 
   await database
   .ref()
@@ -37,15 +45,17 @@ async function updateDatabase (dispatch, data) {
   }))
 }
 
-export default (recordingData: RecordingData) => async function (dispatch: Function) {
-  const { chantSlug, recordingFile, school, choir, year } = recordingData
+export default (recordingFile: File, recordingData: RecordingData) => async function (dispatch: Function) {
   try {
     const newRecordingRef = await database.ref().child('recordings').push()
-
     const uploadTask = uploadRecordingFile(newRecordingRef.key, recordingFile)
 
-    const data = { newRecordingRef, uploadTask, chantSlug, school, choir, year }
-    updateDatabase(dispatch, data)
+    updateDatabase(
+      dispatch,
+      uploadTask,
+      newRecordingRef,
+      recordingData
+    )
 
     const uploadTaskObject = {}
     uploadTaskObject[newRecordingRef.key] = uploadTask

@@ -35,18 +35,22 @@ class NewRecordingForm extends Component<Props, State> {
   }
 
   async handleSubmit ({year, ...formValues}) {
-    const { chant: { slug: chantSlug } } = this.props
-    const { recordingFile } = this.state
+    const recordingData = Object.assign(
+      {},
+      formValues,
+      {
+        chantSlug: this.props.chant.slug
+      }
+    )
 
-    const recordingData = {
-      chantSlug,
-      recordingFile,
-      year: parseInt(year),
-      ...formValues
+    if (year && typeof parseInt(year) === 'number') {
+      recordingData.year = parseInt(year)
+    } else {
+      delete recordingData.year
     }
 
     const uploadTaskObject: { [string]: UploadTask } =
-      await this.props.createRecording(recordingData)
+      await this.props.createRecording(this.state.recordingFile, recordingData)
 
     this.props.addUploadTask(uploadTaskObject)
     this.setState({ recordingFile: null })
